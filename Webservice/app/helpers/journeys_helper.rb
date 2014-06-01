@@ -1,5 +1,6 @@
 module JourneysHelper
 
+  # get the itinerary from CANALTP API
   def   self.getItinerary(from, to, date)
     source = 'http://api.navitia.io/v1/journeys?'
     source += 'from=' + from.to_s.gsub(",", ";")

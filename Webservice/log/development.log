@@ -1086,3 +1086,150 @@ Started GET "/journeys.json?from=2.287685,48.83256&to=" for 127.0.0.1 at 2014-05
 Processing by JourneysController#index as JSON
   Parameters: {"from"=>"2.287685,48.83256", "to"=>""}
 Completed 200 OK in 43884ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=" for 127.0.0.1 at 2014-05-31 19:00:09 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>""}
+Completed 500 Internal Server Error in 41000ms
+
+NoMethodError (undefined method `jsonResponseFormat' for #<JourneysController:0x00000102abac40>):
+  app/controllers/journeys_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/journeys_controller.rb:13:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (44.1ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=" for 127.0.0.1 at 2014-05-31 19:00:51 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>""}
+Completed 500 Internal Server Error in 42599ms
+
+NoMethodError (undefined method `jsonResponseFormat' for #<JourneysController:0x0000010b4bac88>):
+  app/controllers/journeys_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/journeys_controller.rb:13:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.4ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628" for 127.0.0.1 at 2014-05-31 19:01:34 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628"}
+Completed 500 Internal Server Error in 1132ms
+
+NoMethodError (undefined method `jsonResponseFormat' for #<JourneysController:0x0000010f2219f0>):
+  app/controllers/journeys_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/journeys_controller.rb:13:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.8ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628" for 127.0.0.1 at 2014-05-31 19:01:35 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628"}
+Completed 500 Internal Server Error in 743ms
+
+NoMethodError (undefined method `jsonResponseFormat' for #<JourneysController:0x0000010ff5b788>):
+  app/controllers/journeys_controller.rb:14:in `block (2 levels) in index'
+  app/controllers/journeys_controller.rb:13:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.1ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628" for 127.0.0.1 at 2014-05-31 19:02:56 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628"}
+Completed 200 OK in 1214ms (Views: 56.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=" for 127.0.0.1 at 2014-05-31 19:03:01 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>""}
+Completed 200 OK in 101117ms (Views: 59809.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&" for 127.0.0.1 at 2014-05-31 19:05:55 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256"}
+Completed 200 OK in 111930ms (Views: 63652.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&date=20140518T0800" for 127.0.0.1 at 2014-05-31 19:12:22 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "date"=>"20140518T0800"}
+Completed 500 Internal Server Error in 3ms
+
+NameError (undefined local variable or method `result' for #<JourneysController:0x00000102bf7180>):
+  app/controllers/journeys_controller.rb:17:in `block (2 levels) in index'
+  app/controllers/journeys_controller.rb:6:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (56.1ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&date=20140518T0800" for 127.0.0.1 at 2014-05-31 19:12:42 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "date"=>"20140518T0800"}
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&date=20140518T0800" for 127.0.0.1 at 2014-05-31 19:13:14 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "date"=>"20140518T0800"}
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&date=20140518T0800" for 127.0.0.1 at 2014-05-31 19:13:37 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "date"=>"20140518T0800"}
+Completed 200 OK in 894ms (Views: 54.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&date=20140518T0800" for 127.0.0.1 at 2014-05-31 19:14:38 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "date"=>"20140518T0800"}
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140518T0800" for 127.0.0.1 at 2014-05-31 19:15:11 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140518T0800"}
+Completed 200 OK in 1264ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=" for 127.0.0.1 at 2014-05-31 19:15:16 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>""}
+Completed 200 OK in 991ms (Views: 49.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140518T0800" for 127.0.0.1 at 2014-05-31 19:16:00 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140518T0800"}
+Completed 200 OK in 994ms (Views: 58.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=&datetime=20140518T0800" for 127.0.0.1 at 2014-05-31 19:16:07 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"", "datetime"=>"20140518T0800"}
+Completed   in 33585ms
