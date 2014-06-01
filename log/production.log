@@ -1,0 +1,10 @@
+I, [2014-05-29T23:58:13.158367 #58674]  INFO -- : Started GET "/journeys.json?from=2.287685;48.83256&to=2.377207;48.889628" for 127.0.0.1 at 2014-05-29 23:58:13 -0700
+I, [2014-05-29T23:58:13.963532 #58674]  INFO -- : Processing by JourneysController#index as JSON
+I, [2014-05-29T23:58:13.964012 #58674]  INFO -- :   Parameters: {"from"=>"2.287685", "48.83256"=>nil, "to"=>"2.377207", "48.889628"=>nil}
+I, [2014-05-29T23:58:13.965841 #58674]  INFO -- : Completed 500 Internal Server Error in 1ms
+F, [2014-05-29T23:58:13.969567 #58674] FATAL -- : 
+NoMethodError (undefined method `join' for "2.287685":String):
+  app/models/journeys_helper.rb:9:in `getItinerary'
+  app/controllers/journeys_controller.rb:10:in `index'
+
+
