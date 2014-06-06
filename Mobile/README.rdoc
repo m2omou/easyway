@@ -1,0 +1,9 @@
+To add all external libraries on the projet you need to use CocoaPods.
+
+If you don't have cocoapods :
+`sudo gem install cocoapods`
+
+Then go in the directory of the project where there is the Podfile and launch this command :
+`pod install` 
+
+When the installation is done, you can finally launch xcode. Click on `accessibility.xcworkspace` 
