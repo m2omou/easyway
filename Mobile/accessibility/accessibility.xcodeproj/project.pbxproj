@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6CFD9D8781094087A9BC32CA /* libPods-accessibility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB11380F27B44A08B368AA5 /* libPods-accessibility.a */; };
+		AA46712419417ABC005FB266 /* accessibility.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712219417ABC005FB266 /* accessibility.png */; };
+		AA46712519417ABC005FB266 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712319417ABC005FB266 /* bus.png */; };
 		AA73144B194105E20001867F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA731449194105E20001867F /* Default.png */; };
 		AA73144C194105E20001867F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73144A194105E20001867F /* Default@2x.png */; };
 		AA73144F194114100001867F /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA73144E194114100001867F /* POICell.m */; };
@@ -26,6 +28,7 @@
 		AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF58193EDE7D00E06E7E /* HomeViewController.m */; };
 		AAEA9B6319414CAB00E70531 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B6219414CAB00E70531 /* loading.png */; };
 		AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */; };
+		AAEA9B68194165CF00E70531 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B67194165CF00E70531 /* switch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		4AB11380F27B44A08B368AA5 /* libPods-accessibility.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-accessibility.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA46712219417ABC005FB266 /* accessibility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accessibility.png; sourceTree = "<group>"; };
+		AA46712319417ABC005FB266 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
 		AA731449194105E20001867F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AA73144A194105E20001867F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AA73144D194114100001867F /* POICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICell.h; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 		AAEA9B6219414CAB00E70531 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildJourneyViewController.h; sourceTree = "<group>"; };
 		AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildJourneyViewController.m; sourceTree = "<group>"; };
+		AAEA9B67194165CF00E70531 /* switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch.png; sourceTree = "<group>"; };
 		C99CC4616BAB4613906A1E1E /* Pods-accessibility.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-accessibility.xcconfig"; path = "Pods/Pods-accessibility.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +110,9 @@
 		AA7A5EC519401FD200EE02E2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA46712219417ABC005FB266 /* accessibility.png */,
+				AA46712319417ABC005FB266 /* bus.png */,
+				AAEA9B67194165CF00E70531 /* switch.png */,
 				AAEA9B6219414CAB00E70531 /* loading.png */,
 				AA731449194105E20001867F /* Default.png */,
 				AA73144A194105E20001867F /* Default@2x.png */,
@@ -270,6 +279,9 @@
 				AAEA9B6319414CAB00E70531 /* loading.png in Resources */,
 				AA73144C194105E20001867F /* Default@2x.png in Resources */,
 				AA83EF33193EB10600E06E7E /* InfoPlist.strings in Resources */,
+				AA46712419417ABC005FB266 /* accessibility.png in Resources */,
+				AA46712519417ABC005FB266 /* bus.png in Resources */,
+				AAEA9B68194165CF00E70531 /* switch.png in Resources */,
 				AA73144B194105E20001867F /* Default.png in Resources */,
 				AA83EF3B193EB10600E06E7E /* Images.xcassets in Resources */,
 			);
