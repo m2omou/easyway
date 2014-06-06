@@ -10,8 +10,6 @@
 
 @interface POICell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *typeLabel;
-@property (nonatomic, strong) UIImageView *iconType;
+@property (nonatomic, strong) UILabel *addressLabel;
 
 @end

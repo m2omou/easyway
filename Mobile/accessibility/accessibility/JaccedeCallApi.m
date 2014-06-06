@@ -8,7 +8,7 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
-#import "jaccedeCallApi.h"
+#import "JaccedeCallApi.h"
 #import "MF_Base64Additions.h"
 #import "AFNetworking.h"
 
@@ -17,7 +17,7 @@
 #define kJxdApiAccessKey @"test-jispapi-secret-access-key"
 #define kJxdApiAccessKeyId @"test-jispapi-access-key-id"
 
-@implementation jaccedeCallApi
+@implementation JaccedeCallApi
 
 
 

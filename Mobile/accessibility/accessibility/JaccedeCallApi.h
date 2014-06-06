@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // declare our class
-@class jaccedeCallApi;
+@class JaccedeCallApi;
 
 // define the protocol for the delegate
 @protocol jaccedeCallApiDelegate
@@ -19,7 +19,7 @@
 
 @end
 
-@interface jaccedeCallApi : NSObject
+@interface JaccedeCallApi : NSObject
 
 @property (nonatomic, weak) id  delegate;
 
