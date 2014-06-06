@@ -15,7 +15,7 @@
 
 #define kGOOGLE_API_KEY @"AIzaSyChDT7OcuZVbbBTrpixoG6rP_0ws4HuZH4"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, jaccedeCallApiDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     NSMutableArray *searchResults;
 }
@@ -24,7 +24,6 @@
 @property (nonatomic, strong) UITextField *searchBar;
 @property (nonatomic, strong) UITableView *typeAheadTableView;
 @property (nonatomic, strong) UIButton *cancelButton;
-@property (nonatomic, strong) JaccedeCallApi *jaccedeApi;
 @property (nonatomic, strong) NSOperationQueue *imageDownloadingQueue;
 @property (nonatomic, strong) NSCache *imageCache;
 
@@ -47,8 +46,6 @@
     self.title = @"Home";
     self.typeAheadTableView.delegate = self;
     self.typeAheadTableView.dataSource = self;
-    self.jaccedeApi = [[JaccedeCallApi alloc] init];
-    self.jaccedeApi.delegate = self;
     self.imageDownloadingQueue = [[NSOperationQueue alloc] init];
     self.imageDownloadingQueue.maxConcurrentOperationCount = 4; // many servers limit how many concurrent requests they'll accept from a device, so make sure to set this accordingly
     
@@ -219,19 +216,5 @@
     [self.searchBar resignFirstResponder];
     [self.typeAheadTableView reloadData];
 }
-
-#pragma mark - JaccedeApi
-
-/*
- A Update pour les suggesions
-- (void)resultSearch:(NSMutableArray *)results
-{
-    [searchResults removeAllObjects];
-    if ([results count] > 0) {
-        [searchResults addObjectsFromArray:results];
-    }
-    [self.typeAheadTableView reloadData];
-}
-*/
 
 @end

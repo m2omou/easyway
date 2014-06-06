@@ -24,7 +24,6 @@
 		AA83EF4C193EB10600E06E7E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA83EF4A193EB10600E06E7E /* InfoPlist.strings */; };
 		AA83EF4E193EB10600E06E7E /* accessibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF4D193EB10600E06E7E /* accessibilityTests.m */; };
 		AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF58193EDE7D00E06E7E /* HomeViewController.m */; };
-		AA83EF5C193F865700E06E7E /* JaccedeCallApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF5B193F865700E06E7E /* JaccedeCallApi.m */; };
 		AAEA9B6319414CAB00E70531 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B6219414CAB00E70531 /* loading.png */; };
 		AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */; };
 /* End PBXBuildFile section */
@@ -63,8 +62,6 @@
 		AA83EF4D193EB10600E06E7E /* accessibilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = accessibilityTests.m; sourceTree = "<group>"; };
 		AA83EF57193EDE7D00E06E7E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		AA83EF58193EDE7D00E06E7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		AA83EF5A193F865700E06E7E /* JaccedeCallApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JaccedeCallApi.h; sourceTree = "<group>"; };
-		AA83EF5B193F865700E06E7E /* JaccedeCallApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JaccedeCallApi.m; sourceTree = "<group>"; };
 		AAEA9B6219414CAB00E70531 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildJourneyViewController.h; sourceTree = "<group>"; };
 		AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildJourneyViewController.m; sourceTree = "<group>"; };
@@ -156,8 +153,6 @@
 				AA83EF58193EDE7D00E06E7E /* HomeViewController.m */,
 				AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */,
 				AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */,
-				AA83EF5A193F865700E06E7E /* JaccedeCallApi.h */,
-				AA83EF5B193F865700E06E7E /* JaccedeCallApi.m */,
 				AA73144D194114100001867F /* POICell.h */,
 				AA73144E194114100001867F /* POICell.m */,
 				AA83EF3A193EB10600E06E7E /* Images.xcassets */,
@@ -329,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */,
-				AA83EF5C193F865700E06E7E /* JaccedeCallApi.m in Sources */,
 				AA83EF39193EB10600E06E7E /* AppDelegate.m in Sources */,
 				AA83EF35193EB10600E06E7E /* main.m in Sources */,
 				AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */,
