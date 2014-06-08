@@ -10,13 +10,12 @@
 #import "HomeViewController.h"
 #import "BuildJourneyViewController.h"
 #import "POICell.h"
-#import "AFNetworking.h"
+#import "GooglePlacesAPI.h"
 
-#define kGOOGLE_API_KEY @"AIzaSyChDT7OcuZVbbBTrpixoG6rP_0ws4HuZH4"
-
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, googlePlacesAPIDelegate>
 {
     NSMutableArray *searchResults;
+    GooglePlacesAPI *googlePlacesAPICaller;
 }
 
 @property (nonatomic, strong) UILabel *searchPoiInstructions;
@@ -49,8 +48,8 @@
     self.imageDownloadingQueue.maxConcurrentOperationCount = 4; // many servers limit how many concurrent requests they'll accept from a device, so make sure to set this accordingly
     
     self.imageCache = [[NSCache alloc] init];
-
-    // Do any additional setup after loading the view.
+    googlePlacesAPICaller = [[GooglePlacesAPI alloc] init];
+    googlePlacesAPICaller.delegate = self;
 }
 
 - (void)loadView
@@ -103,27 +102,13 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) queryPlaces: (NSString *) place {
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%@&types=geocode&language=fr&sensor=true&key=%@", place, kGOOGLE_API_KEY];
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
-        NSArray *predictions = [responseObject valueForKeyPath:@"predictions"];
-        if ([predictions count] > 0) {
-            searchResults = [NSMutableArray arrayWithArray:predictions];
-            [self.typeAheadTableView reloadData];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
-
 #pragma mark - UITextField
 
 - (IBAction)textFieldDidChange:(id)sender
 {
-    [self queryPlaces:self.searchBar.text];
+    [searchResults removeAllObjects];
+    [self.typeAheadTableView reloadData];
+    [googlePlacesAPICaller searchGooglePlaces:self.searchBar.text];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -213,6 +198,12 @@
     [searchResults removeAllObjects];
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
+    [self.typeAheadTableView reloadData];
+}
+
+- (void)resultSearchForPOIPlaces:(NSMutableArray *)results
+{
+    searchResults = results;
     [self.typeAheadTableView reloadData];
 }
 

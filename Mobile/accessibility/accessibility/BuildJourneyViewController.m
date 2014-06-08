@@ -7,8 +7,12 @@
 //
 
 #import "BuildJourneyViewController.h"
+#import "GooglePlacesAPI.h"
 
-@interface BuildJourneyViewController ()
+@interface BuildJourneyViewController () <googlePlacesAPIDelegate>
+{
+    GooglePlacesAPI *googleAPICaller;
+}
 
 @property (nonatomic, strong) UITextField *fromInput;
 @property (nonatomic, strong) UITextField *destinationInput;
@@ -35,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    googleAPICaller = [[GooglePlacesAPI alloc] init];
+    googleAPICaller.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -144,7 +150,20 @@
     self.itineraireRequest.backgroundColor = [UIColor whiteColor];
     self.itineraireRequest.layer.borderColor = [UIColor blackColor].CGColor;
     self.itineraireRequest.layer.borderWidth = 1.0f;
+    [self.itineraireRequest addTarget:self action:@selector(itineraireRequestBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.itineraireRequest];
+}
+
+- (void)resultSearchForPOIDetail:(NSMutableDictionary *)result
+{
+    NSLog(@"Latitude and longitude = %@ and %@", [result valueForKey:@"result"][@"geometry"][@"location"][@"lat"], [result valueForKey:@"result"][@"geometry"][@"location"][@"lng"]);
+}
+
+#pragma mark - buttons handlers
+
+- (IBAction)itineraireRequestBtnTapped:(id)sender
+{
+    [googleAPICaller searchGooglePlaceDetail:[self.googleDestination valueForKey:@"reference"]];
 }
 
 - (IBAction)walkingBtnSelected:(id)sender
@@ -152,10 +171,14 @@
     if (self.walkingBtnContainer.tag == 0) {
         self.walkingBtnContainer.tag = 1;
         self.walkingBtnContainer.backgroundColor = [UIColor colorWithRed:24.0f/255.0f green:168.0f/255.0f blue:233.0f/255.0f alpha:1];
+        self.publicTransportBtnContainer.tag = 0;
+        self.publicTransportBtnContainer.backgroundColor = [UIColor whiteColor];
     }
     else {
         self.walkingBtnContainer.tag = 0;
         self.walkingBtnContainer.backgroundColor = [UIColor whiteColor];
+        self.publicTransportBtnContainer.tag = 1;
+        self.publicTransportBtnContainer.backgroundColor = [UIColor colorWithRed:24.0f/255.0f green:168.0f/255.0f blue:233.0f/255.0f alpha:1];
     }
 }
 
@@ -163,11 +186,15 @@
 {
     if (self.publicTransportBtnContainer.tag == 0) {
         self.publicTransportBtnContainer.tag = 1;
-        self.publicTransportBtnContainer.backgroundColor = [UIColor colorWithRed:24.0f/255.0f green:168.0f/255.0f blue:233.0f/255.0f alpha:1];
+        self.publicTransportBtnContainer.backgroundColor =[UIColor colorWithRed:24.0f/255.0f green:168.0f/255.0f blue:233.0f/255.0f alpha:1];
+        self.walkingBtnContainer.tag = 0;
+        self.walkingBtnContainer.backgroundColor = [UIColor whiteColor];
     }
     else {
         self.publicTransportBtnContainer.tag = 0;
         self.publicTransportBtnContainer.backgroundColor = [UIColor whiteColor];
+        self.walkingBtnContainer.tag = 1;
+        self.walkingBtnContainer.backgroundColor = [UIColor colorWithRed:24.0f/255.0f green:168.0f/255.0f blue:233.0f/255.0f alpha:1];
     }
 }
 
