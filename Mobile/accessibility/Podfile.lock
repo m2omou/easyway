@@ -20,15 +20,18 @@ PODS:
     - AFNetworking/NSURLSession
   - Base64 (1.0.1)
   - Google-Maps-iOS-SDK (1.8.1)
+  - MBProgressHUD (0.8)
 
 DEPENDENCIES:
   - AFNetworking
   - Base64
   - Google-Maps-iOS-SDK
+  - MBProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   Base64: c6d74f31f150543b246a07e180ba813c88e59311
   Google-Maps-iOS-SDK: 542561448224b92d790483674b7313b13764e624
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
 
 COCOAPODS: 0.33.1

@@ -27,6 +27,8 @@
 		AA83EF4E193EB10600E06E7E /* accessibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF4D193EB10600E06E7E /* accessibilityTests.m */; };
 		AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF58193EDE7D00E06E7E /* HomeViewController.m */; };
 		AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */; };
+		AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */; };
+		AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBF1946A03000F5A35B /* JourneyViewController.m */; };
 		AAEA9B6319414CAB00E70531 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B6219414CAB00E70531 /* loading.png */; };
 		AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */; };
 		AAEA9B68194165CF00E70531 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B67194165CF00E70531 /* switch.png */; };
@@ -70,6 +72,10 @@
 		AA83EF58193EDE7D00E06E7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAC95CB81945085200F5A35B /* GooglePlacesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GooglePlacesAPI.h; path = ../GooglePlacesAPI.h; sourceTree = "<group>"; };
 		AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GooglePlacesAPI.m; path = ../GooglePlacesAPI.m; sourceTree = "<group>"; };
+		AAC95CBB19452DAB00F5A35B /* AccessibilityItineraireAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityItineraireAPI.h; path = ../AccessibilityItineraireAPI.h; sourceTree = "<group>"; };
+		AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityItineraireAPI.m; path = ../AccessibilityItineraireAPI.m; sourceTree = "<group>"; };
+		AAC95CBE1946A03000F5A35B /* JourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyViewController.h; sourceTree = "<group>"; };
+		AAC95CBF1946A03000F5A35B /* JourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyViewController.m; sourceTree = "<group>"; };
 		AAEA9B6219414CAB00E70531 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildJourneyViewController.h; sourceTree = "<group>"; };
 		AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildJourneyViewController.m; sourceTree = "<group>"; };
@@ -167,8 +173,12 @@
 				AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */,
 				AA73144D194114100001867F /* POICell.h */,
 				AA73144E194114100001867F /* POICell.m */,
+				AAC95CBB19452DAB00F5A35B /* AccessibilityItineraireAPI.h */,
+				AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */,
 				AAC95CB81945085200F5A35B /* GooglePlacesAPI.h */,
 				AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */,
+				AAC95CBE1946A03000F5A35B /* JourneyViewController.h */,
+				AAC95CBF1946A03000F5A35B /* JourneyViewController.m */,
 				AA83EF3A193EB10600E06E7E /* Images.xcassets */,
 				AA83EF2F193EB10600E06E7E /* Supporting Files */,
 			);
@@ -344,6 +354,8 @@
 				AA83EF39193EB10600E06E7E /* AppDelegate.m in Sources */,
 				AA83EF35193EB10600E06E7E /* main.m in Sources */,
 				AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */,
+				AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */,
+				AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */,
 				AA73144F194114100001867F /* POICell.m in Sources */,
 				AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */,
 			);

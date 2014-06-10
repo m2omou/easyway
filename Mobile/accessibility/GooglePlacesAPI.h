@@ -10,11 +10,12 @@
 
 @class GooglePlacesAPI;
 
-@protocol googlePlacesAPIDelegate
+@protocol GooglePlacesAPIDelegate
 
 @optional
+-(void)errorGoogleAPIGetDetail:(NSError *)error;
 -(void)resultSearchForPOIPlaces:(NSMutableArray *)results;
--(void)resultSearchForPOIDetail:(NSMutableDictionary *)result;
+-(void)resultForSearchGooglePlaceDetail:(NSMutableDictionary *)googleDetail;
 
 @end
 

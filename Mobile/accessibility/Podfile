@@ -5,6 +5,7 @@ target "accessibility" do
 pod 'Google-Maps-iOS-SDK'
 pod 'AFNetworking'
 pod 'Base64'
+pod 'MBProgressHUD'
 end
 
 target "accessibilityTests" do

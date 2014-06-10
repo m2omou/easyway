@@ -19,7 +19,6 @@
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
         NSArray *predictions = [responseObject valueForKeyPath:@"predictions"];
         if ([predictions count] > 0) {
             NSMutableArray *searchResults = [NSMutableArray arrayWithArray:predictions];
@@ -36,10 +35,9 @@
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
-        [self.delegate resultSearchForPOIDetail:responseObject];
+        [self.delegate resultForSearchGooglePlaceDetail:responseObject];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+            [self.delegate errorGoogleAPIGetDetail:error];
     }];
 }
 

@@ -12,7 +12,7 @@
 #import "POICell.h"
 #import "GooglePlacesAPI.h"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, googlePlacesAPIDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, GooglePlacesAPIDelegate>
 {
     NSMutableArray *searchResults;
     GooglePlacesAPI *googlePlacesAPICaller;
@@ -56,7 +56,6 @@
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
-    
     // Descriptif application
     self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 + 10, self.view.frame.size.width, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
@@ -121,7 +120,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BuildJourneyViewController *journeyView = [[BuildJourneyViewController alloc] init];
-    journeyView.googleDestination = [[NSMutableDictionary alloc] initWithDictionary:[searchResults objectAtIndex:indexPath.row]];
+    journeyView.destination = [[NSMutableDictionary alloc] initWithDictionary:[searchResults objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:journeyView animated:YES];
 }
 
@@ -200,6 +199,8 @@
     [self.searchBar resignFirstResponder];
     [self.typeAheadTableView reloadData];
 }
+
+#pragma mark - Google API delegate methods
 
 - (void)resultSearchForPOIPlaces:(NSMutableArray *)results
 {

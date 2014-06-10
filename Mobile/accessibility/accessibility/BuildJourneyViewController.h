@@ -10,6 +10,7 @@
 
 @interface BuildJourneyViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableDictionary *googleDestination;
+@property (nonatomic, strong) NSMutableDictionary *from;
+@property (nonatomic, strong) NSMutableDictionary *destination;
 
 @end
