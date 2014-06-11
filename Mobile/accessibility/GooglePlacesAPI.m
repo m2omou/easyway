@@ -25,7 +25,6 @@
             [self.delegate resultSearchForPOIPlaces:searchResults];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
     }];
 }
 

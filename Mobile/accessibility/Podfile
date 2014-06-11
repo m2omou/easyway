@@ -6,6 +6,7 @@ pod 'Google-Maps-iOS-SDK'
 pod 'AFNetworking'
 pod 'Base64'
 pod 'MBProgressHUD'
+pod 'UIColor-ColorWithHexAndAlpha'
 end
 
 target "accessibilityTests" do

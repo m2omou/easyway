@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 Tchikovani. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "HomeViewController.h"
 #import "BuildJourneyViewController.h"
-#import "POICell.h"
 #import "GooglePlacesAPI.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, GooglePlacesAPIDelegate>
@@ -41,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.title = @"Home";
     self.typeAheadTableView.delegate = self;
     self.typeAheadTableView.dataSource = self;
@@ -54,6 +53,7 @@
 
 - (void)loadView
 {
+    NSLog(@"LOAD VIEW HOME VIEW");
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
     // Descriptif application
@@ -87,10 +87,7 @@
     [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     self.cancelButton.frame = CGRectMake(self.view.frame.size.width - 70 + 10, 5, 60, 35);
     [self.cancelButton addTarget:self action:@selector(cancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -98,7 +95,14 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([self.view.subviews containsObject:self.cancelButton]) {
+        [self.searchBar becomeFirstResponder];
+    }
 }
 
 #pragma mark - UITextField
@@ -138,26 +142,29 @@
 {
     static NSString *CellIdentifier = @"POICell";
     
-    POICell *cell = [tableView
+    UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[POICell alloc]
+        cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.textLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        cell.textLabel.numberOfLines = 0;
     }
     
     // Configure the cell.
     NSDictionary *poi = [searchResults objectAtIndex:indexPath.row];
-    cell.addressLabel.text = [poi valueForKey:@"description"];
-    CGSize size = [cell.addressLabel.text sizeWithFont:cell.addressLabel.font constrainedToSize:CGSizeMake(cell.addressLabel.bounds.size.width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    CGRect frame = cell.addressLabel.frame;
+    cell.textLabel.text = [poi valueForKey:@"description"];
+    CGSize size = [cell.textLabel.text sizeWithFont:cell.textLabel.font constrainedToSize:CGSizeMake(cell.textLabel.bounds.size.width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect frame = cell.textLabel.frame;
     
     // Resize only if needs to grow, don't shrink
     if (frame.size.height < size.height) {
         frame.size.height = size.height;
     }
     
-    cell.addressLabel.frame = frame;
+    cell.textLabel.frame = frame;
     return cell;
 }
 

@@ -10,4 +10,6 @@
 
 @interface JourneyViewController : UIViewController
 
+- (id)initWithJourney:(NSMutableDictionary *)journey;
+
 @end

@@ -1,24 +1,20 @@
 //
-//  POICell.m
+//  WalkingTypeCell.m
 //  accessibility
 //
-//  Created by Tchikovani on 05/06/2014.
+//  Created by Tchikovani on 10/06/2014.
 //  Copyright (c) 2014 Tchikovani. All rights reserved.
 //
 
-#import "POICell.h"
+#import "WalkingTypeCell.h"
 
-@implementation POICell
+@implementation WalkingTypeCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 295, 30)];
-        self.addressLabel.textColor = [UIColor blackColor];
-        self.addressLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
-        self.addressLabel.numberOfLines = 0;
-        [self addSubview:self.addressLabel];
+        // Initialization code
     }
     return self;
 }
@@ -31,6 +27,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+
     // Configure the view for the selected state
 }
 

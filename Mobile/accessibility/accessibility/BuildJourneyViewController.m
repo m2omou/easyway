@@ -67,7 +67,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view.backgroundColor = [UIColor colorWithRed:235.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
     self.title = @"Itinéraire";
     
     UIView *itineraireFrame = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width - 10, 60)];
@@ -153,7 +153,7 @@
     self.publicTransportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.publicTransportBtn.frame = CGRectMake(50,5, 50, 50);
     [self.publicTransportBtn addTarget:self action:@selector(publicTransportBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"bus.png"] forState:UIControlStateNormal];
+    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"transport.png"] forState:UIControlStateNormal];
     [self.publicTransportBtnContainer addSubview:self.publicTransportBtn];
     [transportModeFrame addSubview:self.publicTransportBtnContainer];
     [self.view addSubview:transportModeFrame];
@@ -206,14 +206,23 @@
 
 - (void)resultSearchForJourney:(NSMutableDictionary *)journey
 {
-    NSLog(@"RESULT SEARCH FOR JOURNEY = %@", journey);
-    [self.journeyCalculatorIndicator hide:YES];
-    JourneyViewController *journeyView = [[JourneyViewController alloc]
-                                             init];
-    UINavigationController *navigationController = [[UINavigationController alloc]
-                                                    initWithRootViewController:journeyView];
-    navigationController.navigationBar.translucent = NO;
-    [self presentViewController:navigationController animated:YES completion: nil];
+    NSLog(@"ITINERAIIIIIIRE = %@", journey);
+    if ([[journey valueForKey:@"result"][@"result"] isEqual:[NSNull null]]) {
+        [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
+        self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark.png"]];
+        self.journeyCalculatorIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
+        self.journeyCalculatorIndicator.mode = MBProgressHUDModeCustomView;
+        [self.journeyCalculatorIndicator hide:YES afterDelay:2];
+    }
+    else {
+        [self.journeyCalculatorIndicator hide:YES];
+        JourneyViewController *journeyView = [[JourneyViewController alloc]
+                                              initWithJourney:[[journey valueForKey:@"result"][@"result"] objectAtIndex:0]];
+        UINavigationController *navigationController = [[UINavigationController alloc]
+                                                        initWithRootViewController:journeyView];
+        navigationController.navigationBar.translucent = NO;
+        [self.navigationController presentViewController:navigationController animated:YES completion: nil];
+    }
 }
 
 - (void)errorForJourneyRequest:(NSError *)error

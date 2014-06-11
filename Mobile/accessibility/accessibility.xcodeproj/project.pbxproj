@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6CFD9D8781094087A9BC32CA /* libPods-accessibility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB11380F27B44A08B368AA5 /* libPods-accessibility.a */; };
+		AA324EE6194786D1007C5AE6 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA324EE5194786D1007C5AE6 /* bus.png */; };
+		AA324EE91947DD92007C5AE6 /* WalkingTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA324EE81947DD92007C5AE6 /* WalkingTypeCell.m */; };
 		AA46712419417ABC005FB266 /* accessibility.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712219417ABC005FB266 /* accessibility.png */; };
-		AA46712519417ABC005FB266 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712319417ABC005FB266 /* bus.png */; };
+		AA46712519417ABC005FB266 /* transport.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712319417ABC005FB266 /* transport.png */; };
 		AA73144B194105E20001867F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA731449194105E20001867F /* Default.png */; };
 		AA73144C194105E20001867F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73144A194105E20001867F /* Default@2x.png */; };
-		AA73144F194114100001867F /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA73144E194114100001867F /* POICell.m */; };
 		AA83EF29193EB10600E06E7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF28193EB10600E06E7E /* Foundation.framework */; };
 		AA83EF2B193EB10600E06E7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF2A193EB10600E06E7E /* CoreGraphics.framework */; };
 		AA83EF2D193EB10600E06E7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF2C193EB10600E06E7E /* UIKit.framework */; };
@@ -29,6 +30,8 @@
 		AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */; };
 		AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */; };
 		AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBF1946A03000F5A35B /* JourneyViewController.m */; };
+		AAC95CC219476F5800F5A35B /* x-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC95CC119476F5800F5A35B /* x-mark.png */; };
+		AAC95CC5194778EC00F5A35B /* TransportTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */; };
 		AAEA9B6319414CAB00E70531 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B6219414CAB00E70531 /* loading.png */; };
 		AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */; };
 		AAEA9B68194165CF00E70531 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B67194165CF00E70531 /* switch.png */; };
@@ -46,12 +49,13 @@
 
 /* Begin PBXFileReference section */
 		4AB11380F27B44A08B368AA5 /* libPods-accessibility.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-accessibility.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA324EE5194786D1007C5AE6 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
+		AA324EE71947DD92007C5AE6 /* WalkingTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkingTypeCell.h; sourceTree = "<group>"; };
+		AA324EE81947DD92007C5AE6 /* WalkingTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkingTypeCell.m; sourceTree = "<group>"; };
 		AA46712219417ABC005FB266 /* accessibility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accessibility.png; sourceTree = "<group>"; };
-		AA46712319417ABC005FB266 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
+		AA46712319417ABC005FB266 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
 		AA731449194105E20001867F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AA73144A194105E20001867F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		AA73144D194114100001867F /* POICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICell.h; sourceTree = "<group>"; };
-		AA73144E194114100001867F /* POICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICell.m; sourceTree = "<group>"; };
 		AA83EF25193EB10600E06E7E /* accessibility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = accessibility.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA83EF28193EB10600E06E7E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA83EF2A193EB10600E06E7E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,6 +80,9 @@
 		AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessibilityItineraireAPI.m; path = ../AccessibilityItineraireAPI.m; sourceTree = "<group>"; };
 		AAC95CBE1946A03000F5A35B /* JourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyViewController.h; sourceTree = "<group>"; };
 		AAC95CBF1946A03000F5A35B /* JourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyViewController.m; sourceTree = "<group>"; };
+		AAC95CC119476F5800F5A35B /* x-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-mark.png"; sourceTree = "<group>"; };
+		AAC95CC3194778EC00F5A35B /* TransportTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportTypeCell.h; sourceTree = "<group>"; };
+		AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportTypeCell.m; sourceTree = "<group>"; };
 		AAEA9B6219414CAB00E70531 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildJourneyViewController.h; sourceTree = "<group>"; };
 		AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildJourneyViewController.m; sourceTree = "<group>"; };
@@ -119,8 +126,10 @@
 		AA7A5EC519401FD200EE02E2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA324EE5194786D1007C5AE6 /* bus.png */,
+				AAC95CC119476F5800F5A35B /* x-mark.png */,
 				AA46712219417ABC005FB266 /* accessibility.png */,
-				AA46712319417ABC005FB266 /* bus.png */,
+				AA46712319417ABC005FB266 /* transport.png */,
 				AAEA9B67194165CF00E70531 /* switch.png */,
 				AAEA9B6219414CAB00E70531 /* loading.png */,
 				AA731449194105E20001867F /* Default.png */,
@@ -171,14 +180,16 @@
 				AA83EF58193EDE7D00E06E7E /* HomeViewController.m */,
 				AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */,
 				AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */,
-				AA73144D194114100001867F /* POICell.h */,
-				AA73144E194114100001867F /* POICell.m */,
 				AAC95CBB19452DAB00F5A35B /* AccessibilityItineraireAPI.h */,
 				AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */,
 				AAC95CB81945085200F5A35B /* GooglePlacesAPI.h */,
 				AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */,
 				AAC95CBE1946A03000F5A35B /* JourneyViewController.h */,
 				AAC95CBF1946A03000F5A35B /* JourneyViewController.m */,
+				AAC95CC3194778EC00F5A35B /* TransportTypeCell.h */,
+				AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */,
+				AA324EE71947DD92007C5AE6 /* WalkingTypeCell.h */,
+				AA324EE81947DD92007C5AE6 /* WalkingTypeCell.m */,
 				AA83EF3A193EB10600E06E7E /* Images.xcassets */,
 				AA83EF2F193EB10600E06E7E /* Supporting Files */,
 			);
@@ -291,11 +302,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA324EE6194786D1007C5AE6 /* bus.png in Resources */,
 				AAEA9B6319414CAB00E70531 /* loading.png in Resources */,
 				AA73144C194105E20001867F /* Default@2x.png in Resources */,
 				AA83EF33193EB10600E06E7E /* InfoPlist.strings in Resources */,
 				AA46712419417ABC005FB266 /* accessibility.png in Resources */,
-				AA46712519417ABC005FB266 /* bus.png in Resources */,
+				AA46712519417ABC005FB266 /* transport.png in Resources */,
+				AAC95CC219476F5800F5A35B /* x-mark.png in Resources */,
 				AAEA9B68194165CF00E70531 /* switch.png in Resources */,
 				AA73144B194105E20001867F /* Default.png in Resources */,
 				AA83EF3B193EB10600E06E7E /* Images.xcassets in Resources */,
@@ -353,10 +366,11 @@
 				AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */,
 				AA83EF39193EB10600E06E7E /* AppDelegate.m in Sources */,
 				AA83EF35193EB10600E06E7E /* main.m in Sources */,
+				AA324EE91947DD92007C5AE6 /* WalkingTypeCell.m in Sources */,
 				AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */,
 				AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */,
+				AAC95CC5194778EC00F5A35B /* TransportTypeCell.m in Sources */,
 				AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */,
-				AA73144F194114100001867F /* POICell.m in Sources */,
 				AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
