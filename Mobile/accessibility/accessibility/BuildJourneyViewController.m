@@ -12,8 +12,9 @@
 #import "AccessibilityItineraireAPI.h"
 #import "MBProgressHUD.h"
 #import "JourneyViewController.h"
+#import "EditLocationViewController.h"
 
-@interface BuildJourneyViewController () <CLLocationManagerDelegate, GooglePlacesAPIDelegate, AccessibilityItineraireAPIDelegate>
+@interface BuildJourneyViewController () <CLLocationManagerDelegate, UITextFieldDelegate, GooglePlacesAPIDelegate, AccessibilityItineraireAPIDelegate, EditLocationDelegate>
 {
     GooglePlacesAPI *googleAPICaller;
     AccessibilityItineraireAPI *accessibilityAPICaller;
@@ -91,6 +92,7 @@
     self.fromInput = [[UITextField alloc] initWithFrame:CGRectMake(40, 5, 250, 20)];
     self.fromInput.text = @"Ma localisation";
     self.fromInput.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    self.fromInput.delegate = self;
     [itineraireFrame addSubview:self.fromInput];
     self.from = [[NSMutableDictionary alloc] init];
     [self.from setObject:@"Ma localisation" forKey:@"description"];
@@ -109,6 +111,7 @@
     self.destinationInput = [[UITextField alloc] initWithFrame:CGRectMake(40, 35, 250, 20)];
     self.destinationInput.text = [self.destination objectForKey:@"description"];
     self.destinationInput.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    self.destinationInput.delegate = self;
     [itineraireFrame addSubview:self.destinationInput];
     [self.view addSubview:itineraireFrame];
     
@@ -136,7 +139,7 @@
     [self.walkingBtnContainer addGestureRecognizer:tapOnWalkingContainer];
     self.walkingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.walkingBtn.frame = CGRectMake(50, 5, 50, 50);
-    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"accessibility.png"] forState:UIControlStateNormal];
+    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"walking.png"] forState:UIControlStateNormal];
     [self.walkingBtn addTarget:self action:@selector(walkingBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
     [self.walkingBtnContainer addSubview:self.walkingBtn];
     [transportModeFrame addSubview:self.walkingBtnContainer];
@@ -170,6 +173,38 @@
     [self.view addSubview:self.itineraireRequest];
 }
 
+#pragma mark - Edit Location Delegate
+
+- (void)newLocationSelected:(NSMutableDictionary *)results forLocation:(NSMutableDictionary *)location
+{
+    if ([self.from isEqualToDictionary:location]) {
+        self.from = [[NSMutableDictionary alloc] initWithDictionary:results];
+        self.fromInput.text = [self.from objectForKey:@"description"];
+    }
+    else {
+        self.destination = [[NSMutableDictionary alloc] initWithDictionary:results];
+        self.destinationInput.text = [self.destination objectForKey:@"description"];
+    }
+}
+
+#pragma mark - UITextField delegate
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    EditLocationViewController *editView = [[EditLocationViewController alloc] initWithNibName:@"EditLocationViewController" bundle:nil];
+    editView.delegate = self;
+    if ([textField.text isEqualToString:self.fromInput.text]) {
+        editView.location = [[NSMutableDictionary alloc] initWithDictionary:self.from];
+    }
+    else {
+        editView.location = [[NSMutableDictionary alloc] initWithDictionary:self.destination];
+    }
+    UINavigationController *navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:editView];
+    navigationController.navigationBar.translucent = NO;
+    [self.navigationController presentViewController:navigationController animated:YES completion: nil];
+    return NO;
+}
+
 #pragma mark - Google API delegate methods
 
 -(void)errorGoogleAPIGetDetail:(NSError *)error;
@@ -180,24 +215,31 @@
 
 -(void)resultForSearchGooglePlaceDetail:(NSMutableDictionary *)googleDetail
 {
-    if ([self.from objectForKey:@"lat"] == nil) {
-        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"lat"];
-        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"lng"];
+    if ([self.from objectForKey:@"latitude"] == nil) {
+        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
+        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
+        NSLog(@"ON A RECU LES DETAILS POUR LE FROM");
     
         if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
             //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
             //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
             //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-            [self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"lat"];
-            [self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"lng"];
+            [self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"latitude"];
+            [self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"longitude"];
+        }
+        else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
+            NSLog(@"APRES AVOIR RECU DETAIL DE FROM, ON DEMANDE DETAIL POUR LATITUDE");
+            [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
         }
         else {
-            [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
+            NSLog(@"APRES AVOIR RECU DETAIL DE FROM, ON A DEJA LE DEST DONC ON DEMANDE ITINERAIRE");
+            [accessibilityAPICaller searchJourney:self.from to:self.destination];
         }
     }
     else {
-        [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"lat"];
-        [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"lng"];
+        NSLog(@"ON A RECU LES DETAILS POUR LE DESTINATION");
+        [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
+        [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
         [accessibilityAPICaller searchJourney:self.from to:self.destination];
     }
 }
@@ -206,7 +248,6 @@
 
 - (void)resultSearchForJourney:(NSMutableDictionary *)journey
 {
-    NSLog(@"ITINERAIIIIIIRE = %@", journey);
     if ([[journey valueForKey:@"result"][@"result"] isEqual:[NSNull null]]) {
         [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
         self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark.png"]];
@@ -215,6 +256,7 @@
         [self.journeyCalculatorIndicator hide:YES afterDelay:2];
     }
     else {
+        NSLog(@"JOURNEY = %@", [journey valueForKey:@"result"][@"result"]);
         [self.journeyCalculatorIndicator hide:YES];
         JourneyViewController *journeyView = [[JourneyViewController alloc]
                                               initWithJourney:[[journey valueForKey:@"result"][@"result"] objectAtIndex:0]];
@@ -240,24 +282,30 @@
         //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
         //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
         //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-        [self.from setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"lat"];
-        [self.from setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"lng"];
+        [self.from setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
+        [self.from setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
-    else {
+    else if ([self.from valueForKeyPath:@"latitude"] == nil) {
         [googleAPICaller searchGooglePlaceDetail:[self.from valueForKey:@"reference"]];
+        return;
     }
     
     if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
         //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
         //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
         //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-        [self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"lat"];
-        [self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"lng"];
+        [self.destination setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
+        [self.destination setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
-    else {
+    else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
         [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
+        return;
     }
     
+    if ([self.destination valueForKeyPath:@"latitude"] != nil
+        && [self.destination valueForKeyPath:@"latitude"] != nil) {
+        [accessibilityAPICaller searchJourney:self.from to:self.destination];
+    }
 }
 
 - (IBAction)walkingBtnSelected:(id)sender

@@ -1,29 +1,29 @@
 //
-//  WalkingTypeCell.m
+//  TransferTableViewCell.m
 //  accessibility
 //
 //  Created by Tchikovani on 10/06/2014.
 //  Copyright (c) 2014 Tchikovani. All rights reserved.
 //
 
-#import "WalkingTypeCell.h"
+#import "TransferTypeCell.h"
 
-@interface WalkingTypeCell ()
+@interface TransferTypeCell ()
 
-@property (nonatomic, strong) UIImageView *accessibilityImage;
+@property (nonatomic, strong) UIImageView *transferImage;
 @property (nonatomic, strong) UILabel *allerJusquaLabel;
 
 @end
 
-@implementation WalkingTypeCell
+@implementation TransferTypeCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.accessibilityImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
-        self.accessibilityImage.image = [UIImage imageNamed:@"walking.png"];
-        [self addSubview:self.accessibilityImage];
+        self.transferImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
+        self.transferImage.image = [UIImage imageNamed:@"connection.png"];
+        [self addSubview:self.transferImage];
         
         self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 50, 15)];
         self.timeActivityLabel.textAlignment = NSTextAlignmentCenter;

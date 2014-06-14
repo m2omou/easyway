@@ -14,6 +14,14 @@
 		AA46712519417ABC005FB266 /* transport.png in Resources */ = {isa = PBXBuildFile; fileRef = AA46712319417ABC005FB266 /* transport.png */; };
 		AA73144B194105E20001867F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA731449194105E20001867F /* Default.png */; };
 		AA73144C194105E20001867F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73144A194105E20001867F /* Default@2x.png */; };
+		AA7D5618194B787000F90F28 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D5614194B787000F90F28 /* checked.png */; };
+		AA7D5619194B787000F90F28 /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D5615194B787000F90F28 /* checked@2x.png */; };
+		AA7D561A194B787000F90F28 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D5616194B787000F90F28 /* unchecked.png */; };
+		AA7D561B194B787000F90F28 /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D5617194B787000F90F28 /* unchecked@2x.png */; };
+		AA7D5620194B832A00F90F28 /* JaccedeCallApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D561D194B832A00F90F28 /* JaccedeCallApi.m */; };
+		AA7D5621194B832A00F90F28 /* POICell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D561F194B832A00F90F28 /* POICell.m */; };
+		AA7D5623194B99E700F90F28 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D5622194B99E700F90F28 /* walking.png */; };
+		AA7D5626194BA31D00F90F28 /* EditLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7D5625194BA31D00F90F28 /* EditLocationViewController.m */; };
 		AA83EF29193EB10600E06E7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF28193EB10600E06E7E /* Foundation.framework */; };
 		AA83EF2B193EB10600E06E7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF2A193EB10600E06E7E /* CoreGraphics.framework */; };
 		AA83EF2D193EB10600E06E7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA83EF2C193EB10600E06E7E /* UIKit.framework */; };
@@ -27,6 +35,8 @@
 		AA83EF4C193EB10600E06E7E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA83EF4A193EB10600E06E7E /* InfoPlist.strings */; };
 		AA83EF4E193EB10600E06E7E /* accessibilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF4D193EB10600E06E7E /* accessibilityTests.m */; };
 		AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA83EF58193EDE7D00E06E7E /* HomeViewController.m */; };
+		AABCD80E1947F35700B433EA /* TransferTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AABCD80D1947F35700B433EA /* TransferTypeCell.m */; };
+		AABCD8101947F5E300B433EA /* connection.png in Resources */ = {isa = PBXBuildFile; fileRef = AABCD80F1947F5E300B433EA /* connection.png */; };
 		AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */; };
 		AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBC19452DAB00F5A35B /* AccessibilityItineraireAPI.m */; };
 		AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBF1946A03000F5A35B /* JourneyViewController.m */; };
@@ -56,6 +66,17 @@
 		AA46712319417ABC005FB266 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
 		AA731449194105E20001867F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AA73144A194105E20001867F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AA7D5614194B787000F90F28 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		AA7D5615194B787000F90F28 /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
+		AA7D5616194B787000F90F28 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		AA7D5617194B787000F90F28 /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
+		AA7D561C194B832A00F90F28 /* JaccedeCallApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JaccedeCallApi.h; sourceTree = "<group>"; };
+		AA7D561D194B832A00F90F28 /* JaccedeCallApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JaccedeCallApi.m; sourceTree = "<group>"; };
+		AA7D561E194B832A00F90F28 /* POICell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POICell.h; sourceTree = "<group>"; };
+		AA7D561F194B832A00F90F28 /* POICell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POICell.m; sourceTree = "<group>"; };
+		AA7D5622194B99E700F90F28 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
+		AA7D5624194BA31D00F90F28 /* EditLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLocationViewController.h; sourceTree = "<group>"; };
+		AA7D5625194BA31D00F90F28 /* EditLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLocationViewController.m; sourceTree = "<group>"; };
 		AA83EF25193EB10600E06E7E /* accessibility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = accessibility.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA83EF28193EB10600E06E7E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA83EF2A193EB10600E06E7E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,6 +95,9 @@
 		AA83EF4D193EB10600E06E7E /* accessibilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = accessibilityTests.m; sourceTree = "<group>"; };
 		AA83EF57193EDE7D00E06E7E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		AA83EF58193EDE7D00E06E7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AABCD80C1947F35700B433EA /* TransferTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferTypeCell.h; sourceTree = "<group>"; };
+		AABCD80D1947F35700B433EA /* TransferTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferTypeCell.m; sourceTree = "<group>"; };
+		AABCD80F1947F5E300B433EA /* connection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connection.png; sourceTree = "<group>"; };
 		AAC95CB81945085200F5A35B /* GooglePlacesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GooglePlacesAPI.h; path = ../GooglePlacesAPI.h; sourceTree = "<group>"; };
 		AAC95CB91945085200F5A35B /* GooglePlacesAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GooglePlacesAPI.m; path = ../GooglePlacesAPI.m; sourceTree = "<group>"; };
 		AAC95CBB19452DAB00F5A35B /* AccessibilityItineraireAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessibilityItineraireAPI.h; path = ../AccessibilityItineraireAPI.h; sourceTree = "<group>"; };
@@ -126,12 +150,18 @@
 		AA7A5EC519401FD200EE02E2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA7D5622194B99E700F90F28 /* walking.png */,
+				AAEA9B6219414CAB00E70531 /* loading.png */,
+				AA7D5614194B787000F90F28 /* checked.png */,
+				AA7D5615194B787000F90F28 /* checked@2x.png */,
+				AA7D5616194B787000F90F28 /* unchecked.png */,
+				AA7D5617194B787000F90F28 /* unchecked@2x.png */,
+				AABCD80F1947F5E300B433EA /* connection.png */,
 				AA324EE5194786D1007C5AE6 /* bus.png */,
 				AAC95CC119476F5800F5A35B /* x-mark.png */,
 				AA46712219417ABC005FB266 /* accessibility.png */,
 				AA46712319417ABC005FB266 /* transport.png */,
 				AAEA9B67194165CF00E70531 /* switch.png */,
-				AAEA9B6219414CAB00E70531 /* loading.png */,
 				AA731449194105E20001867F /* Default.png */,
 				AA73144A194105E20001867F /* Default@2x.png */,
 			);
@@ -190,6 +220,14 @@
 				AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */,
 				AA324EE71947DD92007C5AE6 /* WalkingTypeCell.h */,
 				AA324EE81947DD92007C5AE6 /* WalkingTypeCell.m */,
+				AABCD80C1947F35700B433EA /* TransferTypeCell.h */,
+				AABCD80D1947F35700B433EA /* TransferTypeCell.m */,
+				AA7D561C194B832A00F90F28 /* JaccedeCallApi.h */,
+				AA7D561D194B832A00F90F28 /* JaccedeCallApi.m */,
+				AA7D561E194B832A00F90F28 /* POICell.h */,
+				AA7D561F194B832A00F90F28 /* POICell.m */,
+				AA7D5624194BA31D00F90F28 /* EditLocationViewController.h */,
+				AA7D5625194BA31D00F90F28 /* EditLocationViewController.m */,
 				AA83EF3A193EB10600E06E7E /* Images.xcassets */,
 				AA83EF2F193EB10600E06E7E /* Supporting Files */,
 			);
@@ -307,11 +345,17 @@
 				AA73144C194105E20001867F /* Default@2x.png in Resources */,
 				AA83EF33193EB10600E06E7E /* InfoPlist.strings in Resources */,
 				AA46712419417ABC005FB266 /* accessibility.png in Resources */,
+				AA7D5619194B787000F90F28 /* checked@2x.png in Resources */,
+				AA7D561A194B787000F90F28 /* unchecked.png in Resources */,
+				AA7D5623194B99E700F90F28 /* walking.png in Resources */,
 				AA46712519417ABC005FB266 /* transport.png in Resources */,
 				AAC95CC219476F5800F5A35B /* x-mark.png in Resources */,
 				AAEA9B68194165CF00E70531 /* switch.png in Resources */,
 				AA73144B194105E20001867F /* Default.png in Resources */,
+				AA7D5618194B787000F90F28 /* checked.png in Resources */,
+				AA7D561B194B787000F90F28 /* unchecked@2x.png in Resources */,
 				AA83EF3B193EB10600E06E7E /* Images.xcassets in Resources */,
+				AABCD8101947F5E300B433EA /* connection.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,14 +407,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7D5626194BA31D00F90F28 /* EditLocationViewController.m in Sources */,
 				AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */,
 				AA83EF39193EB10600E06E7E /* AppDelegate.m in Sources */,
 				AA83EF35193EB10600E06E7E /* main.m in Sources */,
+				AA7D5620194B832A00F90F28 /* JaccedeCallApi.m in Sources */,
+				AA7D5621194B832A00F90F28 /* POICell.m in Sources */,
 				AA324EE91947DD92007C5AE6 /* WalkingTypeCell.m in Sources */,
 				AA83EF59193EDE7D00E06E7E /* HomeViewController.m in Sources */,
 				AAC95CBD19452DAB00F5A35B /* AccessibilityItineraireAPI.m in Sources */,
 				AAC95CC5194778EC00F5A35B /* TransportTypeCell.m in Sources */,
 				AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */,
+				AABCD80E1947F35700B433EA /* TransferTypeCell.m in Sources */,
 				AAC95CBA1945085200F5A35B /* GooglePlacesAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,14 +10,6 @@
 
 @interface TransportTypeCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *type;
-@property (nonatomic, strong) UILabel *line;
-@property (nonatomic, strong) UILabel *timeActivityLabel;
-@property (nonatomic, strong) UILabel *fromLabelContent;
-@property (nonatomic, strong) UILabel *directionLabelContent;
-@property (nonatomic, strong) UILabel *descenteLabelContent;
-
-
 - (void)fillCell:(NSMutableDictionary *)journey and:(NSIndexPath *)indexPath;
 
 @end

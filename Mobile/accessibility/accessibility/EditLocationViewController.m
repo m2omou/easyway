@@ -1,18 +1,17 @@
 //
-//  HomeViewController.m
+//  EditLocationViewController.m
 //  accessibility
 //
-//  Created by Tchikovani on 03/06/2014.
+//  Created by Tchikovani on 13/06/2014.
 //  Copyright (c) 2014 Tchikovani. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "BuildJourneyViewController.h"
-#import "GooglePlacesAPI.h"
+#import "EditLocationViewController.h"
 #import "JaccedeCallApi.h"
+#import "GooglePlacesAPI.h"
 #import "POICell.h"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, JaccedeCallApiDelegate, GooglePlacesAPIDelegate>
+@interface EditLocationViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, JaccedeCallApiDelegate, GooglePlacesAPIDelegate>
 {
     NSMutableArray *searchResults;
     GooglePlacesAPI *googlePlacesAPICaller;
@@ -30,7 +29,8 @@
 
 @end
 
-@implementation HomeViewController
+
+@implementation EditLocationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Home";
+    self.title = @"Change location";
     self.typeAheadTableView.delegate = self;
     self.typeAheadTableView.dataSource = self;
     self.imageDownloadingQueue = [[NSOperationQueue alloc] init];
@@ -59,6 +59,13 @@
     self.imageDownloadingQueue.maxConcurrentOperationCount = 4;
     
     self.imageCache = [[NSCache alloc] init];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)loadView
@@ -66,24 +73,30 @@
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
     // Descriptif application
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"Cancel"
+                                  style:UIBarButtonItemStyleBordered
+                                  target:self
+                                  action:@selector(cancelEdit:)];
+    self.navigationItem.rightBarButtonItem = cancelBtn;
     self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 + 10, self.view.frame.size.width, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
-    self.searchPoiInstructions.text = @"Recherche de lieux et voir l'accessibilité";
+    self.searchPoiInstructions.text = @"Effectuer une recherche pour une nouvelle adresse";
     self.searchPoiInstructions.font =  [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     self.searchPoiInstructions.textColor = [UIColor whiteColor];
     [self.view addSubview:self.searchPoiInstructions];
     
     // Input Search
     self.searchBar = [[UITextField alloc] initWithFrame:CGRectMake(10, 45, self.view.frame.size.width - 20, 35)];
-    self.searchBar.placeholder = @"Où aimeriez vous aller ?";
+    self.searchBar.placeholder = @"Où ?";
     self.searchBar.borderStyle = UITextBorderStyleLine;
     self.searchBar.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
     self.searchBar.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
     [self.searchBar setReturnKeyType:UIReturnKeyDone];
     [self.searchBar addTarget:self
-                  action:@selector(textFieldDidChange:)
-        forControlEvents:UIControlEventEditingChanged];
+                       action:@selector(textFieldDidChange:)
+             forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.searchBar];
     
     self.jaccedePOISearch = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -119,18 +132,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)cancelEdit:(id)sender
 {
-    [super didReceiveMemoryWarning];
-   // Dispose of any resources that can be recreated.
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    if ([self.view.subviews containsObject:self.cancelButton]) {
-        [self.searchBar becomeFirstResponder];
-    }
-}
+#pragma mark - Search delegates methods
 
 - (IBAction)jaccedePOISearchButtonSelected:(id)sender
 {
@@ -156,6 +163,28 @@
     }
 }
 
+#pragma mark - Google API delegate methods
+
+- (void)resultSearchForPOIPlaces:(NSMutableArray *)results
+{
+    [searchResults removeAllObjects];
+    if ([results count] > 0) {
+        [searchResults addObjectsFromArray:results];
+    }
+    [self.typeAheadTableView reloadData];
+}
+
+#pragma mark - JaccedeApi
+
+- (void)resultSearch:(NSMutableArray *)results
+{
+    [searchResults removeAllObjects];
+    if ([results count] > 0) {
+        [searchResults addObjectsFromArray:results];
+    }
+    [self.typeAheadTableView reloadData];
+}
+
 #pragma mark - UITextField
 
 - (IBAction)textFieldDidChange:(id)sender
@@ -175,17 +204,55 @@
     return NO;
 }
 
+#pragma mark - Keyboard notification
+/**
+ *  Keyboard will show
+ */
+- (void)keyboardWillShow:(NSNotification*)notification {
+    self.searchPoiInstructions.hidden = YES;
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.searchBar.frame = CGRectMake(5, 5, self.view.frame.size.width - 70, 35);
+    } completion:^(BOOL finished) {
+        [self.view addSubview:self.cancelButton];
+        self.typeAheadTableView.hidden = NO;
+    }];
+}
+
+/**
+ *  Keyboard will hide
+ */
+- (void)keyboardWillHide:(NSNotification*)notification {
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [self.cancelButton removeFromSuperview];
+    self.typeAheadTableView.hidden = YES;
+    [UIView animateWithDuration:duration animations:^{
+        self.searchBar.frame = CGRectMake(10, 45, self.view.frame.size.width - 20, 35);
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.searchPoiInstructions.hidden = NO;
+        }
+    }];
+}
+
+- (IBAction)cancelButtonTapped:(id)sender
+{
+    [searchResults removeAllObjects];
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    [self.typeAheadTableView reloadData];
+}
+
 #pragma mark - UITableView
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BuildJourneyViewController *journeyView = [[BuildJourneyViewController alloc] init];
     NSMutableDictionary *poi = [[NSMutableDictionary alloc] initWithDictionary:[searchResults objectAtIndex:indexPath.row]];
     if (self.jaccedePOISearch.tag == 1) {
         [poi setObject:[poi objectForKey:@"name"] forKey:@"description"];
     }
-    journeyView.destination = [[NSMutableDictionary alloc] initWithDictionary:poi];
-    [self.navigationController pushViewController:journeyView animated:YES];
+    [self.delegate newLocationSelected:poi forLocation:self.location];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -287,67 +354,6 @@
         return cell;
     }
     return nil;
-}
-
-#pragma mark - Keyboard notification
-/**
- *  Keyboard will show
- */
-- (void)keyboardWillShow:(NSNotification*)notification {
-    self.searchPoiInstructions.hidden = YES;
-    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [UIView animateWithDuration:duration animations:^{
-        self.searchBar.frame = CGRectMake(5, 5, self.view.frame.size.width - 70, 35);
-    } completion:^(BOOL finished) {
-        [self.view addSubview:self.cancelButton];
-        self.typeAheadTableView.hidden = NO;
-    }];
-}
-
-/**
- *  Keyboard will hide
- */
-- (void)keyboardWillHide:(NSNotification*)notification {
-    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    [self.cancelButton removeFromSuperview];
-    self.typeAheadTableView.hidden = YES;
-    [UIView animateWithDuration:duration animations:^{
-        self.searchBar.frame = CGRectMake(10, 45, self.view.frame.size.width - 20, 35);
-    } completion:^(BOOL finished) {
-        if (finished) {
-            self.searchPoiInstructions.hidden = NO;
-        }
-    }];
-}
-
-- (IBAction)cancelButtonTapped:(id)sender
-{
-    [searchResults removeAllObjects];
-    self.searchBar.text = @"";
-    [self.searchBar resignFirstResponder];
-    [self.typeAheadTableView reloadData];
-}
-
-#pragma mark - Google API delegate methods
-
-- (void)resultSearchForPOIPlaces:(NSMutableArray *)results
-{
-    [searchResults removeAllObjects];
-    if ([results count] > 0) {
-        [searchResults addObjectsFromArray:results];
-    }
-    [self.typeAheadTableView reloadData];
-}
-
-#pragma mark - JaccedeApi
-
-- (void)resultSearch:(NSMutableArray *)results
-{
-    [searchResults removeAllObjects];
-    if ([results count] > 0) {
-        [searchResults addObjectsFromArray:results];
-    }
-    [self.typeAheadTableView reloadData];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  WalkingTypeCell.h
+//  TransferTableViewCell.h
 //  accessibility
 //
 //  Created by Tchikovani on 10/06/2014.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WalkingTypeCell : UITableViewCell
+@interface TransferTypeCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *allerJusquaContentLabel;
 @property (nonatomic, strong) UILabel *timeActivityLabel;
+@property (nonatomic, strong) UILabel *allerJusquaContentLabel;
 
 @end

@@ -14,6 +14,12 @@
 @property (nonatomic, strong) UILabel *fromLabel;
 @property (nonatomic, strong) UILabel *directionLabel;
 @property (nonatomic, strong) UILabel *descenteLabel;
+@property (nonatomic, strong) UIImageView *type;
+@property (nonatomic, strong) UILabel *line;
+@property (nonatomic, strong) UILabel *timeActivityLabel;
+@property (nonatomic, strong) UILabel *fromLabelContent;
+@property (nonatomic, strong) UILabel *directionLabelContent;
+@property (nonatomic, strong) UILabel *descenteLabelContent;
 
 @end
 
@@ -23,16 +29,16 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.type = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
+        self.type = [[UIImageView alloc] initWithFrame:CGRectMake(5, 40, 25, 25)];
         [self addSubview:self.type];
         
-        self.line = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 25, 25)];
+        self.line = [[UILabel alloc] initWithFrame:CGRectMake(35, 40, 25, 25)];
         self.line.textColor = [UIColor whiteColor];
         self.line.textAlignment = NSTextAlignmentCenter;
         self.line.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
         [self addSubview:self.line];
         
-        self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 50, 15)];
+        self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 50, 15)];
         self.timeActivityLabel.textAlignment = NSTextAlignmentCenter;
         self.timeActivityLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
         [self addSubview:self.timeActivityLabel];
