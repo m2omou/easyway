@@ -42,6 +42,10 @@
 		AAC95CC01946A03000F5A35B /* JourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CBF1946A03000F5A35B /* JourneyViewController.m */; };
 		AAC95CC219476F5800F5A35B /* x-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC95CC119476F5800F5A35B /* x-mark.png */; };
 		AAC95CC5194778EC00F5A35B /* TransportTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */; };
+		AADEB6A8194C10A600D09622 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = AADEB6A7194C10A600D09622 /* map.png */; };
+		AADEB6AB194C138A00D09622 /* WalkingPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADEB6AA194C138A00D09622 /* WalkingPathViewController.m */; };
+		AADEB6AF194E86BA00D09622 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = AADEB6AD194E86BA00D09622 /* end.png */; };
+		AADEB6B1194E8B1C00D09622 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = AADEB6B0194E8B1C00D09622 /* start.png */; };
 		AAEA9B6319414CAB00E70531 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B6219414CAB00E70531 /* loading.png */; };
 		AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */; };
 		AAEA9B68194165CF00E70531 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAEA9B67194165CF00E70531 /* switch.png */; };
@@ -107,6 +111,11 @@
 		AAC95CC119476F5800F5A35B /* x-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-mark.png"; sourceTree = "<group>"; };
 		AAC95CC3194778EC00F5A35B /* TransportTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportTypeCell.h; sourceTree = "<group>"; };
 		AAC95CC4194778EC00F5A35B /* TransportTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportTypeCell.m; sourceTree = "<group>"; };
+		AADEB6A7194C10A600D09622 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		AADEB6A9194C138A00D09622 /* WalkingPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalkingPathViewController.h; sourceTree = "<group>"; };
+		AADEB6AA194C138A00D09622 /* WalkingPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalkingPathViewController.m; sourceTree = "<group>"; };
+		AADEB6AD194E86BA00D09622 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
+		AADEB6B0194E8B1C00D09622 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
 		AAEA9B6219414CAB00E70531 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		AAEA9B6419415D5B00E70531 /* BuildJourneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildJourneyViewController.h; sourceTree = "<group>"; };
 		AAEA9B6519415D5B00E70531 /* BuildJourneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildJourneyViewController.m; sourceTree = "<group>"; };
@@ -150,6 +159,9 @@
 		AA7A5EC519401FD200EE02E2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AADEB6B0194E8B1C00D09622 /* start.png */,
+				AADEB6AD194E86BA00D09622 /* end.png */,
+				AADEB6A7194C10A600D09622 /* map.png */,
 				AA7D5622194B99E700F90F28 /* walking.png */,
 				AAEA9B6219414CAB00E70531 /* loading.png */,
 				AA7D5614194B787000F90F28 /* checked.png */,
@@ -228,6 +240,8 @@
 				AA7D561F194B832A00F90F28 /* POICell.m */,
 				AA7D5624194BA31D00F90F28 /* EditLocationViewController.h */,
 				AA7D5625194BA31D00F90F28 /* EditLocationViewController.m */,
+				AADEB6A9194C138A00D09622 /* WalkingPathViewController.h */,
+				AADEB6AA194C138A00D09622 /* WalkingPathViewController.m */,
 				AA83EF3A193EB10600E06E7E /* Images.xcassets */,
 				AA83EF2F193EB10600E06E7E /* Supporting Files */,
 			);
@@ -346,16 +360,19 @@
 				AA83EF33193EB10600E06E7E /* InfoPlist.strings in Resources */,
 				AA46712419417ABC005FB266 /* accessibility.png in Resources */,
 				AA7D5619194B787000F90F28 /* checked@2x.png in Resources */,
+				AADEB6B1194E8B1C00D09622 /* start.png in Resources */,
 				AA7D561A194B787000F90F28 /* unchecked.png in Resources */,
 				AA7D5623194B99E700F90F28 /* walking.png in Resources */,
 				AA46712519417ABC005FB266 /* transport.png in Resources */,
 				AAC95CC219476F5800F5A35B /* x-mark.png in Resources */,
 				AAEA9B68194165CF00E70531 /* switch.png in Resources */,
+				AADEB6A8194C10A600D09622 /* map.png in Resources */,
 				AA73144B194105E20001867F /* Default.png in Resources */,
 				AA7D5618194B787000F90F28 /* checked.png in Resources */,
 				AA7D561B194B787000F90F28 /* unchecked@2x.png in Resources */,
 				AA83EF3B193EB10600E06E7E /* Images.xcassets in Resources */,
 				AABCD8101947F5E300B433EA /* connection.png in Resources */,
+				AADEB6AF194E86BA00D09622 /* end.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA7D5626194BA31D00F90F28 /* EditLocationViewController.m in Sources */,
+				AADEB6AB194C138A00D09622 /* WalkingPathViewController.m in Sources */,
 				AAEA9B6619415D5B00E70531 /* BuildJourneyViewController.m in Sources */,
 				AA83EF39193EB10600E06E7E /* AppDelegate.m in Sources */,
 				AA83EF35193EB10600E06E7E /* main.m in Sources */,

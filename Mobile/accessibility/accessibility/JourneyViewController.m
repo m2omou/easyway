@@ -10,6 +10,7 @@
 #import "TransportTypeCell.h"
 #import "WalkingTypeCell.h"
 #import "TransferTypeCell.h"
+#import "WalkingPathViewController.h"
 
 @interface JourneyViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -107,6 +108,18 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(IBAction)showWalkingPathMap:(id)sender
+{
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.journeyTableView];
+    NSIndexPath *indexPath = [self.journeyTableView indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+        WalkingPathViewController *walkPath = [[WalkingPathViewController alloc] init];
+        walkPath.geoJson = [[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"geojson"];
+        [self.navigationController pushViewController:walkPath animated:YES];
+    }
+}
+
 #pragma mark - UITableView delegate methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -154,6 +167,7 @@
             cell = [[WalkingTypeCell alloc]
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
+            [cell.voirDetailMap addTarget:self action:@selector(showWalkingPathMap:) forControlEvents:UIControlEventTouchUpInside];
         }
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyyMMdd'T'HHmmss"];
@@ -163,7 +177,15 @@
         [components setTimeZone:[NSTimeZone localTimeZone]];
         cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02d h %02d", [components hour], [components minute]];
         cell.allerJusquaContentLabel.text = [[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"to"][@"name"];
+        CGSize size = [cell.allerJusquaContentLabel.text sizeWithFont:cell.allerJusquaContentLabel.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+        CGRect frame = cell.allerJusquaContentLabel.frame;
         
+        // Resize only if needs to grow, don't shrink
+        if (frame.size.height < size.height) {
+            frame.size.height = size.height;
+        }
+        
+        cell.allerJusquaContentLabel.frame = frame;
         return cell;
     }
     
@@ -176,6 +198,7 @@
             cell = [[TransferTypeCell alloc]
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
+            [cell.voirDetailMap addTarget:self action:@selector(showWalkingPathMap:) forControlEvents:UIControlEventTouchUpInside];
         }
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyyMMdd'T'HHmmss"];
@@ -185,6 +208,15 @@
         [components setTimeZone:[NSTimeZone localTimeZone]];
         cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02d h %02d", [components hour], [components minute]];
         cell.allerJusquaContentLabel.text = [[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"to"][@"name"];
+        CGSize size = [cell.allerJusquaContentLabel.text sizeWithFont:cell.allerJusquaContentLabel.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+        CGRect frame = cell.allerJusquaContentLabel.frame;
+        
+        // Resize only if needs to grow, don't shrink
+        if (frame.size.height < size.height) {
+            frame.size.height = size.height;
+        }
+        
+        cell.allerJusquaContentLabel.frame = frame;
         return cell;
     }
 

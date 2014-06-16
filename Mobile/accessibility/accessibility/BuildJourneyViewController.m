@@ -217,9 +217,7 @@
 {
     if ([self.from objectForKey:@"latitude"] == nil) {
         [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
-        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
-        NSLog(@"ON A RECU LES DETAILS POUR LE FROM");
-    
+        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];    
         if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
             //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
             //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
@@ -228,16 +226,13 @@
             [self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"longitude"];
         }
         else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
-            NSLog(@"APRES AVOIR RECU DETAIL DE FROM, ON DEMANDE DETAIL POUR LATITUDE");
             [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
         }
         else {
-            NSLog(@"APRES AVOIR RECU DETAIL DE FROM, ON A DEJA LE DEST DONC ON DEMANDE ITINERAIRE");
             [accessibilityAPICaller searchJourney:self.from to:self.destination];
         }
     }
     else {
-        NSLog(@"ON A RECU LES DETAILS POUR LE DESTINATION");
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
         [accessibilityAPICaller searchJourney:self.from to:self.destination];

@@ -36,7 +36,13 @@
         [self addSubview:self.allerJusquaLabel];
         self.allerJusquaContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 20, 200, 15)];
         self.allerJusquaContentLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.allerJusquaContentLabel.numberOfLines = 0;
         [self addSubview:self.allerJusquaContentLabel];
+        
+        self.voirDetailMap = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.voirDetailMap.frame = CGRectMake(265, 15, 35, 35);
+        [self.voirDetailMap setBackgroundImage:[UIImage imageNamed:@"map.png"] forState:UIControlStateNormal];
+        [self addSubview:self.voirDetailMap];
     }
     return self;
 }

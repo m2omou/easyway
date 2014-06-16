@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
@@ -16,6 +17,7 @@
     sleep(2);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    [GMSServices provideAPIKey:@"AIzaSyDKIIriYXAfopQV2EdxzWwvU7K-DywIIMg"];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil]];
     nav.navigationBar.translucent = NO;
     self.window.rootViewController = nav;

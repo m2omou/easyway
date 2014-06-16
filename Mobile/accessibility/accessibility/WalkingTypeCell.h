@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) UILabel *allerJusquaContentLabel;
 @property (nonatomic, strong) UILabel *timeActivityLabel;
+@property (nonatomic, strong) UIButton *voirDetailMap;
 
 @end
