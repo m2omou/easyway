@@ -1,4 +1,6 @@
 Hack4france::Application.routes.draw do
+  resources :lines, except: [:new, :edit]
+  resources :stops, except: [:new, :edit]
   resources :journeys
 
   # The priority is based upon order of creation: first created -> highest priority.

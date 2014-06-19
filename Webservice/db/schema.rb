@@ -11,6 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601060401) do
+ActiveRecord::Schema.define(version: 20140619041753) do
+
+  create_table "lines", force: true do |t|
+    t.string   "name"
+    t.string   "origin"
+    t.string   "destination"
+    t.string   "stif"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stops", force: true do |t|
+    t.string   "name"
+    t.boolean  "accessibility"
+    t.string   "stif"
+    t.string   "sens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

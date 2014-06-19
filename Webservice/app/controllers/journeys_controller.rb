@@ -1,19 +1,36 @@
 class JourneysController < ApplicationController
   include ActionController::MimeResponds
   require 'net/http'
+  require "easyaccess/base"
+  require "easyaccess/journeys"
 
   def index
     respond_to do |format|
       if (!params.has_key?(:from) || !params.has_key?(:to) || !params.has_key?(:datetime))
         @data = jsonResponseFormat(1, "error", {:result => "Please provide the longitude, latidute and datetime"})
       else
-        # get the itinerary from CANALTP API
-        @result = JourneysHelper.getItinerary(params[:from], params[:to], params[:datetime])
-        # check if an error is returned
-        if (@result.nil? || !@result["error"].nil?)
-          @data = @result.nil? ? nil : jsonResponseFormat(1, "error", {:error => @result["error"]})
+        @api = EasyAccess::Base.new()
+
+        # get parameters
+        @info = Hash.new()
+        @info[:from] = params[:from].to_s.gsub(",", ";")
+        @info[:to] = params[:to].to_s.gsub(",", ";")
+        @info[:datetime] = params[:datetime]
+
+        # To avoid certain lines, modes...
+        @info[:forbidden_uris] = ["RapidTransit","Tramway","Metro","CheckOut","CheckIn","default_physical_mode"]
+
+        # The different journey types
+        @info[:type] = ["comfort","best","rapid","less_fallback_walk", "fastest"]
+
+        # Get the itinerary from CANALTP
+        @result, @error = @api.journeys.itinerary(@info)
+
+        # Check if an error is returned
+        if (!@error)
+          @data = jsonResponseFormat(1, "error", {:error => @result})
         else
-          @data = jsonResponseFormat(0, "success", @result)#["journeys"])
+          @data = jsonResponseFormat(0, "success", @result)
         end
       end
       format.json { render :json => @data }
