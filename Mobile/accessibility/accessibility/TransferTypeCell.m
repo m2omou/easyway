@@ -22,7 +22,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.transferImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
-        self.transferImage.image = [UIImage imageNamed:@"connection.png"];
+        self.transferImage.image = [UIImage imageNamed:@"connection"];
         [self addSubview:self.transferImage];
         
         self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 50, 15)];
@@ -41,7 +41,7 @@
         
         self.voirDetailMap = [UIButton buttonWithType:UIButtonTypeCustom];
         self.voirDetailMap.frame = CGRectMake(265, 15, 35, 35);
-        [self.voirDetailMap setBackgroundImage:[UIImage imageNamed:@"map.png"] forState:UIControlStateNormal];
+        [self.voirDetailMap setBackgroundImage:[UIImage imageNamed:@"map"] forState:UIControlStateNormal];
         [self addSubview:self.voirDetailMap];
     }
     return self;

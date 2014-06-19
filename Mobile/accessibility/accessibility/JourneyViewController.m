@@ -55,7 +55,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
     self.title = @"Itinéraire";
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Cancel"
+                                   initWithTitle:@"Annuler"
                                    style:UIBarButtonItemStyleBordered
                                    target:self
                                   action:@selector(cancelJourney:)];

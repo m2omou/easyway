@@ -74,7 +74,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
     // Descriptif application
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
-                                  initWithTitle:@"Cancel"
+                                  initWithTitle:@"Annuler"
                                   style:UIBarButtonItemStyleBordered
                                   target:self
                                   action:@selector(cancelEdit:)];
@@ -102,7 +102,7 @@
     self.jaccedePOISearch = [UIButton buttonWithType:UIButtonTypeCustom];
     self.jaccedePOISearch.frame = CGRectMake(10, 90, 250, 15);
     self.jaccedePOISearch.tag = 1;
-    [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+    [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
     [self.jaccedePOISearch setTitle:@" Points d'intérêts jaccede" forState:UIControlStateNormal];
     [self.jaccedePOISearch addTarget:self action:@selector(jaccedePOISearchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.jaccedePOISearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -111,7 +111,7 @@
     self.addressSearch = [UIButton buttonWithType:UIButtonTypeCustom];
     self.addressSearch.frame = CGRectMake(10, 110, 250, 15);
     self.addressSearch.tag = 0;
-    [self.addressSearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+    [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     [self.addressSearch setTitle:@" Adresses" forState:UIControlStateNormal];
     [self.addressSearch addTarget:self action:@selector(addressSarchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.addressSearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -124,7 +124,7 @@
     [self.view addSubview:self.typeAheadTableView];
     searchResults = [[NSMutableArray alloc] init];
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [self.cancelButton setTitle:@"Annuler" forState:UIControlStateNormal];
     self.cancelButton.frame = CGRectMake(self.view.frame.size.width - 70 + 10, 5, 60, 35);
     [self.cancelButton addTarget:self action:@selector(cancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -145,9 +145,9 @@
         return;
     else {
         self.jaccedePOISearch.tag = 1;
-        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
         self.addressSearch.tag = 0;
-        [self.addressSearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+        [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     }
 }
 
@@ -157,9 +157,9 @@
         return;
     else {
         self.addressSearch.tag = 1;
-        [self.addressSearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+        [self.addressSearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
         self.jaccedePOISearch.tag = 0;
-        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     }
 }
 
@@ -290,7 +290,7 @@
             cell.iconType.image = cachedImage;
         }
         else {
-            cell.iconType.image = [UIImage imageNamed:@"loading.png"];
+            cell.iconType.image = [UIImage imageNamed:@"loading"];
             
             [self.imageDownloadingQueue addOperationWithBlock:^{
                 

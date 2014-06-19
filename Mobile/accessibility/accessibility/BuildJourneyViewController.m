@@ -76,7 +76,7 @@
     itineraireFrame.backgroundColor = [UIColor whiteColor];
     itineraireFrame.layer.borderColor = [UIColor blackColor].CGColor;
     
-    UIImage *switchImage = [UIImage imageNamed:@"switch.png"];
+    UIImage *switchImage = [UIImage imageNamed:@"switch"];
     self.switchFromAndTo = [UIButton buttonWithType:UIButtonTypeCustom];
     self.switchFromAndTo.frame = CGRectMake(285.0, 20.0, 20.0, 20.0);
     [self.switchFromAndTo setBackgroundImage:switchImage forState:UIControlStateNormal];
@@ -139,7 +139,7 @@
     [self.walkingBtnContainer addGestureRecognizer:tapOnWalkingContainer];
     self.walkingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.walkingBtn.frame = CGRectMake(50, 5, 50, 50);
-    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"walking.png"] forState:UIControlStateNormal];
+    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"walking"] forState:UIControlStateNormal];
     [self.walkingBtn addTarget:self action:@selector(walkingBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
     [self.walkingBtnContainer addSubview:self.walkingBtn];
     [transportModeFrame addSubview:self.walkingBtnContainer];
@@ -156,7 +156,7 @@
     self.publicTransportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.publicTransportBtn.frame = CGRectMake(50,5, 50, 50);
     [self.publicTransportBtn addTarget:self action:@selector(publicTransportBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"transport.png"] forState:UIControlStateNormal];
+    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"transport"] forState:UIControlStateNormal];
     [self.publicTransportBtnContainer addSubview:self.publicTransportBtn];
     [transportModeFrame addSubview:self.publicTransportBtnContainer];
     [self.view addSubview:transportModeFrame];
@@ -245,7 +245,7 @@
 {
     if ([[journey valueForKey:@"result"][@"result"] isEqual:[NSNull null]]) {
         [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
-        self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark.png"]];
+        self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
         self.journeyCalculatorIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
         self.journeyCalculatorIndicator.mode = MBProgressHUDModeCustomView;
         [self.journeyCalculatorIndicator hide:YES afterDelay:2];

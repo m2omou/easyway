@@ -79,7 +79,7 @@
     NSString *infos = [[[journey valueForKey:@"sections"] objectAtIndex:indexPath.section] valueForKey:@"display_informations"];
     
     if ([[infos valueForKey:@"physical_mode"] isEqualToString:@"Bus"]) {
-        self.type.image = [UIImage imageNamed:@"bus.png"];
+        self.type.image = [UIImage imageNamed:@"bus"];
     }
     else {
         self.type.image = nil;

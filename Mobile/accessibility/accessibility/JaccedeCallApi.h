@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// declare our class
-@class JaccedeCallApi;
-
 // define the protocol for the delegate
 @protocol JaccedeCallApiDelegate
 
