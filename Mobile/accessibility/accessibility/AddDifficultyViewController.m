@@ -136,8 +136,8 @@
     {
         // Create action sheet
         UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:(id)self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                                     @"Take Photo",
-                                     @"TChoose from Library",
+                                     @"Prendre une photo",
+                                     @"Prendre dans la Bibliothèque",
                                      nil];
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [popupQuery showInView:self.view];

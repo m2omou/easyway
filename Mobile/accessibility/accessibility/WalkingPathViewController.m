@@ -154,7 +154,9 @@
         Difficulty *difficulty = [results objectAtIndex:0];
         DifficultyWithPicView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"DifficultyWithPicView" owner:self options:nil] objectAtIndex:0];
         infoWindow.description.text = [NSString stringWithString:difficulty.description];
-        infoWindow.pictureView.image = [UIImage imageWithCGImage:difficulty.picture.CGImage scale:1.0 orientation:UIImageOrientationRight];
+        infoWindow.pictureView.image = difficulty.picture;
+        infoWindow.description.layer.borderColor = [UIColor blackColor].CGColor;
+        infoWindow.description.layer.borderWidth = 1.0f;
         return infoWindow;
     }
     return nil;
