@@ -7,6 +7,7 @@
 //
 
 #import "AddDifficultyViewController.h"
+#import "UIImage+fixOrientation.h"
 
 @interface AddDifficultyViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
 
@@ -78,8 +79,34 @@
     envoyerBtn.layer.borderColor = [UIColor blackColor].CGColor;
     [envoyerBtn addTarget:self action:@selector(sendBtnPushed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:envoyerBtn];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+#pragma mark - Keyboard notification
+/**
+ *  Keyboard will show
+ */
+- (void)keyboardWillShow:(NSNotification*)notification {
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = CGRectMake(0, self.view.frame.origin.y - 216, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+/**
+ *  Keyboard will hide
+ */
+- (void)keyboardWillHide:(NSNotification*)notification {
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = CGRectMake(0, self.view.frame.origin.y + 216, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        if (finished) {
+        }
+    }];
+}
 
 #pragma mark - UIImagePickerControllerDelegate methods
 
@@ -87,7 +114,7 @@
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         UIImageWriteToSavedPhotosAlbum([info objectForKey:UIImagePickerControllerOriginalImage], nil, nil, nil);
 	}
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [[info objectForKey:UIImagePickerControllerOriginalImage]fixOrientation];
     self.pictureView.image = image;
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -135,7 +162,7 @@
     else
     {
         // Create action sheet
-        UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:(id)self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+        UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:(id)self cancelButtonTitle:@"Annuler" destructiveButtonTitle:nil otherButtonTitles:
                                      @"Prendre une photo",
                                      @"Prendre dans la Bibliothèque",
                                      nil];

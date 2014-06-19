@@ -11,7 +11,10 @@
 #import "AddDifficultyViewController.h"
 #import "DifficultyWithPicView.h"
 
-@interface WalkingPathViewController () <GMSMapViewDelegate, UIAlertViewDelegate, AddDifficultyDelegate>
+@interface WalkingPathViewController () <GMSMapViewDelegate, UIAlertViewDelegate, AddDifficultyDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *difficultiesArray;
@@ -33,6 +36,12 @@
 {
     [super viewDidLoad];
     self.difficultiesArray = [[NSMutableArray alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)loadView
@@ -72,20 +81,23 @@
     polyline.strokeColor = [UIColor blueColor];
     polyline.strokeWidth = 5.f;
     polyline.map = self.mapView;
-    UILabel *infoAddDifficulty = [[UILabel alloc] initWithFrame:CGRectMake(7, self.mapView.frame.size.height, self.view.frame.size.width - 14, 50)];
-    infoAddDifficulty.text = @"Pressez la localisation pour y rajouter une difficulté";
-    CGSize size = [infoAddDifficulty.text sizeWithFont:infoAddDifficulty.font constrainedToSize:CGSizeMake(135, 50) lineBreakMode:NSLineBreakByWordWrapping];
-    CGRect frame = infoAddDifficulty.frame;
     
-    // Resize only if needs to grow, don't shrink
-    if (frame.size.height < size.height) {
-        frame.size.height = size.height;
-    }
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.size.height, self.view.frame.size.width, 50)];
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(addDifficultyBtn:)];
+    [footer addGestureRecognizer:singleFingerTap];
+    UIImageView *warningBtn = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
+    warningBtn.image = [UIImage imageNamed:@"big_warning"];
+    [footer addSubview:warningBtn];
     
-    infoAddDifficulty.frame = frame;
+    UILabel *infoAddDifficulty = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, self.view.frame.size.width - 60, 50)];
+    infoAddDifficulty.text =  @"Declarer une difficulté";
+    infoAddDifficulty.textColor = [UIColor blackColor];
+    infoAddDifficulty.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(15.0)];
     infoAddDifficulty.textAlignment = NSTextAlignmentCenter;
     infoAddDifficulty.numberOfLines = 0;
-    [self.view addSubview:infoAddDifficulty];
+    [footer addSubview:infoAddDifficulty];
+    [self.view addSubview:footer];
     [self.view addSubview:self.mapView];
 }
 
@@ -93,6 +105,28 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Buttons handlers
+
+- (IBAction)addDifficultyBtn:(id)sender
+{
+    [locationManager startUpdatingLocation];
+    CLLocationCoordinate2D coordinates = [[locationManager location] coordinate];
+    [locationManager stopUpdatingLocation];
+    [self.mapView animateToLocation:CLLocationCoordinate2DMake(coordinates.latitude + 0.002, coordinates.longitude)];
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = coordinates;
+    marker.icon = [UIImage imageNamed:@"small_warning"];
+    marker.map = self.mapView;
+    [self.mapView setSelectedMarker:marker];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rajout de difficulté"
+                                                    message:@"Voulez vous rajoutez a votre localisation ?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Annuler"
+                                          otherButtonTitles:@"Oui", nil];
+    [alert show];
 }
 
 - (void)cancelAddDifficulty
@@ -103,6 +137,8 @@
 - (void)difficultySaved:(Difficulty *)difficulty
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+
+    difficulty.marker = self.mapView.selectedMarker;
     [self.difficultiesArray addObject:difficulty];
     [self.mapView setSelectedMarker:self.mapView.selectedMarker];
 }
@@ -127,27 +163,11 @@
 
 #pragma mark - Google Map View Delegates methods
 
-- (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    [self.mapView animateToLocation:CLLocationCoordinate2DMake(coordinate.latitude + 0.002,coordinate.longitude)];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
-    marker.icon = [UIImage imageNamed:@"warning"];
-    marker.map = mapView;
-    [self.mapView setSelectedMarker:marker];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rajout de difficulté"
-                                                    message:@"Voulez vous rajoutez une difficulté à cet endroit ?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Annuler"
-                                          otherButtonTitles:@"Oui", nil];
-    [alert show];
-}
-
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
 {
     if ([self.difficultiesArray count] > 0) {
-        NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate
-                                                                                       predicateWithFormat:@"(latitude == %lf) AND (longitude == %lf)", marker.position.latitude, marker.position.longitude]];
+        NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(marker == %@)", marker]];
+        NSLog(@"DIFFICULTIES ARRAY = %d\nRESULTS ARRAY = %d", [self.difficultiesArray count], [results count]);
         if ([results count] == 0) {
             return nil;
         }
@@ -162,11 +182,15 @@
     return nil;
 }
 
-/*
+
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
+    if (self.mapView.selectedMarker == marker) {
+        return NO;
+    }
     [self.mapView animateToLocation:CLLocationCoordinate2DMake(marker.position.latitude + 0.002, marker.position.longitude)];
+    self.mapView.selectedMarker = marker;
     return YES;
-}*/
+}
 
 @end

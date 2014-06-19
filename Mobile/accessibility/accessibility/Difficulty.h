@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UIImage *picture;
 @property (assign, nonatomic) CLLocationDegrees longitude;
 @property (assign, nonatomic) CLLocationDegrees latitude;
+@property (nonatomic, strong) GMSMarker *marker;
 
 @end
