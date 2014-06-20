@@ -68,7 +68,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
     self.title = @"Itinéraire";
     
     UIView *itineraireFrame = [[UIView alloc] initWithFrame:CGRectMake(5, 5, self.view.frame.size.width - 10, 60)];
@@ -76,7 +76,7 @@
     itineraireFrame.backgroundColor = [UIColor whiteColor];
     itineraireFrame.layer.borderColor = [UIColor blackColor].CGColor;
     
-    UIImage *switchImage = [UIImage imageNamed:@"switch.png"];
+    UIImage *switchImage = [UIImage imageNamed:@"switch"];
     self.switchFromAndTo = [UIButton buttonWithType:UIButtonTypeCustom];
     self.switchFromAndTo.frame = CGRectMake(285.0, 20.0, 20.0, 20.0);
     [self.switchFromAndTo setBackgroundImage:switchImage forState:UIControlStateNormal];
@@ -85,13 +85,13 @@
     
     UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,4, 30, 20)];
     fromLabel.text = @"De";
-    fromLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    fromLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(12.0)];
     fromLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
     [itineraireFrame addSubview:fromLabel];
     
     self.fromInput = [[UITextField alloc] initWithFrame:CGRectMake(40, 5, 250, 20)];
     self.fromInput.text = @"Ma localisation";
-    self.fromInput.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    self.fromInput.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(12.0)];
     self.fromInput.delegate = self;
     [itineraireFrame addSubview:self.fromInput];
     self.from = [[NSMutableDictionary alloc] init];
@@ -104,13 +104,13 @@
     
     UILabel *destinationLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 34, 30, 20)];
     destinationLabel.text = @"Vers";
-    destinationLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    destinationLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(12.0)];
     destinationLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
     [itineraireFrame addSubview:destinationLabel];
     
     self.destinationInput = [[UITextField alloc] initWithFrame:CGRectMake(40, 35, 250, 20)];
     self.destinationInput.text = [self.destination objectForKey:@"description"];
-    self.destinationInput.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    self.destinationInput.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(12.0)];
     self.destinationInput.delegate = self;
     [itineraireFrame addSubview:self.destinationInput];
     [self.view addSubview:itineraireFrame];
@@ -123,7 +123,7 @@
     UILabel *transportModeInstruction = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 10, 20)];
     transportModeInstruction.textAlignment = NSTextAlignmentCenter;
     transportModeInstruction.text = @"Mode de transport";
-    transportModeInstruction.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(12.0)];
+    transportModeInstruction.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(12.0)];
     [transportModeFrame addSubview:transportModeInstruction];
     
     UIView *separatorTransportMode = [[UIView alloc] initWithFrame:CGRectMake(0, 25, self.view.frame.size.width - 10, 1)];
@@ -139,7 +139,7 @@
     [self.walkingBtnContainer addGestureRecognizer:tapOnWalkingContainer];
     self.walkingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.walkingBtn.frame = CGRectMake(50, 5, 50, 50);
-    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"walking.png"] forState:UIControlStateNormal];
+    [self.walkingBtn setBackgroundImage:[UIImage imageNamed:@"walking"] forState:UIControlStateNormal];
     [self.walkingBtn addTarget:self action:@selector(walkingBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
     [self.walkingBtnContainer addSubview:self.walkingBtn];
     [transportModeFrame addSubview:self.walkingBtnContainer];
@@ -156,7 +156,7 @@
     self.publicTransportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.publicTransportBtn.frame = CGRectMake(50,5, 50, 50);
     [self.publicTransportBtn addTarget:self action:@selector(publicTransportBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
-    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"transport.png"] forState:UIControlStateNormal];
+    [self.publicTransportBtn setBackgroundImage:[UIImage imageNamed:@"transport"] forState:UIControlStateNormal];
     [self.publicTransportBtnContainer addSubview:self.publicTransportBtn];
     [transportModeFrame addSubview:self.publicTransportBtnContainer];
     [self.view addSubview:transportModeFrame];
@@ -165,7 +165,7 @@
     self.itineraireRequest.frame = CGRectMake(70, 170, 200, 30);
     [self.itineraireRequest setTitle:@"Demander itinéraire" forState:UIControlStateNormal];
     [self.itineraireRequest setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.itineraireRequest.titleLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+    self.itineraireRequest.titleLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
     self.itineraireRequest.backgroundColor = [UIColor whiteColor];
     self.itineraireRequest.layer.borderColor = [UIColor blackColor].CGColor;
     self.itineraireRequest.layer.borderWidth = 1.0f;
@@ -245,7 +245,7 @@
 {
     if ([[journey valueForKey:@"result"][@"result"] isEqual:[NSNull null]]) {
         [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
-        self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark.png"]];
+        self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
         self.journeyCalculatorIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
         self.journeyCalculatorIndicator.mode = MBProgressHUDModeCustomView;
         [self.journeyCalculatorIndicator hide:YES afterDelay:2];

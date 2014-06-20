@@ -17,7 +17,7 @@
 {
     NSString *fromString = [NSString stringWithFormat:@"%@,%@", [from valueForKey:@"longitude"], [from valueForKey:@"latitude"]];
     NSString *toString = [NSString stringWithFormat:@"%@,%@", [direction valueForKey:@"longitude"], [direction valueForKey:@"latitude"]];
-    NSString *url = [NSString stringWithFormat:@"%sfrom=%@&to=%@&datetime=20140518T0800", URL_SERVER, fromString, toString];
+    NSString *url = [NSString stringWithFormat:@"%sfrom=%@&to=%@&datetime=20140620T0800", URL_SERVER, fromString, toString];
     NSLog(@"URL POUR JOURNEY = %@", url);
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

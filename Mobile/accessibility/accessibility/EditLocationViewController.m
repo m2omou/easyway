@@ -71,28 +71,38 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
     // Descriptif application
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
-                                  initWithTitle:@"Cancel"
+                                  initWithTitle:@"Annuler"
                                   style:UIBarButtonItemStyleBordered
                                   target:self
                                   action:@selector(cancelEdit:)];
     self.navigationItem.rightBarButtonItem = cancelBtn;
-    self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 + 10, self.view.frame.size.width, 20)];
+    self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(5, 0 + 10, self.view.frame.size.width - 20, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
     self.searchPoiInstructions.text = @"Effectuer une recherche pour une nouvelle adresse";
-    self.searchPoiInstructions.font =  [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
-    self.searchPoiInstructions.textColor = [UIColor whiteColor];
+    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.searchPoiInstructions.textColor = [UIColor blackColor];
+    self.searchPoiInstructions.numberOfLines = 0;
+    CGSize size = [self.searchPoiInstructions.text sizeWithFont:self.searchPoiInstructions.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect frame = self.searchPoiInstructions.frame;
+    
+    // Resize only if needs to grow, don't shrink
+    if (frame.size.height < size.height) {
+        frame.size.height = size.height;
+    }
+    
+    self.searchPoiInstructions.frame = frame;
     [self.view addSubview:self.searchPoiInstructions];
     
     // Input Search
-    self.searchBar = [[UITextField alloc] initWithFrame:CGRectMake(10, 45, self.view.frame.size.width - 20, 35)];
+    self.searchBar = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width - 20, 35)];
     self.searchBar.placeholder = @"Où ?";
     self.searchBar.borderStyle = UITextBorderStyleLine;
     self.searchBar.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
-    self.searchBar.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+    self.searchBar.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
     [self.searchBar setReturnKeyType:UIReturnKeyDone];
     [self.searchBar addTarget:self
                        action:@selector(textFieldDidChange:)
@@ -100,19 +110,25 @@
     [self.view addSubview:self.searchBar];
     
     self.jaccedePOISearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.jaccedePOISearch.frame = CGRectMake(10, 90, 250, 15);
+    self.jaccedePOISearch.frame = CGRectMake(10, 100, 250, 15);
     self.jaccedePOISearch.tag = 1;
-    [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+    [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
+    self.jaccedePOISearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.jaccedePOISearch setTitle:@" Points d'intérêts jaccede" forState:UIControlStateNormal];
+    [self.jaccedePOISearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
     [self.jaccedePOISearch addTarget:self action:@selector(jaccedePOISearchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.jaccedePOISearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.jaccedePOISearch];
     
     self.addressSearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.addressSearch.frame = CGRectMake(10, 110, 250, 15);
+    self.addressSearch.frame = CGRectMake(10, 120, 250, 15);
     self.addressSearch.tag = 0;
-    [self.addressSearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+    [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
+    self.addressSearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.addressSearch setTitle:@" Adresses" forState:UIControlStateNormal];
+    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    [self.addressSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.addressSearch addTarget:self action:@selector(addressSarchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.addressSearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.addressSearch];
@@ -124,7 +140,7 @@
     [self.view addSubview:self.typeAheadTableView];
     searchResults = [[NSMutableArray alloc] init];
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [self.cancelButton setTitle:@"Annuler" forState:UIControlStateNormal];
     self.cancelButton.frame = CGRectMake(self.view.frame.size.width - 70 + 10, 5, 60, 35);
     [self.cancelButton addTarget:self action:@selector(cancelButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -145,9 +161,9 @@
         return;
     else {
         self.jaccedePOISearch.tag = 1;
-        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
         self.addressSearch.tag = 0;
-        [self.addressSearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+        [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     }
 }
 
@@ -157,9 +173,9 @@
         return;
     else {
         self.addressSearch.tag = 1;
-        [self.addressSearch setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateNormal];
+        [self.addressSearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
         self.jaccedePOISearch.tag = 0;
-        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+        [self.jaccedePOISearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     }
 }
 
@@ -290,7 +306,7 @@
             cell.iconType.image = cachedImage;
         }
         else {
-            cell.iconType.image = [UIImage imageNamed:@"loading.png"];
+            cell.iconType.image = [UIImage imageNamed:@"loading"];
             
             [self.imageDownloadingQueue addOperationWithBlock:^{
                 
@@ -335,7 +351,7 @@
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
             cell.textLabel.textColor = [UIColor blackColor];
-            cell.textLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+            cell.textLabel.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
             cell.textLabel.numberOfLines = 0;
         }
         
