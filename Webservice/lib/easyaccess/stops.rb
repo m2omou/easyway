@@ -17,10 +17,13 @@ module EasyAccess
       @stop.nil? ? true : @stop.accessibility
     end
 
+    def self.checkFirstAndLastStops(first, last, lineNumer)
+       return isStopAccessible?(first, lineNumer) && isStopAccessible?(last, lineNumer)
+    end
+
     def self.reformatStopName(name)
       return name.gsub(" - ","-")
     end
 
   end
-
 end

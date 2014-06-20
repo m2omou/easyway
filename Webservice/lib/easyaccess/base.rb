@@ -6,10 +6,11 @@ module EasyAccess
     def initialize(args = {})
       @oauth_token = args.fetch(:oauth_token, nil)
       @version = args.fetch(:version, nil)
+      @info = args.fetch(:info, nil)
     end
 
     def journeys()
-      EasyAccess::Journeys.new(self)
+      EasyAccess::Journeys.new(self, @info)
     end
 
     # make an http GET request to foursquare API and parse the json response

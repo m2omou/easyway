@@ -18,7 +18,7 @@ module EasyAccess
           # Get the first and last stops to check if the person can access and got off the bus, train...
           @firstStop = transport["stop_date_times"].first
           @lastStop = transport["stop_date_times"].last
-          if (EasyAccess::Stops::isStopAccessible?(@lastStop, @lineNumber) == false)
+          if (!EasyAccess::Stops::checkFirstAndLastStops(@firstStop, @lastStop, @lineNumber))
             return false
           end
         end

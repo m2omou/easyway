@@ -2,35 +2,27 @@ module EasyAccess
   require 'easyaccess/sections'
   require 'easyaccess/stops'
   require 'easyaccess/alternatives'
+  require 'easyaccess/utils'
 
   class Journeys
-    def initialize(api)
+    def initialize(api, info)
       @api = api
+      @info = info
     end
 
     # search venues by latitude & longitude
-    def itinerary(info)
+    def itinerary()
       # To avoid certain lines, modes ...
-      @arrays = arraysWithoutIndex(info[:forbidden_uris])
+      @arrays = EasyAccess::Utils::arraysWithoutIndex(@info[:forbidden_uris])
       # Make an http GET request to foursquare API and parse the json response
       @journeys = @api.get("journeys" + @arrays,
-                           {:from => info[:from], :to => info[:to],
-                            :datetime => info[:datetime], :type => info[:type]})
+                           {:from => @info[:from], :to => @info[:to],
+                            :datetime => @info[:datetime], :type => @info[:type]})
       # Check if any errors
       if (!@journeys["error"].nil?)
         return @journeys["error"], -1
       end
       return calculateItinerary(@journeys["journeys"]), 0
-    end
-
-    # Typhoeus insert [] with index when sending http array.
-    # CanalTP API, don't support arrays with index.
-    def arraysWithoutIndex(data)
-      @url = "?"
-      data.each do |item|
-        @url += "forbidden_uris[]=physical_mode:#{item}&"
-      end
-      return @url
     end
 
     # Fist check if one of the suggested Itineraries is accessible
@@ -57,9 +49,8 @@ module EasyAccess
         end
       end
 
-      # TO DO
-      itinerary[:arrival_date_time]
-      itinerary[:type]
+      # Calculate the arrival time
+      itinerary[:arrival_date_time] = @itinerary[:departure_date_time].advance(:seconds => itinerary[:duration])
     end
 
     # Calculate an accessible itinerary
@@ -70,8 +61,7 @@ module EasyAccess
 
       if (!@section.nil?)
         # Save the departure date
-        @itinerary[:departure_date_time] = @section["departure_date_time"]
-        @itinerary[:requested_date_time] = @section["requested_date_time"]
+        @itinerary[:departure_date_time] = @section["departure_date_time"].to_datetime
         # Loop through all the sections except the waiting ones
         @section["sections"].each do |section|
           if (section["type"] != "waiting")
@@ -80,12 +70,12 @@ module EasyAccess
               section["accessible"] = true
               @itinerary[:sections].push(section)
             else
-              section["accessible"] = false
               # If not accessible then find another way
-              EasyAccess::Alternatives::findAlternative(section)
+
+              @alternative = EasyAccess::Alternatives.new(@api, @info)
+              section, section["accessible"] = @alternative.findAlternative(section)
               # If no way found, still show that section by showing a warning.
-
-
+              @itinerary[:sections].push(section)
             end
           end
         end

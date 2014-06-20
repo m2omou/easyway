@@ -9,7 +9,7 @@ class JourneysController < ApplicationController
       if (!params.has_key?(:from) || !params.has_key?(:to) || !params.has_key?(:datetime))
         @data = jsonResponseFormat(1, "error", {:error => "Please provide the longitude, latidute and datetime"})
       else
-        @api = EasyAccess::Base.new()
+
 
         # get parameters
         @info = Hash.new()
@@ -24,7 +24,8 @@ class JourneysController < ApplicationController
         @info[:type] = ["comfort","best","rapid","less_fallback_walk", "fastest"]
 
         # Get the itinerary from CANALTP
-        @result, @error = @api.journeys.itinerary(@info)
+        @api = EasyAccess::Base.new(:info => @info)
+        @result, @error = @api.journeys.itinerary()
 
         # Check if an error is returned
         if (!@error)
