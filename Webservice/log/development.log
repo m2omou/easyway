@@ -4211,3 +4211,109 @@ Processing by WarningsController#index as JSON
   Parameters: {"radius"=>"0", "latitude"=>"48.83256", "longitude"=>"2.287685"}
   [1m[35mWarning Load (0.5ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.287685 AND longitude >= 2.287685) AND (latitude <= 48.83256 AND latitude >= 48.83256)
 Completed 200 OK in 134ms (Views: 76.2ms | ActiveRecord: 1.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started POST "/warnings.json" for 127.0.0.1 at 2014-06-19 22:03:19 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WarningsController#create as JSON
+  Parameters: {"warning"=>{"description"=>"test", "longitude"=>"3", "latitude"=>"2"}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (35.9ms)[0m  [1mINSERT INTO "warnings" ("created_at", "description", "latitude", "longitude", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 20 Jun 2014 05:03:20 UTC +00:00], ["description", "test"], ["latitude", 2.0], ["longitude", 3.0], ["updated_at", Fri, 20 Jun 2014 05:03:20 UTC +00:00]]
+  [1m[35m (4.3ms)[0m  commit transaction
+Completed 201 Created in 124ms (Views: 1.6ms | ActiveRecord: 41.7ms)
+
+
+Started GET "/warnings.json?radius=100000&latitude=33.7819490119121&longitude=-118.1552706045775ost:3000/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-19 22:59:34 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitude"=>"33.7819490119121", "longitude"=>"-118.1552706045775ost:3000/journeys.json?from=2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `has_key' for #<ActionController::Parameters:0x00000100ea34a8>):
+  app/controllers/warnings_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.6ms)
+
+
+Started GET "/warnings.json?radius=100000&latitude=33.7819490119121&longitude=-118.1552706045775ost:3000/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-19 23:01:04 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitude"=>"33.7819490119121", "longitude"=>"-118.1552706045775ost:3000/journeys.json?from=2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+  [1m[36mWarning Load (0.9ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= -18.155270604577495 AND longitude >= -218.15527060457748) AND (latitude <= 133.7819490119121 AND latitude >= -66.2180509880879)[0m
+Completed 200 OK in 13ms (Views: 4.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:01:35 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 12.297685 AND longitude >= 12.277685) AND (latitude <= 58.84256 AND latitude >= 58.82256)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=100000000&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:01:42 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000000", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.5ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 100012.287685 AND longitude >= -99987.712315) AND (latitude <= 100058.83256 AND latitude >= -99941.16744)[0m
+Completed 200 OK in 139ms (Views: 137.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/warnings.json?radius=100&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:01:48 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 12.387685 AND longitude >= 12.187685) AND (latitude <= 58.93256 AND latitude >= 58.73256)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=1000&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:01:52 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1000", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (1.8ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 13.287685 AND longitude >= 11.287685) AND (latitude <= 59.83256 AND latitude >= 57.83256)[0m
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/warnings.json?radius=10000&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:01:57 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10000", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 22.287685 AND longitude >= 2.2876849999999997) AND (latitude <= 68.83256 AND latitude >= 48.83256)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=100000&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:02:03 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.4ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 112.287685 AND longitude >= -87.712315) AND (latitude <= 158.83256 AND latitude >= -41.16744)[0m
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=100000&latitde=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:02:19 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitde"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 112.287685 AND longitude >= -87.712315) AND (latitude <= 100.0 AND latitude >= -100.0)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=100000&latitde=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:02:46 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitde"=>"58.83256", "longitude"=>"12.287685"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/warnings.json?radius=100000&latitde=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:02:47 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitde"=>"58.83256", "longitude"=>"12.287685"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/warnings.json?radius=100000&latitde=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:02:54 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitde"=>"58.83256", "longitude"=>"12.287685"}
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/warnings.json?radius=100000&latitde=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 23:03:43 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"100000", "latitde"=>"58.83256", "longitude"=>"12.287685"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)

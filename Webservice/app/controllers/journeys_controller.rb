@@ -7,7 +7,7 @@ class JourneysController < ApplicationController
   def index
     respond_to do |format|
       if (!params.has_key?(:from) || !params.has_key?(:to) || !params.has_key?(:datetime))
-        @data = jsonResponseFormat(1, "error", {:result => "Please provide the longitude, latidute and datetime"})
+        @data = jsonResponseFormat(1, "error", {:error => "Please provide the longitude, latidute and datetime"})
       else
         @api = EasyAccess::Base.new()
 
