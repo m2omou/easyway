@@ -1,6 +1,7 @@
 module EasyAccess
   require 'easyaccess/sections'
   require 'easyaccess/stops'
+  require 'easyaccess/alternatives'
 
   class Journeys
     def initialize(api)
@@ -30,11 +31,6 @@ module EasyAccess
         @url += "forbidden_uris[]=physical_mode:#{item}&"
       end
       return @url
-    end
-
-    # If the itinerary is not accessible, find another way
-    def findOtherItinerary()
-
     end
 
     # Fist check if one of the suggested Itineraries is accessible
@@ -76,17 +72,21 @@ module EasyAccess
         # Save the departure date
         @itinerary[:departure_date_time] = @section["departure_date_time"]
         @itinerary[:requested_date_time] = @section["requested_date_time"]
-        # Loop through all the sections
+        # Loop through all the sections except the waiting ones
         @section["sections"].each do |section|
           if (section["type"] != "waiting")
-            # Before adding this section, check the Accessibility of the stops
+            # Before adding this section, check the Accessibility where the person got off the bus, train...
+            if (EasyAccess::Sections::isSectionAccessible?(section) == true)
+              section["accessible"] = true
+              @itinerary[:sections].push(section)
+            else
+              section["accessible"] = false
+              # If not accessible then find another way
+              EasyAccess::Alternatives::findAlternative(section)
+              # If no way found, still show that section by showing a warning.
 
 
-            EasyAccess::Sections::isSectionAccessible?(section)
-
-
-            section["accessible"] = true
-            @itinerary[:sections].push(section)
+            end
           end
         end
         # Now calculate the duration of the itinerary
