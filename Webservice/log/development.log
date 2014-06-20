@@ -2621,3 +2621,1532 @@ Migrating to CreateLines (20140619041753)
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140619041753"]]
   [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.7ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/lines.json" for 127.0.0.1 at 2014-06-18 22:49:44 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LinesController#index as JSON
+  [1m[35mLine Load (2.5ms)[0m  SELECT "lines".* FROM "lines"
+Completed 200 OK in 162ms (Views: 156.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/stops.json" for 127.0.0.1 at 2014-06-18 22:50:00 -0700
+Processing by StopsController#index as JSON
+  [1m[36mStop Load (424.2ms)[0m  [1mSELECT "stops".* FROM "stops"[0m
+Completed 200 OK in 32938ms (Views: 32487.4ms | ActiveRecord: 424.7ms)
+
+
+Started GET "/lines.json" for 127.0.0.1 at 2014-06-18 22:53:16 -0700
+Processing by LinesController#index as JSON
+  [1m[35mLine Load (4.1ms)[0m  SELECT "lines".* FROM "lines"
+Completed 200 OK in 124ms (Views: 119.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/stops.json" for 127.0.0.1 at 2014-06-18 22:53:32 -0700
+Processing by StopsController#index as JSON
+  [1m[36mStop Load (320.0ms)[0m  [1mSELECT "stops".* FROM "stops"[0m
+Completed 200 OK in 27792ms (Views: 27471.0ms | ActiveRecord: 320.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20130616T0800" for 127.0.0.1 at 2014-06-18 23:02:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20130616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=404 return_code=ok total_time=0.492653
+Completed 200 OK in 498ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:02:08 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.873633
+Completed 200 OK in 1073ms (Views: 189.8ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:04:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.438678
+Completed 500 Internal Server Error in 1453ms
+
+NoMethodError (undefined method `type' for #<Hash:0x00000101b817d8>):
+  lib/easyaccess/journeys.rb:38:in `block in checkAccebility'
+  lib/easyaccess/journeys.rb:37:in `each'
+  lib/easyaccess/journeys.rb:37:in `checkAccebility'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:05:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.911281
+Completed 200 OK in 921ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:08:09 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.5695160000000001
+Completed 200 OK in 1757ms (Views: 179.2ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:09:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.2206
+Completed 200 OK in 1403ms (Views: 172.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:09:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.391875
+Completed 200 OK in 1577ms (Views: 176.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:10:37 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.906282
+Completed 500 Internal Server Error in 926ms
+
+NoMethodError (undefined method `find_by_code' for #<Class:0x00000100d065a0>):
+  lib/easyaccess/journeys.rb:32:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:38:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:45:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:44:in `each'
+  lib/easyaccess/journeys.rb:44:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:10:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.99067
+  [1m[35mLine Load (29.4ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."id" = ? LIMIT 1  [["id", 1]]
+Completed 404 Not Found in 1129ms
+
+ActiveRecord::RecordNotFound (Couldn't find Line with id=1):
+  lib/easyaccess/journeys.rb:32:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:38:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:45:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:44:in `each'
+  lib/easyaccess/journeys.rb:44:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287567247639376,48.83247104469909&to=2.291007,48.834331&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:14:28 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287567247639376,48.83247104469909", "to"=>"2.291007,48.834331", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.860626
+  [1m[35mLine Load (5.4ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 889ms (Views: 10.1ms | ActiveRecord: 6.2ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:15:23 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.998858
+Completed 200 OK in 1217ms (Views: 178.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:15:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.376914
+Completed 500 Internal Server Error in 1394ms
+
+NoMethodError (undefined method `find_by_code' for #<Class:0x00000100e278d0>):
+  lib/easyaccess/journeys.rb:34:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:49:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:48:in `each'
+  lib/easyaccess/journeys.rb:48:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (67.7ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:17:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.3291119999999998
+  [1m[35mLine Load (1.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."origin" = 'asd' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."origin" = 'asd' LIMIT 1[0m
+Completed 200 OK in 1539ms (Views: 187.2ms | ActiveRecord: 1.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:17:46 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.929896
+Completed 500 Internal Server Error in 1000ms
+
+NoMethodError (undefined method `find_by_origin_and_direction' for #<Class:0x00000102b0f0d8>):
+  lib/easyaccess/journeys.rb:34:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:49:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:48:in `each'
+  lib/easyaccess/journeys.rb:48:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.8ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:18:10 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.019329
+Completed 500 Internal Server Error in 1032ms
+
+NoMethodError (undefined method `find_by_origin_and_code_and_direction' for #<Class:0x00000101ad2440>):
+  lib/easyaccess/journeys.rb:34:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:49:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:48:in `each'
+  lib/easyaccess/journeys.rb:48:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:20:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.3312089999999999
+  [1m[35mLine Load (0.5ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."code" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1 ORDER BY "lines"."id" ASC LIMIT 1
+SQLite3::SQLException: no such column: lines.code: SELECT  "lines".* FROM "lines"  WHERE "lines"."code" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1  ORDER BY "lines"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 1350ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: lines.code: SELECT  "lines".* FROM "lines"  WHERE "lines"."code" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1  ORDER BY "lines"."id" ASC LIMIT 1):
+  lib/easyaccess/journeys.rb:33:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:50:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:49:in `each'
+  lib/easyaccess/journeys.rb:49:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:21:47 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.940187
+  [1m[35mLine Load (5.1ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."id" = ? LIMIT 1  [["id", 1102]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."id" = ? LIMIT 1[0m  [["id", 1102]]
+Completed 200 OK in 1156ms (Views: 168.1ms | ActiveRecord: 5.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:23:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.560841
+  [1m[35mLine Load (0.9ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '' AND "lines"."origin" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '' AND "lines"."origin" = '' LIMIT 1[0m
+Completed 200 OK in 1754ms (Views: 170.3ms | ActiveRecord: 1.3ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:23:31 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.975628
+Completed 500 Internal Server Error in 989ms
+
+NoMethodError (undefined method `find_by_name_and_origin_and_direction' for #<Class:0x00000101caec28>):
+  lib/easyaccess/journeys.rb:33:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:50:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:49:in `each'
+  lib/easyaccess/journeys.rb:49:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.7ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:24:51 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.43408
+Completed 500 Internal Server Error in 1447ms
+
+NoMethodError (undefined method `find_by_name_and_direction_and_origin' for #<Class:0x00000102999fc8>):
+  lib/easyaccess/journeys.rb:33:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:50:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:49:in `each'
+  lib/easyaccess/journeys.rb:49:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:25:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.987473
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1 ORDER BY "lines"."id" ASC LIMIT 1
+SQLite3::SQLException: no such column: lines.direction: SELECT  "lines".* FROM "lines"  WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1  ORDER BY "lines"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 1006ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: lines.direction: SELECT  "lines".* FROM "lines"  WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."direction" = 1  ORDER BY "lines"."id" ASC LIMIT 1):
+  lib/easyaccess/journeys.rb:33:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:42:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:50:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:49:in `each'
+  lib/easyaccess/journeys.rb:49:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:26:05 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.91373
+  [1m[35mLine Load (1.5ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 1165ms (Views: 224.9ms | ActiveRecord: 2.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:26:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.44192
+  [1m[35mLine Load (0.8ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+Completed 200 OK in 1638ms (Views: 175.9ms | ActiveRecord: 1.3ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:29:42 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.347202
+  [1m[35mLine Load (1.1ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+Completed 200 OK in 1585ms (Views: 216.4ms | ActiveRecord: 1.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:35:34 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.514718
+  [1m[35mLine Load (0.9ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+Completed 200 OK in 1812ms (Views: 172.6ms | ActiveRecord: 1.4ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:38:39 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.530595
+  [1m[35mLine Load (1.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = 1 AND "lines"."origin" = 1 AND "lines"."destination" = 1 LIMIT 1[0m
+Completed 200 OK in 2046ms (Views: 216.2ms | ActiveRecord: 1.9ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:45:27 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.768657
+  [1m[35mLine Load (1.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '39' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.6ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '35' AND "lines"."destination" = 'MAIRIE D''AUBERVILLIERS' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '39' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.6ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '94' AND "lines"."destination" = 'LOUISON BOBET' LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '42' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '54' AND "lines"."destination" = 'PORTE D''AUBERVILLIERS' LIMIT 1[0m
+Completed 200 OK in 2018ms (Views: 189.1ms | ActiveRecord: 3.4ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:46:30 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.061871
+  [1m[35mLine Load (1.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '39' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '35' AND "lines"."destination" = 'MAIRIE D''AUBERVILLIERS' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '39' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '94' AND "lines"."destination" = 'LOUISON BOBET' LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE "lines"."name" = '42' AND "lines"."destination" = 'GARE DU NORD' LIMIT 1
+  [1m[36mLine Load (0.6ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE "lines"."name" = '54' AND "lines"."destination" = 'PORTE D''AUBERVILLIERS' LIMIT 1[0m
+Completed 200 OK in 1332ms (Views: 203.4ms | ActiveRecord: 3.3ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:50:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.788881
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (code='39' AND destination LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+SQLite3::SQLException: no such column: code: SELECT  "lines".* FROM "lines"  WHERE (code='39' AND destination LIKE '%GARE DU NORD%')  ORDER BY "lines"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 1803ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: code: SELECT  "lines".* FROM "lines"  WHERE (code='39' AND destination LIKE '%GARE DU NORD%')  ORDER BY "lines"."id" ASC LIMIT 1):
+  lib/easyaccess/journeys.rb:33:in `getTransportLineCode'
+  lib/easyaccess/journeys.rb:44:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:53:in `block (2 levels) in calculateItinerary'
+  lib/easyaccess/journeys.rb:52:in `each'
+  lib/easyaccess/journeys.rb:52:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:51:in `each'
+  lib/easyaccess/journeys.rb:51:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (24.4ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:50:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.6576689999999998
+  [1m[35mLine Load (0.6ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (1.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.2ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 1975ms (Views: 206.0ms | ActiveRecord: 3.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-18 23:53:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.729476
+  [1m[35mLine Load (0.6ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (1.1ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 2020ms (Views: 181.0ms | ActiveRecord: 3.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:10:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.372799
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.6ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 1709ms (Views: 199.9ms | ActiveRecord: 2.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:12:19 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=4.023822
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (27.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (4.6ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = '' AND "stops"."stif" = '' AND "stops"."sens" = '' LIMIT 1[0m
+Completed 200 OK in 4707ms (Views: 174.3ms | ActiveRecord: 36.8ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:15:10 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.968123
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (138.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - CROIX-NIVERT' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (55.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DE VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (79.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONVENTION - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (66.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ABBE GROULT' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (84.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - FAVORITES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (37.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAMBRONNE - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (90.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VOLONTAIRES - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (51.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PASTEUR - LYCEE BUFFON' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (48.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - LECOURBE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (56.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DES ENFANTS MALADES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (45.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VANEAU - SAINT-ROMAIN' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (45.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BAC - SAINT-PLACIDE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (65.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (50.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MICHEL DEBRE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (54.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINT-GERMAIN-DES-PRES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (45.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'JACOB' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (64.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PONT DU CARROUSEL - QUAI VOLTAIRE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (57.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MUSEE DU LOUVRE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (54.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PALAIS ROYAL - COMEDIE FRANCAISE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (43.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINTE-ANNE - PETITS CHAMPS' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (53.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RICHELIEU - 4 SEPTEMBRE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (39.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BOURSE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (58.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'REAUMUR - MONTMARTRE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (45.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SENTIER' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (52.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'REAUMUR - SEBASTOPOL' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (42.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'STRASBOURG - SAINT-DENIS' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (50.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHATEAU D''EAU' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (60.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'GARE DE L''EST' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (42.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VALENCIENNES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (70.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VALENCIENNES' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (46.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'GARE DU NORD' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (44.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAIL - DEMARQUAY' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (57.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE DE LA CHAPELLE' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (42.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'DEPARTEMENT - MARX DORMOY' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (46.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ORDENER - MARX DORMOY' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (54.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE DE TORCY' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (66.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE HEBERT' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (64.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'TRISTAN TZARA' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (51.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'EVANGILE - AUBERVILLIERS' AND "stops"."stif" = '1001000650001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - CROIX-NIVERT' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DE VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONVENTION - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ABBE GROULT' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - FAVORITES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAMBRONNE - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VOLONTAIRES - VAUGIRARD' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PASTEUR - LYCEE BUFFON' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - LECOURBE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DES ENFANTS MALADES' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VANEAU - SAINT-ROMAIN' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BAC - SAINT-PLACIDE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000390001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (42.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (56.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VARENNE - RASPAIL' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (45.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RUE DU BAC - RENE CHAR' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (47.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SOLFERINO - BELLECHASSE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (70.6ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LILLE - UNIVERSITE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (65.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ASSEMBLEE NATIONALE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (62.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONCORDE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (54.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MADELEINE' AND "stops"."stif" = '1001000940001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (49.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MADELEINE' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (56.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAPUCINES - CAUMARTIN' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (41.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'OPERA' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (58.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHAUSSEE D''ANTIN' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (52.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINT-GEORGES - PROVENCE' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (45.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LE PELETIER' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (56.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CADET' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (43.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SQUARE MONTHOLON' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (55.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE FRANZ LISZT' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (82.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LA FAYETTE - MAGENTA' AND "stops"."stif" = '1001000420001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (45.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LA FAYETTE - DUNKERQUE' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (49.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHATEAU LANDON' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (46.6ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LOUIS BLANC' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (52.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'QUAI DE LA SEINE - STALINGRAD' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1[0m
+  [1m[35mStop Load (60.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MAROC - FLANDRE' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1
+  [1m[36mStop Load (51.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RIQUET' AND "stops"."stif" = '1001000540001' AND "stops"."sens" = '' LIMIT 1[0m
+Completed 200 OK in 6140ms (Views: 236.0ms | ActiveRecord: 3522.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:22:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+SyntaxError (/Users/sabour/Desktop/hack/hack4france/Webservice/lib/easyaccess/journeys.rb:48: syntax error, unexpected '(', expecting ';' or '\n'
+    def checkAccessibility(transport)
+                           ^
+/Users/sabour/Desktop/hack/hack4france/Webservice/lib/easyaccess/journeys.rb:80: syntax error, unexpected keyword_end, expecting $end):
+  app/controllers/journeys_controller.rb:5:in `<class:JourneysController>'
+  app/controllers/journeys_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:22:24 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.746016
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (29.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - CROIX-NIVERT' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+Completed 500 Internal Server Error in 1837ms
+
+NoMethodError (undefined method `accessibility' for nil:NilClass):
+  lib/easyaccess/journeys.rb:42:in `block in checkStopsAccessibility'
+  lib/easyaccess/journeys.rb:40:in `each'
+  lib/easyaccess/journeys.rb:40:in `checkStopsAccessibility'
+  lib/easyaccess/journeys.rb:51:in `checkAccessibility'
+  lib/easyaccess/journeys.rb:60:in `block (2 levels) in calculateItinerary'
+  lib/easyaccess/journeys.rb:59:in `each'
+  lib/easyaccess/journeys.rb:59:in `block in calculateItinerary'
+  lib/easyaccess/journeys.rb:58:in `each'
+  lib/easyaccess/journeys.rb:58:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:22:in `itinerary'
+  app/controllers/journeys_controller.rb:27:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.7ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:23:15 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.572034
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (49.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - CROIX-NIVERT' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (41.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DE VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (33.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONVENTION - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (50.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ABBE GROULT' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (56.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - FAVORITES' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (33.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAMBRONNE - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (34.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VOLONTAIRES - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (45.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PASTEUR - LYCEE BUFFON' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (32.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - LECOURBE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (35.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DES ENFANTS MALADES' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (40.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VANEAU - SAINT-ROMAIN' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (32.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BAC - SAINT-PLACIDE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (41.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (28.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MICHEL DEBRE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (34.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINT-GERMAIN-DES-PRES' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (33.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'JACOB' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (34.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PONT DU CARROUSEL - QUAI VOLTAIRE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (33.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MUSEE DU LOUVRE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (45.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PALAIS ROYAL - COMEDIE FRANCAISE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (33.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINTE-ANNE - PETITS CHAMPS' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (32.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RICHELIEU - 4 SEPTEMBRE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (43.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BOURSE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (31.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'REAUMUR - MONTMARTRE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (43.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SENTIER' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (29.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'REAUMUR - SEBASTOPOL' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (39.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'STRASBOURG - SAINT-DENIS' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (35.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHATEAU D''EAU' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mStop Load (46.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'GARE DE L''EST' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mStop Load (36.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VALENCIENNES' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (36.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VALENCIENNES' AND "stops"."stif" = '1001000650001' LIMIT 1[0m
+  [1m[35mStop Load (35.6ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'GARE DU NORD' AND "stops"."stif" = '1001000650001' LIMIT 1
+  [1m[36mStop Load (39.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAIL - DEMARQUAY' AND "stops"."stif" = '1001000650001' LIMIT 1[0m
+  [1m[35mStop Load (35.3ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE DE LA CHAPELLE' AND "stops"."stif" = '1001000650001' LIMIT 1
+  [1m[36mStop Load (35.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'DEPARTEMENT - MARX DORMOY' AND "stops"."stif" = '1001000650001' LIMIT 1[0m
+  [1m[35mStop Load (39.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ORDENER - MARX DORMOY' AND "stops"."stif" = '1001000650001' LIMIT 1
+  [1m[36mStop Load (30.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE DE TORCY' AND "stops"."stif" = '1001000650001' LIMIT 1[0m
+  [1m[35mStop Load (38.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE HEBERT' AND "stops"."stif" = '1001000650001' LIMIT 1
+  [1m[36mStop Load (34.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'TRISTAN TZARA' AND "stops"."stif" = '1001000650001' LIMIT 1[0m
+  [1m[35mStop Load (40.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'EVANGILE - AUBERVILLIERS' AND "stops"."stif" = '1001000650001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - CROIX-NIVERT' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DE VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONVENTION - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ABBE GROULT' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VAUGIRARD - FAVORITES' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAMBRONNE - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VOLONTAIRES - VAUGIRARD' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PASTEUR - LYCEE BUFFON' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - LECOURBE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'HOPITAL DES ENFANTS MALADES' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VANEAU - SAINT-ROMAIN' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'BAC - SAINT-PLACIDE' AND "stops"."stif" = '1001000390001' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000390001' LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (32.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SEVRES - BABYLONE' AND "stops"."stif" = '1001000940001' LIMIT 1
+  [1m[36mStop Load (36.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'VARENNE - RASPAIL' AND "stops"."stif" = '1001000940001' LIMIT 1[0m
+  [1m[35mStop Load (81.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RUE DU BAC - RENE CHAR' AND "stops"."stif" = '1001000940001' LIMIT 1
+  [1m[36mStop Load (60.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SOLFERINO - BELLECHASSE' AND "stops"."stif" = '1001000940001' LIMIT 1[0m
+  [1m[35mStop Load (41.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LILLE - UNIVERSITE' AND "stops"."stif" = '1001000940001' LIMIT 1
+  [1m[36mStop Load (32.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'ASSEMBLEE NATIONALE' AND "stops"."stif" = '1001000940001' LIMIT 1[0m
+  [1m[35mStop Load (33.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CONCORDE' AND "stops"."stif" = '1001000940001' LIMIT 1
+  [1m[36mStop Load (42.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MADELEINE' AND "stops"."stif" = '1001000940001' LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (31.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MADELEINE' AND "stops"."stif" = '1001000420001' LIMIT 1[0m
+  [1m[35mStop Load (44.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CAPUCINES - CAUMARTIN' AND "stops"."stif" = '1001000420001' LIMIT 1
+  [1m[36mStop Load (39.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'OPERA' AND "stops"."stif" = '1001000420001' LIMIT 1[0m
+  [1m[35mStop Load (45.9ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHAUSSEE D''ANTIN' AND "stops"."stif" = '1001000420001' LIMIT 1
+  [1m[36mStop Load (35.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SAINT-GEORGES - PROVENCE' AND "stops"."stif" = '1001000420001' LIMIT 1[0m
+  [1m[35mStop Load (32.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LE PELETIER' AND "stops"."stif" = '1001000420001' LIMIT 1
+  [1m[36mStop Load (39.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CADET' AND "stops"."stif" = '1001000420001' LIMIT 1[0m
+  [1m[35mStop Load (29.5ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'SQUARE MONTHOLON' AND "stops"."stif" = '1001000420001' LIMIT 1
+  [1m[36mStop Load (35.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'PLACE FRANZ LISZT' AND "stops"."stif" = '1001000420001' LIMIT 1[0m
+  [1m[35mStop Load (41.4ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LA FAYETTE - MAGENTA' AND "stops"."stif" = '1001000420001' LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (31.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LA FAYETTE - DUNKERQUE' AND "stops"."stif" = '1001000540001' LIMIT 1
+  [1m[36mStop Load (48.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'CHATEAU LANDON' AND "stops"."stif" = '1001000540001' LIMIT 1[0m
+  [1m[35mStop Load (37.8ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'LOUIS BLANC' AND "stops"."stif" = '1001000540001' LIMIT 1
+  [1m[36mStop Load (34.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'QUAI DE LA SEINE - STALINGRAD' AND "stops"."stif" = '1001000540001' LIMIT 1[0m
+  [1m[35mStop Load (44.7ms)[0m  SELECT "stops".* FROM "stops" WHERE "stops"."name" = 'MAROC - FLANDRE' AND "stops"."stif" = '1001000540001' LIMIT 1
+  [1m[36mStop Load (34.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE "stops"."name" = 'RIQUET' AND "stops"."stif" = '1001000540001' LIMIT 1[0m
+Completed 200 OK in 4411ms (Views: 194.9ms | ActiveRecord: 2444.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:25:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.6765349999999999
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (60.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD - CROIX-NIVERT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DE VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (65.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CONVENTION - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%ABBE GROULT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (52.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD - FAVORITES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (56.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CAMBRONNE - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (61.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VOLONTAIRES - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PASTEUR - LYCEE BUFFON%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (56.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES - LECOURBE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DES ENFANTS MALADES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (54.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VANEAU - SAINT-ROMAIN%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (62.1ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%BAC - SAINT-PLACIDE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (56.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES - BABYLONE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MICHEL DEBRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (59.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINT-GERMAIN-DES-PRES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%JACOB%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (51.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PONT DU CARROUSEL - QUAI VOLTAIRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MUSEE DU LOUVRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (56.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PALAIS ROYAL - COMEDIE FRANCAISE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (63.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINTE-ANNE - PETITS CHAMPS%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (66.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%RICHELIEU - 4 SEPTEMBRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%BOURSE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (65.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%REAUMUR - MONTMARTRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.7ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SENTIER%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (54.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%REAUMUR - SEBASTOPOL%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (58.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%STRASBOURG - SAINT-DENIS%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CHATEAU D''EAU%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DE L''EST%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VALENCIENNES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VALENCIENNES%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (65.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CAIL - DEMARQUAY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE DE LA CHAPELLE%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (50.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%DEPARTEMENT - MARX DORMOY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (56.1ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%ORDENER - MARX DORMOY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (54.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE DE TORCY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (60.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE HEBERT%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (57.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%TRISTAN TZARA%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%EVANGILE - AUBERVILLIERS%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD - CROIX-NIVERT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DE VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CONVENTION - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%ABBE GROULT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD - FAVORITES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CAMBRONNE - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VOLONTAIRES - VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PASTEUR - LYCEE BUFFON%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES - LECOURBE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DES ENFANTS MALADES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VANEAU - SAINT-ROMAIN%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%BAC - SAINT-PLACIDE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES - BABYLONE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (56.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES - BABYLONE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (61.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VARENNE - RASPAIL%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (54.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%RUE DU BAC - RENE CHAR%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (67.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SOLFERINO - BELLECHASSE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (88.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LILLE - UNIVERSITE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (4.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%ASSEMBLEE NATIONALE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CONCORDE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (7.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%MADELEINE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%MADELEINE%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (56.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CAPUCINES - CAUMARTIN%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%OPERA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CHAUSSEE D''ANTIN%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (58.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINT-GEORGES - PROVENCE%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LE PELETIER%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CADET%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SQUARE MONTHOLON%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE FRANZ LISZT%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE - MAGENTA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (60.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE - DUNKERQUE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CHATEAU LANDON%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LOUIS BLANC%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (54.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%QUAI DE LA SEINE - STALINGRAD%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MAROC - FLANDRE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%RIQUET%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+Completed 200 OK in 4289ms (Views: 189.1ms | ActiveRecord: 2194.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140616T0800" for 127.0.0.1 at 2014-06-19 00:31:56 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140616T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.654274
+  [1m[35mLine Load (1.2ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (65.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-CROIX-NIVERT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DE VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CONVENTION-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%ABBE GROULT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-FAVORITES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CAMBRONNE-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VOLONTAIRES-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PASTEUR-LYCEE BUFFON%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES-LECOURBE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DES ENFANTS MALADES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (56.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VANEAU-SAINT-ROMAIN%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (54.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%BAC-SAINT-PLACIDE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES-BABYLONE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MICHEL DEBRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (59.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINT-GERMAIN-DES-PRES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%JACOB%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PONT DU CARROUSEL-QUAI VOLTAIRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MUSEE DU LOUVRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PALAIS ROYAL-COMEDIE FRANCAISE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (76.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINTE-ANNE-PETITS CHAMPS%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%RICHELIEU-4 SEPTEMBRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%BOURSE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%REAUMUR-MONTMARTRE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SENTIER%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%REAUMUR-SEBASTOPOL%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%STRASBOURG-SAINT-DENIS%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CHATEAU D''EAU%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DE L''EST%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VALENCIENNES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='35' AND destination LIKE '%MAIRIE D''AUBERVILLIERS%' OR origin LIKE '%MAIRIE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VALENCIENNES%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CAIL-DEMARQUAY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE DE LA CHAPELLE%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%DEPARTEMENT-MARX DORMOY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%ORDENER-MARX DORMOY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (54.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE DE TORCY%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (58.7ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE HEBERT%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (52.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%TRISTAN TZARA%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (57.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%EVANGILE-AUBERVILLIERS%' AND stif LIKE '%1001000650001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-CROIX-NIVERT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DE VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CONVENTION-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%ABBE GROULT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-FAVORITES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CAMBRONNE-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VOLONTAIRES-VAUGIRARD%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PASTEUR-LYCEE BUFFON%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES-LECOURBE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%HOPITAL DES ENFANTS MALADES%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%VANEAU-SAINT-ROMAIN%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%BAC-SAINT-PLACIDE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES-BABYLONE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='94' AND destination LIKE '%LOUISON BOBET%' OR origin LIKE '%LOUISON BOBET%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (4.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SEVRES-BABYLONE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (4.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VARENNE-RASPAIL%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (4.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%RUE DU BAC-RENE CHAR%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.9ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SOLFERINO-BELLECHASSE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (3.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LILLE-UNIVERSITE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (3.2ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%ASSEMBLEE NATIONALE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (3.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CONCORDE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (3.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%MADELEINE%' AND stif LIKE '%1001000940001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%MADELEINE%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CAPUCINES-CAUMARTIN%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%OPERA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%CHAUSSEE D''ANTIN%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (58.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%SAINT-GEORGES-PROVENCE%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.9ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LE PELETIER%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CADET%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%SQUARE MONTHOLON%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%PLACE FRANZ LISZT%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-MAGENTA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (1.5ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CHATEAU LANDON%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LOUIS BLANC%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (2.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%QUAI DE LA SEINE-STALINGRAD%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%MAROC-FLANDRE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.3ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%RIQUET%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+Completed 200 OK in 2929ms (Views: 189.8ms | ActiveRecord: 745.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWarnings (20140619082110)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWarnings (20140619082110)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "warnings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" text, "picture" varchar(255), "longitude" float, "latitude" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (22.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140619082110"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started POST "/warnings" for 127.0.0.1 at 2014-06-19 01:28:29 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WarningsController#create as */*
+  Parameters: {"warning"=>{"description"=>"test", "longitude"=>"3", "latitude"=>"2"}}
+Completed 500 Internal Server Error in 9ms
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/controllers/warnings_controller.rb:21:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.6ms)
+
+
+Started POST "/warnings.json" for 127.0.0.1 at 2014-06-19 01:28:38 -0700
+Processing by WarningsController#create as JSON
+  Parameters: {"warning"=>{"description"=>"test", "longitude"=>"3", "latitude"=>"2"}}
+Completed 500 Internal Server Error in 1ms
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/controllers/warnings_controller.rb:21:in `create'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.9ms)
+
+
+Started POST "/warnings.json" for 127.0.0.1 at 2014-06-19 01:33:38 -0700
+Processing by WarningsController#create as JSON
+  Parameters: {"warning"=>{"description"=>"test", "longitude"=>"3", "latitude"=>"2"}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (41.5ms)[0m  [1mINSERT INTO "warnings" ("created_at", "description", "latitude", "longitude", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Thu, 19 Jun 2014 08:33:38 UTC +00:00], ["description", "test"], ["latitude", 2.0], ["longitude", 3.0], ["updated_at", Thu, 19 Jun 2014 08:33:38 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Completed 201 Created in 79ms (Views: 2.0ms | ActiveRecord: 43.7ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=2&longitude=3" for 127.0.0.1 at 2014-06-19 01:55:13 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"2", "longitude"=>"3"}
+Completed 500 Internal Server Error in 2ms
+
+NameError (undefined local variable or method `radius' for #<WarningsController:0x000001039f2460>):
+  app/controllers/warnings_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.1ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=2&longitude=3" for 127.0.0.1 at 2014-06-19 01:55:28 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"2", "longitude"=>"3"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `-' for "3":String):
+  app/controllers/warnings_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.6ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=2&longitude=3" for 127.0.0.1 at 2014-06-19 01:55:43 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"2", "longitude"=>"3"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `-' for "3":String):
+  app/controllers/warnings_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.5ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=2&longitude=3" for 127.0.0.1 at 2014-06-19 01:56:09 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"2", "longitude"=>"3"}
+  [1m[36mWarning Load (0.8ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < -47 AND longitude > 53) AND (latitude < -48 AND latitude > 52)[0m
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/warnings.json" for 127.0.0.1 at 2014-06-19 20:00:14 -0700
+Processing by WarningsController#create as JSON
+  Parameters: {"warning"=>{"description"=>"test", "longitude"=>"2.287685", "latitude"=>"48.83256"}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (39.4ms)[0m  [1mINSERT INTO "warnings" ("created_at", "description", "latitude", "longitude", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 20 Jun 2014 03:00:14 UTC +00:00], ["description", "test"], ["latitude", 48.83256], ["longitude", 2.287685], ["updated_at", Fri, 20 Jun 2014 03:00:14 UTC +00:00]]
+  [1m[35m (18.4ms)[0m  commit transaction
+Completed 201 Created in 103ms (Views: 1.9ms | ActiveRecord: 78.7ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:00:48 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < -48 AND longitude > 52) AND (latitude < -2 AND latitude > 98)[0m
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=50000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:01:11 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.4ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < -49998 AND longitude > 50002) AND (latitude < -49952 AND latitude > 50048)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=500000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:01:15 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.7ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < -499998 AND longitude > 500002) AND (latitude < -499952 AND latitude > 500048)[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/warnings.json?radius=500000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:01:32 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.6ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < -499998 AND longitude > 500002)
+Completed 200 OK in 48ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/warnings.json?radius=500000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:10 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (333.6ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 500002 AND longitude > -499998)[0m
+Completed 200 OK in 360ms (Views: 19.3ms | ActiveRecord: 334.0ms)
+
+
+Started GET "/warnings.json?radius=500000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:25 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.8ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 500002 AND longitude > -499998) AND (latitude < 500048 AND latitude > -499952)
+Completed 200 OK in 23ms (Views: 14.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:29 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (5.2ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 52 AND longitude > -48) AND (latitude < 98 AND latitude > -2)[0m
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:33 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 3 AND longitude > 1) AND (latitude < 49 AND latitude > 47)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=49.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:47 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"49.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (1.0ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 3 AND longitude > 1) AND (latitude < 50 AND latitude > 48)[0m
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=59.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:02:54 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"59.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.4ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 3 AND longitude > 1) AND (latitude < 60 AND latitude > 58)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:03:06 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 12 AND longitude > -8) AND (latitude < 58 AND latitude > 38)[0m
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:03:09 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 12 AND longitude > -8) AND (latitude < 68 AND latitude > 48)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:03:11 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.2ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 22 AND longitude > 2) AND (latitude < 68 AND latitude > 48)[0m
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=13.287685" for 127.0.0.1 at 2014-06-19 20:03:14 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"13.287685"}
+  [1m[35mWarning Load (0.4ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 23 AND longitude > 3) AND (latitude < 68 AND latitude > 48)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:03:19 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 22 AND longitude > 2) AND (latitude < 68 AND latitude > 48)[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=59.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:03:23 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"59.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 22 AND longitude > 2) AND (latitude < 69 AND latitude > 49)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=58.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:03:26 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"58.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.4ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 22 AND longitude > 2) AND (latitude < 68 AND latitude > 48)[0m
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=48.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:03:33 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"48.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.4ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 22 AND longitude > 2) AND (latitude < 58 AND latitude > 38)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=48.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:20:16 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"48.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.6ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 12 AND longitude > 12) AND (latitude < 48 AND latitude > 48)[0m
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/warnings.json?radius=0&latitude=48.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:20:21 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"0", "latitude"=>"48.83256", "longitude"=>"12.287685"}
+  [1m[35mWarning Load (0.2ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 12 AND longitude > 12) AND (latitude < 48 AND latitude > 48)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/warnings.json?radius=10&latitude=48.83256&longitude=12.287685" for 127.0.0.1 at 2014-06-19 20:20:32 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"10", "latitude"=>"48.83256", "longitude"=>"12.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 12 AND longitude > 12) AND (latitude < 48 AND latitude > 48)[0m
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=50&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:20:45 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"50", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 2 AND longitude > 2) AND (latitude < 48 AND latitude > 48)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/warnings.json?radius=5000&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:20:49 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"5000", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 7 AND longitude > -3) AND (latitude < 53 AND latitude > 43)[0m
+Completed 200 OK in 88ms (Views: 86.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:20:53 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude < 2 AND longitude > 2) AND (latitude < 48 AND latitude > 48)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:21:21 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.2ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude < 2 AND longitude > 2) AND (latitude < 48 AND latitude > 48)[0m
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:22:18 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.5ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2 AND longitude >= 2) AND (latitude <= 48 AND latitude >= 48)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:22:20 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2 AND longitude >= 2) AND (latitude <= 48 AND latitude >= 48)[0m
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:22:39 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.7ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2 AND longitude >= 2) AND (latitude <= 48 AND latitude >= 48)
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:23:16 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.7ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2 AND longitude >= 2.0) AND (latitude <= 48 AND latitude >= 48.0)[0m
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:23:41 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.6ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.5 AND longitude >= 1.5) AND (latitude <= 48.5 AND latitude >= 47.5)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:09 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.5ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.5 AND longitude >= 1.5) AND (latitude <= 48.5 AND latitude >= 47.5)
+Completed 200 OK in 51ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/warnings.json?radius=500&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:28 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"500", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.6ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.787685 AND longitude >= 1.7876850000000002) AND (latitude <= 49.33256 AND latitude >= 48.33256)[0m
+Completed 200 OK in 43ms (Views: 34.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/warnings.json?radius=5&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:34 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"5", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.292685 AND longitude >= 2.2826850000000003) AND (latitude <= 48.83756 AND latitude >= 48.82756)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:37 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.288685 AND longitude >= 2.2866850000000003) AND (latitude <= 48.83356 AND latitude >= 48.83156)[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=0&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:40 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"0", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.287685 AND longitude >= 2.287685) AND (latitude <= 48.83256 AND latitude >= 48.83256)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=-1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:45 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"-1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.3ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.2866850000000003 AND longitude >= 2.288685) AND (latitude <= 48.83156 AND latitude >= 48.83356)[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:24:53 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.3ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.288685 AND longitude >= 2.2866850000000003) AND (latitude <= 48.83356 AND latitude >= 48.83156)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:25:10 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `/' for "1":String):
+  app/controllers/warnings_controller.rb:6:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.3ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:25:30 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.6ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.288685 AND longitude >= 2.2866850000000003) AND (latitude <= 48.83356 AND latitude >= 48.83156)[0m
+Completed 200 OK in 40ms (Views: 16.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/warnings.json?radius=1&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:25:44 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"1", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.6ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.288685 AND longitude >= 2.2866850000000003) AND (latitude <= 48.83356 AND latitude >= 48.83156)
+Completed 200 OK in 56ms (Views: 11.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/warnings.json?radius=0&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:25:58 -0700
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"0", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[36mWarning Load (0.7ms)[0m  [1mSELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.287685 AND longitude >= 2.287685) AND (latitude <= 48.83256 AND latitude >= 48.83256)[0m
+Completed 200 OK in 81ms (Views: 64.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140518T0800" for 127.0.0.1 at 2014-06-19 20:38:44 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140518T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=404 return_code=ok total_time=0.462927
+Completed 200 OK in 492ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-19 20:38:56 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.119335
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (1.8ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='81' AND destination LIKE '%PORTE DE SAINT-OUEN%' OR origin LIKE '%PORTE DE SAINT-OUEN%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (5.8ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (1.9ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='48' AND destination LIKE '%PORTE DES LILAS%' OR origin LIKE '%PORTE DES LILAS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+Completed 200 OK in 2389ms (Views: 964.8ms | ActiveRecord: 11.4ms)

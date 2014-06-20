@@ -1,4 +1,5 @@
 Hack4france::Application.routes.draw do
+  resources :warnings, except: [:new, :edit]
   resources :lines, except: [:new, :edit]
   resources :stops, except: [:new, :edit]
   resources :journeys

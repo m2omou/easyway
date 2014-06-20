@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619041753) do
+ActiveRecord::Schema.define(version: 20140619082110) do
 
   create_table "lines", force: true do |t|
     t.string   "name"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20140619041753) do
     t.boolean  "accessibility"
     t.string   "stif"
     t.string   "sens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "warnings", force: true do |t|
+    t.text     "description"
+    t.string   "picture"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

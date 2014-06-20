@@ -19,10 +19,7 @@ module EasyAccess
       if (!@journeys["error"].nil?)
         return @journeys["error"], -1
       end
-
-
-
-      return @journeys["journeys"], 0
+      return calculateItinerary(@journeys["journeys"]), 0
     end
 
     # If the itinerary is not accessible, find another way
@@ -30,21 +27,44 @@ module EasyAccess
 
     end
 
-    # Get the unic STIF code
-    def getStifCode(code, direction)
-        return 1
+    # Get the unic STIF code of the line
+    def getTransportLineCode(code, destination)
+        @line = Line.where("name=? AND destination LIKE ? OR origin LIKE ?",
+                           code,"%#{destination}%", "%#{destination}%").first
+        return @line.nil? ? nil : @line.stif
     end
 
-    # Check if the itinerary is accessible
-    def checkAccebility(journeys)
-      journeys.each do |item|
-        if (item.type != "street_network" && !item.display_informations.nil?)
-          @stif = getStifCode(item.display_informations.code, item.display_informations.direction)
+    def reformatStopName(name)
+      return name.gsub(" - ","-")
+    end
 
+    # Check each stop is accessible
+    def checkStopsAccessibility(stops, lineNumer)
+      stops.each do |stop|
+        @name = reformatStopName(stop["stop_point"]["name"])
+        @stop = Stop.where("name LIKE ? AND stif LIKE ?", "%#{@name}%", "%#{lineNumer}%").first
+        stop.nil? ? true : @stop.accessibility
+      end
+    end
 
+    def checkAccessibility(transport)
+      @info = transport["display_informations"]
+      if (!@info.nil?)
+        @lineNumber = getTransportLineCode(@info["code"], @info["direction"])
+        if (!transport["stop_date_times"].nil?)
+          #checkStopsAccessibility(transport["stop_date_times"], @lineNumber)
         end
       end
-      return true
+    end
+
+    # Calculate an accessible itinerary
+    def calculateItinerary(journeys)
+      journeys.each do |journey|
+        journey["sections"].each do |section|
+          checkAccessibility(section)
+        end
+      end
+      return journeys
     end
 
     # Typhoeus insert [] with index when sending http array.
