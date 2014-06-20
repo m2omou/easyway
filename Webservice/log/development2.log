@@ -1086,6 +1086,8 @@ Started GET "/journeys.json?from=2.287685,48.83256&to=" for 127.0.0.1 at 2014-05
 Processing by JourneysController#index as JSON
   Parameters: {"from"=>"2.287685,48.83256", "to"=>""}
 Completed 200 OK in 43884ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+<<<<<<< HEAD:Webservice/log/development2.log
+=======
 DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
 
 
@@ -4150,6 +4152,7 @@ ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.119335
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
   [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
 Completed 200 OK in 2389ms (Views: 964.8ms | ActiveRecord: 11.4ms)
+<<<<<<< HEAD:Webservice/log/development.log
 DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
 
 
@@ -4183,3 +4186,6 @@ ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.4234710
   [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
   [1m[36mCACHE (41.8ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
 Completed 200 OK in 1979ms (Views: 395.0ms | ActiveRecord: 52.3ms)
+=======
+>>>>>>> 1a2787a426d89a007ca4d51c1c99f3a41ecc28f7:Webservice/log/development.log
+>>>>>>> 2f6f31900318de75db5e5c8b220c06e4aa7e0fbb:Webservice/log/development2.log
