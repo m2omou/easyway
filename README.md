@@ -1,2 +1,2 @@
-hack4-ws
-========
+Hackathon project
+=================
