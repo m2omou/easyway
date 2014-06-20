@@ -4150,3 +4150,36 @@ ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.119335
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
   [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
 Completed 200 OK in 2389ms (Views: 964.8ms | ActiveRecord: 11.4ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/warnings.json?radius=0&latitude=48.83256&longitude=2.287685" for 127.0.0.1 at 2014-06-19 20:53:01 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WarningsController#index as JSON
+  Parameters: {"radius"=>"0", "latitude"=>"48.83256", "longitude"=>"2.287685"}
+  [1m[35mWarning Load (0.7ms)[0m  SELECT "warnings".* FROM "warnings" WHERE (longitude <= 2.287685 AND longitude >= 2.287685) AND (latitude <= 48.83256 AND latitude >= 48.83256)
+Completed 200 OK in 184ms (Views: 138.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140518T0800" for 127.0.0.1 at 2014-06-19 20:53:07 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140518T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=404 return_code=ok total_time=0.472955
+Completed 200 OK in 491ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-19 20:53:14 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.4234710000000002
+  [1m[36mLine Load (0.4ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (3.6ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='81' AND destination LIKE '%PORTE DE SAINT-OUEN%' OR origin LIKE '%PORTE DE SAINT-OUEN%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mLine Load (5.2ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='48' AND destination LIKE '%PORTE DES LILAS%' OR origin LIKE '%PORTE DES LILAS%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mCACHE (41.8ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 1979ms (Views: 395.0ms | ActiveRecord: 52.3ms)

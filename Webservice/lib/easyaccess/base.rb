@@ -1,4 +1,6 @@
 module EasyAccess
+  require 'Typhoeus'
+
   class Base
 
     API_URL = "http://api.navitia.io/v1/"
