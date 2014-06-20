@@ -52,7 +52,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
     self.title = @"Itinéraire";
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Annuler"
@@ -66,12 +66,12 @@
     self.journeyTableView.tableHeaderView.backgroundColor = [UIColor whiteColor];
    
     UILabel *nombreDeCorrespondanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 190, 15)];
-    nombreDeCorrespondanceLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+    nombreDeCorrespondanceLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
     nombreDeCorrespondanceLabel.text = @"Nombre de correspondances";
     nombreDeCorrespondanceLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
     [self.journeyTableView.tableHeaderView addSubview:nombreDeCorrespondanceLabel];
     self.nombreDeCorrespondanceContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 200, 15)];
-    self.nombreDeCorrespondanceContentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+    self.nombreDeCorrespondanceContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
     NSString *nbTransfer = [NSString stringWithFormat:@"%@", [self.journey valueForKey:@"nb_transfers"]];
     
     self.nombreDeCorrespondanceContentLabel.text = ([nbTransfer isEqualToString:@"0"] ? @"Aucune" : nbTransfer);
@@ -80,12 +80,12 @@
     self.journeyTableView.tableHeaderView.layer.borderWidth = 1.0f;
     
     UILabel *durationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 120, 15)];
-    durationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+    durationLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
     durationLabel.text = @"Durée";
     durationLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
     [self.journeyTableView.tableHeaderView addSubview:durationLabel];
     self.durationContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, 120, 15)];
-    self.durationContentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+    self.durationContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
     NSString *durationString = [self.journey valueForKey:@"duration"];
     int duration = [durationString intValue] / 60;
     int hour = duration / 60;

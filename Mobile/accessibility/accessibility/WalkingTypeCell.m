@@ -27,15 +27,15 @@
         
         self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 50, 15)];
         self.timeActivityLabel.textAlignment = NSTextAlignmentCenter;
-        self.timeActivityLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.timeActivityLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
         [self addSubview:self.timeActivityLabel];
         
         self.allerJusquaLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 5, 100, 15)];
         self.allerJusquaLabel.text = @"Aller jusqu'à :";
-        self.allerJusquaLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+        self.allerJusquaLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
         [self addSubview:self.allerJusquaLabel];
         self.allerJusquaContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 20, 200, 15)];
-        self.allerJusquaContentLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.allerJusquaContentLabel.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
         self.allerJusquaContentLabel.numberOfLines = 0;
         [self addSubview:self.allerJusquaContentLabel];
         

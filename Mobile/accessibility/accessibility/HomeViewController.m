@@ -64,13 +64,13 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view.backgroundColor = [UIColor colorWithRed:125.0f/255.0f green:167.0f/255.0f blue:212.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
     // Descriptif application
     self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 + 10, self.view.frame.size.width, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
     self.searchPoiInstructions.text = @"Recherche de lieux et voir l'accessibilité";
-    self.searchPoiInstructions.font =  [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
-    self.searchPoiInstructions.textColor = [UIColor whiteColor];
+    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.searchPoiInstructions.textColor = [UIColor blackColor];
     [self.view addSubview:self.searchPoiInstructions];
     
     // Input Search
@@ -79,7 +79,7 @@
     self.searchBar.borderStyle = UITextBorderStyleLine;
     self.searchBar.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
-    self.searchBar.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+    self.searchBar.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
     [self.searchBar setReturnKeyType:UIReturnKeyDone];
     [self.searchBar addTarget:self
                   action:@selector(textFieldDidChange:)
@@ -90,7 +90,10 @@
     self.jaccedePOISearch.frame = CGRectMake(10, 90, 250, 15);
     self.jaccedePOISearch.tag = 1;
     [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
+    self.jaccedePOISearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.jaccedePOISearch setTitle:@" Points d'intérêts jaccede" forState:UIControlStateNormal];
+    [self.jaccedePOISearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
     [self.jaccedePOISearch addTarget:self action:@selector(jaccedePOISearchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.jaccedePOISearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.jaccedePOISearch];
@@ -99,8 +102,12 @@
     self.addressSearch.frame = CGRectMake(10, 110, 250, 15);
     self.addressSearch.tag = 0;
     [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
+    self.addressSearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.addressSearch setTitle:@" Adresses" forState:UIControlStateNormal];
+    [self.addressSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.addressSearch addTarget:self action:@selector(addressSarchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
+    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+
     self.addressSearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.addressSearch];
     
@@ -268,7 +275,7 @@
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
             cell.textLabel.textColor = [UIColor blackColor];
-            cell.textLabel.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+            cell.textLabel.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
             cell.textLabel.numberOfLines = 0;
         }
         

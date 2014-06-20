@@ -90,10 +90,10 @@
     warningBtn.image = [UIImage imageNamed:@"big_warning"];
     [footer addSubview:warningBtn];
     
-    UILabel *infoAddDifficulty = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, self.view.frame.size.width - 60, 50)];
+    UILabel *infoAddDifficulty = [[UILabel alloc] initWithFrame:CGRectMake(100, 5, 150, 50)];
     infoAddDifficulty.text =  @"Declarer une difficulté";
     infoAddDifficulty.textColor = [UIColor blackColor];
-    infoAddDifficulty.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(15.0)];
+    infoAddDifficulty.font =  [UIFont fontWithName:@"Helvetica" size:(15.0)];
     infoAddDifficulty.textAlignment = NSTextAlignmentCenter;
     infoAddDifficulty.numberOfLines = 0;
     [footer addSubview:infoAddDifficulty];

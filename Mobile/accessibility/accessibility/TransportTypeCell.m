@@ -35,40 +35,40 @@
         self.line = [[UILabel alloc] initWithFrame:CGRectMake(35, 40, 25, 25)];
         self.line.textColor = [UIColor whiteColor];
         self.line.textAlignment = NSTextAlignmentCenter;
-        self.line.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+        self.line.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
         [self addSubview:self.line];
         
         self.timeActivityLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, 50, 15)];
         self.timeActivityLabel.textAlignment = NSTextAlignmentCenter;
-        self.timeActivityLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.timeActivityLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
         [self addSubview:self.timeActivityLabel];
         
         self.fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 5, 90, 15)];
-        self.fromLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+        self.fromLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
         self.fromLabel.text = @"A partir de :";
         [self addSubview:self.fromLabel];
         
         self.fromLabelContent = [[UILabel alloc] initWithFrame:CGRectMake(70, 20, 230, 15)];
-        self.fromLabelContent.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.fromLabelContent.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
         self.fromLabelContent.text = @"A partir de :";
         [self addSubview:self.fromLabelContent];
         
         self.directionLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 70, 15)];
-        self.directionLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+        self.directionLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
         self.directionLabel.text = @"Direction :";
         [self addSubview:self.directionLabel];
         
         self.directionLabelContent = [[UILabel alloc] initWithFrame:CGRectMake(70, 55, 230, 15)];
-        self.directionLabelContent.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.directionLabelContent.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
         [self addSubview:self.directionLabelContent];
         
         self.descenteLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 75, 90, 15)];
-        self.descenteLabel.font =  [UIFont fontWithName:@"HelveticaNeue-Bold" size:(13.0)];
+        self.descenteLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
         self.descenteLabel.text = @"Descendre à :";
         [self addSubview:self.descenteLabel];
         
         self.descenteLabelContent = [[UILabel alloc] initWithFrame:CGRectMake(70, 90, 230, 15)];
-        self.descenteLabelContent.font =  [UIFont fontWithName:@"HelveticaNeue" size:(13.0)];
+        self.descenteLabelContent.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
         [self addSubview:self.descenteLabelContent];
     }
     return self;
