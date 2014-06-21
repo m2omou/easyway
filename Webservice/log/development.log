@@ -8244,3 +8244,30 @@ ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.928639
   [1m[35mStop Load (63.1ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%ROND-POINT DES CHAMPS-ELYSEES-MATIGNON%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
   [1m[36mStop Load (47.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CUSTINE-MONT-CENIS%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
 Completed 200 OK in 1328ms (Views: 80.4ms | ActiveRecord: 295.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-21 06:58:36 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.568717
+  [1m[35mLine Load (0.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (49.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-CROIX-NIVERT%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PALAIS ROYAL-COMEDIE FRANCAISE%' AND stif LIKE '%1001000390001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.9ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='81' AND destination LIKE '%PORTE DE SAINT-OUEN%' OR origin LIKE '%PORTE DE SAINT-OUEN%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.4ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%PALAIS ROYAL-MUSEE DU LOUVRE%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%OPERA-4 SEPTEMBRE%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (0.3ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='42' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.1ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%OPERA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.2ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-MAGENTA%' AND stif LIKE '%1001000420001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name=NULL AND destination LIKE '%%' OR origin LIKE '%%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.41374
+  [1m[35mLine Load (0.6ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='26' AND destination LIKE '%NATION - PLACE DES ANTILLES%' OR origin LIKE '%NATION - PLACE DES ANTILLES%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CARREFOUR DE CHATEAUDUN%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-SAINT QUENTIN-GARE DU NORD%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS%' OR origin LIKE '%PORTE D''AUBERVILLIERS%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (1.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%CRIMEE%' AND stif LIKE '%1001000540001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+Completed 200 OK in 2382ms (Views: 139.6ms | ActiveRecord: 63.8ms)
