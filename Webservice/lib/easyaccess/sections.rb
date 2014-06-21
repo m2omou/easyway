@@ -9,18 +9,28 @@ module EasyAccess
     end
 
     # Check if the section is accessible
-    def self.isSectionAccessible?(transport)
-      @info = transport["display_informations"]
+    def self.isSectionAccessible?(section)
+      @info = section["display_informations"]
       if (!@info.nil?)
         @lineNumber = getTransportLineCode(@info["code"], @info["direction"])
         # Everything except walking mode
-        if (!transport["stop_date_times"].nil?)
+        if (!section["stop_date_times"].nil?)
           # Get the first and last stops to check if the person can access and got off the bus, train...
-          @firstStop = transport["stop_date_times"].first
-          @lastStop = transport["stop_date_times"].last
+          @firstStop = section["stop_date_times"].first
+          @lastStop = section["stop_date_times"].last
           if (!EasyAccess::Stops::checkFirstAndLastStops(@firstStop, @lastStop, @lineNumber))
             return false
           end
+        end
+      end
+      return true
+    end
+
+    # Check if the section is accessible
+    def self.isAllSectionsAccessible?(transport)
+      transport["sections"].each do |section|
+        if (!isSectionAccessible?(section))
+          return false
         end
       end
       return true

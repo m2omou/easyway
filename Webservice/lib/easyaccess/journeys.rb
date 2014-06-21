@@ -25,16 +25,6 @@ module EasyAccess
       return calculateItinerary(@journeys["journeys"]), 0
     end
 
-    # Fist check if one of the suggested Itineraries is accessible
-    def itineraryAccessible?(journeys)
-      # a finir
-      journeys.each do |journey|
-        journey["sections"].each do |section|
-          #checkSectionAccessibility(section)
-        end
-      end
-    end
-
     def calculateItineraryDuration(itinerary)
       # Initialize
       itinerary[:duration] = 0
@@ -48,7 +38,6 @@ module EasyAccess
           itinerary[:nb_transfers] += 1
         end
       end
-
       # Calculate the arrival time
       itinerary[:arrival_date_time] = @itinerary[:departure_date_time].advance(:seconds => itinerary[:duration])
     end
@@ -58,26 +47,39 @@ module EasyAccess
       @itinerary = Hash.new()
       @itinerary[:sections] = Array.new()
       @section = journeys.first
+      @index = 0
 
       if (!@section.nil?)
         # Save the departure date
         @itinerary[:departure_date_time] = @section["departure_date_time"].to_datetime
         # Loop through all the sections except the waiting ones
-        @section["sections"].each do |section|
-          if (section["type"] != "waiting")
-            # Before adding this section, check the Accessibility where the person got off the bus, train...
-            if (EasyAccess::Sections::isSectionAccessible?(section) == true)
-              section["accessible"] = true
-              @itinerary[:sections].push(section)
-            else
-              # If not accessible then find another way
+        @section["sections"].each_with_index do |section, i|
 
-              @alternative = EasyAccess::Alternatives.new(@api, @info)
-              section, section["accessible"] = @alternative.findAlternative(section)
-              # If no way found, still show that section by showing a warning.
-              @itinerary[:sections].push(section)
+          if (i > @index)
+
+            if (section["type"] != "waiting")
+              # Before adding this section, check the Accessibility where the person got off the bus, train...
+              if (EasyAccess::Sections::isSectionAccessible?(section) == true)
+                section["accessible"] = true
+                @itinerary[:sections].push(section)
+              else
+                # If not accessible then find another way
+                @alternative = EasyAccess::Alternatives.new(@api, @info)
+                @result, @index = @alternative.findAlternative(section, @section["sections"], i + 1)
+                if (!@result.nil?)
+                  @result.each do |stc|
+                    stc["accessible"] = true
+                    @itinerary[:sections].push(stc)
+                  end
+                else
+                  # If no way found, still show that section by showing a warning.
+                  section["accessible"] = false
+                  @itinerary[:sections].push(section)
+                end
+              end
             end
           end
+
         end
         # Now calculate the duration of the itinerary
         calculateItineraryDuration(@itinerary)
