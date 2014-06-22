@@ -101,12 +101,16 @@
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                     action:@selector(addDifficultyBtn:)];
     [footer addGestureRecognizer:singleFingerTap];
+    
+    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 1)];
+    borderTop.backgroundColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1];
+    [footer addSubview:borderTop];
     UIImageView *warningBtn = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 40, 40)];
     warningBtn.image = [UIImage imageNamed:@"big_warning"];
     [footer addSubview:warningBtn];
     
     UILabel *infoAddDifficulty = [[UILabel alloc] initWithFrame:CGRectMake(100, 5, 150, 50)];
-    infoAddDifficulty.text =  @"Declarer une difficulté";
+    infoAddDifficulty.text =  @"Signalez un obstacle";
     infoAddDifficulty.textColor = [UIColor blackColor];
     infoAddDifficulty.font =  [UIFont fontWithName:@"Helvetica" size:(15.0)];
     infoAddDifficulty.textAlignment = NSTextAlignmentCenter;
@@ -166,32 +170,18 @@
 
 - (void)sendDifficultiesPin:(NSArray *)difficulties
 {
- /*   Difficulty *selectedDifficutly = nil;
-    for (int i = 0; i < [self.difficultiesArray count]; i++) {
-        Difficulty *difficulty = [self.difficultiesArray objectAtIndex:i];
-        if (difficulty.marker != self.mapView.selectedMarker) {
-            difficulty.marker.map = nil;
-            [self.difficultiesArray removeObject:difficulty];
-        }
-        else {
-            selectedDifficutly = difficulty;
-        }
-    }*/
-    
     for (NSDictionary *difficulty in difficulties) {
         
         NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(idDifficulty == %d)", [[difficulty valueForKey:@"id"] intValue]]];
         if ([results count] > 0) {
             continue;
         }
-
-       /* if (selectedDifficutly && selectedDifficutly.idDifficulty == [[difficulty valueForKey:@"id"] intValue]) {
-            continue;
-        }*/
         Difficulty *difficultyToAdd = [[Difficulty alloc] init];
         difficultyToAdd.description = [difficulty valueForKey:@"description"];
         difficultyToAdd.latitude = [[difficulty valueForKey:@"latitude"] doubleValue];
         difficultyToAdd.longitude = [[difficulty valueForKey:@"longitude"] doubleValue];
+        difficultyToAdd.thumbUrl = [NSString stringWithString:[difficulty valueForKey:@"picture"][@"thumb"][@"url"]];
+        difficultyToAdd.pictureUrl = [NSString stringWithString:[difficulty valueForKey:@"picture"][@"url"]];
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = CLLocationCoordinate2DMake([[difficulty valueForKey:@"latitude"] doubleValue], [[difficulty valueForKey:@"longitude"] doubleValue]);
@@ -199,39 +189,6 @@
         marker.map = self.mapView;
         difficultyToAdd.marker = marker;
         [self.difficultiesArray addObject:difficultyToAdd];
-        NSString *url = [NSString stringWithFormat:@"%@%@", @"http://54.183.73.49:3000", [difficulty valueForKey:@"picture"][@"url"]];
-        UIImage *cachedImage = [self.imageCache objectForKey:url];
-        if (cachedImage) {
-            difficultyToAdd.picture = cachedImage;
-        }
-        else {
-            difficultyToAdd.picture = [UIImage imageNamed:@"loading"];
-            [self.imageDownloadingQueue addOperationWithBlock:^{
-                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-                UIImage *image  = nil;
-                if (imageData)
-                    image = [UIImage imageWithData:imageData];
-                if (image)
-                {
-                    [self.imageCache setObject:image forKey:url];
-                    
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        if ([self.difficultiesArray count] > 0) {
-                            NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(marker == %@)", marker]];
-                            if ([results count] == 0) {
-                                return;
-                            }
-                            Difficulty *difficultyFromResults = [results objectAtIndex:0];
-                            difficultyFromResults.picture = image;
-                            if ([difficultyFromResults.marker isEqual:self.mapView.selectedMarker]) {
-                                [self.mapView setSelectedMarker:difficultyFromResults.marker];
-                            }
-                        }
-                    }];
-                }
-            }];
-
-        }
     }
 }
 
@@ -272,9 +229,35 @@
         Difficulty *difficulty = [results objectAtIndex:0];
         DifficultyWithPicView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"DifficultyWithPicView" owner:self options:nil] objectAtIndex:0];
         infoWindow.description.text = [NSString stringWithString:difficulty.description];
-        infoWindow.pictureView.image = difficulty.picture;
+        
         infoWindow.description.layer.borderColor = [UIColor blackColor].CGColor;
         infoWindow.description.layer.borderWidth = 1.0f;
+        
+        NSString *url = [NSString stringWithFormat:@"%@%@", @"http://54.183.73.49:3000", difficulty.thumbUrl];
+        UIImage *cachedImage = [self.imageCache objectForKey:url];
+        if (cachedImage) {
+            infoWindow.pictureView.image = cachedImage;
+        }
+        else {
+            infoWindow.pictureView.image = [UIImage imageNamed:@"loading"];
+            [self.imageDownloadingQueue addOperationWithBlock:^{
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+                UIImage *image  = nil;
+                if (imageData)
+                    image = [UIImage imageWithData:imageData];
+                if (image)
+                {
+                    [self.imageCache setObject:image forKey:url];
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        infoWindow.pictureView.image = image;
+                        if ([marker isEqual:self.mapView.selectedMarker]) {
+                            self.mapView.selectedMarker = marker;
+                        }
+                    }];
+                }
+            }];
+            
+        }
         return infoWindow;
     }
     return nil;
@@ -292,7 +275,7 @@
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    NSLog(@"COORDINATES = lat - %f  ; long - %f", coordinate.latitude, coordinate.longitude);
+//    NSLog(@"COORDINATES = lat - %f  ; long - %f", coordinate.latitude, coordinate.longitude);
 }
 
 @end

@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) UIImage *picture;
+@property (nonatomic, strong) NSString *thumbUrl;
+@property (nonatomic, strong) NSString *pictureUrl;
 @property (assign, nonatomic) CLLocationDegrees longitude;
 @property (assign, nonatomic) CLLocationDegrees latitude;
 @property (nonatomic, strong) GMSMarker *marker;

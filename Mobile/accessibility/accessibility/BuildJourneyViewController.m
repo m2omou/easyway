@@ -59,6 +59,7 @@
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,20 +156,32 @@
     [transportModeFrame addSubview:self.publicTransportBtnContainer];
     [self.view addSubview:transportModeFrame];
     
+
+    UIView *containerLabel = [[UIView alloc] initWithFrame:CGRectMake(5, 140, self.view.frame.size.width - 10, 40)];
+    containerLabel.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
+    containerLabel.layer.borderWidth = 1.0f;
+    containerLabel.backgroundColor = [UIColor whiteColor];
+    UILabel *dateDepart = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, containerLabel.frame.size.width - 5, 40)];
+    dateDepart.text = @"Date et heure de départ";
+    dateDepart.font = [UIFont fontWithName:@"Helvetica-Bold" size:(15.0)];
+    dateDepart.textColor = [UIColor colorWithRed:250.0f/255.0f green:130.0f/255.0f blue:77.0f/255.0f alpha:1];
+    [containerLabel addSubview:dateDepart];
+    [self.view addSubview:containerLabel];
+    
     self.datePicker = [[UIDatePicker alloc] init];
     self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     self.datePicker.hidden = NO;
     self.datePicker.date = [NSDate date];
     self.datePicker.backgroundColor = [UIColor whiteColor];
-    UIView *datePickerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 110, self.view.frame.size.width, 218)];
-    datePickerContainer.transform = CGAffineTransformMakeScale(0.96f, 0.70f);
+    UIView *datePickerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 147, self.view.frame.size.width, 218)];
+    datePickerContainer.transform = CGAffineTransformMakeScale(0.97f, 0.70f);
     [datePickerContainer addSubview:self.datePicker];
     datePickerContainer.layer.borderWidth = 1.0f;
     datePickerContainer.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     [self.view addSubview:datePickerContainer];
     
     self.itineraireRequest = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.itineraireRequest.frame = CGRectMake(70, 340, 200, 30);
+    self.itineraireRequest.frame = CGRectMake(70, 345, 200, 30);
     [self.itineraireRequest setTitle:@"Demander itinéraire" forState:UIControlStateNormal];
     // 135-206-250
     [self.itineraireRequest setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -241,23 +254,31 @@
 {
     if ([self.from objectForKey:@"latitude"] == nil) {
         [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
-        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];    
+        [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
+        
+        NSLog(@"ON A RECU DETAIL POUR LE FROM");
+
         if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
-            //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
-            //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
-            //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-            [self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"latitude"];
-            [self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"longitude"];
-        }
-        else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
-            [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
-        }
-        else {
+            NSLog(@"APRES RECEPTION DETAIL POUR LE FROM LE DEST EST == GEO DONC ON SET");
+            CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
+            [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
+            [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
             accessibilityAPICaller.dateTime = self.datePicker.date;
             [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
+            //[self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"latitude"];
+            //[self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"longitude"];
         }
+        else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
+            NSLog(@"APRES RECEPTION DETAIL POUR LE FROM LE DEST EST == NIL DONC ON REQUEST DETAIL POUR DEST");
+            [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
+        }
+       /* else {
+            accessibilityAPICaller.dateTime = self.datePicker.date;
+            [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
+        }*/
     }
     else {
+        NSLog(@"ON A DEJA LE FROM DONC A RECU DETAIL POUR LE DEST");
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
         accessibilityAPICaller.dateTime = self.datePicker.date;
@@ -277,7 +298,6 @@
         [self.journeyCalculatorIndicator hide:YES afterDelay:2];
     }
     else {
-        NSLog(@"Resultat = %@", [journey valueForKey:@"result" ]);
         if ([[journey valueForKey:@"result"] isEqual:[NSNull null]]) {
             [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
             self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
@@ -309,34 +329,40 @@
 
 - (IBAction)itineraireRequestBtnTapped:(id)sender
 {
+    NSLog(@"BOUTON ITINERAIRE REQUEST TAPPED");
     self.journeyCalculatorIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.journeyCalculatorIndicator.labelText = @"Calcul de l'itinéraire";
     if ([[self.from valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
-        //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
-        //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
-        //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-        [self.from setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
-        [self.from setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
+        CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
+        [self.from setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
+        [self.from setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
+        NSLog(@"FROM == GEOCALISATION DONC ON CONTINUE");
+       // [self.from setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
+       // [self.from setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
     else if ([self.from valueForKeyPath:@"latitude"] == nil) {
+        NSLog(@"FROM == PAS GEOCALISATION DONC ON FAIT UNE REQUETE GOOGLE");
         [googleAPICaller searchGooglePlaceDetail:[self.from valueForKey:@"reference"]];
         return;
     }
     
     if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
-        //CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
-        //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
-        //[self.pointA setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lng"];
-        [self.destination setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
-        [self.destination setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
+        CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
+        [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
+        [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
+        NSLog(@"DESTINATION == GEOCALISATION DONC ON CONTINUE");
+        //[self.destination setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
+        //[self.destination setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
     else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
+        NSLog(@"DESTINATION == PAS GEOCALISATION DONC ON FAIT UNE REQUETE GOOGLE");
         [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
         return;
     }
     
     if ([self.destination valueForKeyPath:@"latitude"] != nil
         && [self.destination valueForKeyPath:@"latitude"] != nil) {
+        NSLog(@"ON A LE FROM ET DEST, ON FAIT LA REQUETE");
         accessibilityAPICaller.dateTime = self.datePicker.date;
         [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
     }
