@@ -60,7 +60,7 @@
     self.pictureView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"no-photo"]];
     self.pictureView.frame = CGRectMake(50, 20, self.view.frame.size.width - 100, 150);
     self.pictureView.contentMode = UIViewContentModeScaleAspectFit;
-    self.pictureView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.pictureView.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     self.pictureView.layer.borderWidth = 1.0f;
     self.pictureView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.pictureView];
@@ -70,28 +70,36 @@
     [addPicture setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     addPicture.frame = CGRectMake(30, 180, 260, 40);
     addPicture.layer.borderWidth = 1.0f;
+    addPicture.layer.cornerRadius = 8.0f;
+    addPicture.layer.masksToBounds=YES;
+    
     [addPicture setImage:[UIImage imageNamed:@"take_picture"] forState:UIControlStateNormal];
     addPicture.titleEdgeInsets = UIEdgeInsetsMake(0.0,15.0,0.0,0.0);
-   // [addPicture setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
-    addPicture.layer.borderColor = [UIColor blackColor].CGColor;
+    addPicture.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     [addPicture addTarget:self action:@selector(addPictureButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     addPicture.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:addPicture];
     
     self.descriptionField = [[UITextView alloc] initWithFrame:CGRectMake(10, 230, self.view.frame.size.width - 20, 100)];
     self.descriptionField.layer.borderWidth = 1.0f;
-    self.descriptionField.layer.borderColor = [UIColor blackColor].CGColor;
+    self.descriptionField.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     self.descriptionField.delegate = self;
     [self.view addSubview:self.descriptionField];
     
     UIButton *envoyerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [envoyerBtn setTitle:@"Envoyer" forState:UIControlStateNormal];
-    [envoyerBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [envoyerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     envoyerBtn.frame = CGRectMake(30, 340, 260, 30);
     envoyerBtn.layer.borderWidth = 1.0f;
-    envoyerBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    envoyerBtn.layer.cornerRadius = 8.0f;
+    envoyerBtn.layer.masksToBounds= NO;
+    envoyerBtn.layer.shadowColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1].CGColor;
+    envoyerBtn.layer.shadowOpacity = 0.3;
+    envoyerBtn.layer.shadowRadius = 1;
+    envoyerBtn.layer.shadowOffset = CGSizeMake(1.5f, 1.5f);
+    envoyerBtn.backgroundColor = [UIColor colorWithRed:62.0f/255.0f green:164.0f/255.0f blue:243.0f/255.0f alpha:1];
+    envoyerBtn.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     [envoyerBtn addTarget:self action:@selector(sendBtnPushed:) forControlEvents:UIControlEventTouchUpInside];
-    envoyerBtn.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:envoyerBtn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];

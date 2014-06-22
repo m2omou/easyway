@@ -96,7 +96,7 @@
     polyline.strokeWidth = 5.f;
     polyline.map = self.mapView;
     
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.size.height, self.view.frame.size.width, 50)];
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.size.height, self.view.frame.size.width, 70)];
     footer.backgroundColor = [UIColor whiteColor];
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                     action:@selector(addDifficultyBtn:)];
