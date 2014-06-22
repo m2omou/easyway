@@ -10,14 +10,20 @@
 #import "WalkingPathViewController.h"
 #import "AddDifficultyViewController.h"
 #import "DifficultyWithPicView.h"
+#import "DifficultiesAPI.h"
+#import "MBProgressHUD.h"
 
-@interface WalkingPathViewController () <GMSMapViewDelegate, UIAlertViewDelegate, AddDifficultyDelegate, CLLocationManagerDelegate>
+@interface WalkingPathViewController () <GMSMapViewDelegate, UIAlertViewDelegate, AddDifficultyDelegate, CLLocationManagerDelegate, DifficultiesAPIDelegate>
 {
     CLLocationManager *locationManager;
+    DifficultiesAPI *difficultiesAPI;
 }
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *difficultiesArray;
+@property (nonatomic, strong) MBProgressHUD *sendingProcessIndicator;
+@property (nonatomic, strong) NSOperationQueue *imageDownloadingQueue;
+@property (nonatomic, strong) NSCache *imageCache;
 
 @end
 
@@ -42,6 +48,14 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
     [locationManager stopUpdatingLocation];
+    difficultiesAPI = [[DifficultiesAPI alloc] init];
+    difficultiesAPI.delegate = self;
+    CGPoint point = self.mapView.center;
+    CLLocationCoordinate2D center = [self.mapView.projection coordinateForPoint:point];
+    self.imageCache = [[NSCache alloc] init];
+    self.imageDownloadingQueue = [[NSOperationQueue alloc] init];
+    self.imageDownloadingQueue.maxConcurrentOperationCount = 4;
+    [difficultiesAPI getDifficultiesPin:10 for:center];
 }
 
 - (void)loadView
@@ -55,7 +69,7 @@
                                                                  zoom:16];
     
     self.mapView = [GMSMapView mapWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 125) camera:camera];
-    
+    self.mapView.myLocationEnabled = YES;
     self.mapView.delegate = self;
     GMSMutablePath *path = [GMSMutablePath path];
     
@@ -83,6 +97,7 @@
     polyline.map = self.mapView;
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.size.height, self.view.frame.size.width, 50)];
+    footer.backgroundColor = [UIColor whiteColor];
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                     action:@selector(addDifficultyBtn:)];
     [footer addGestureRecognizer:singleFingerTap];
@@ -107,7 +122,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Buttons handlers
 
 - (IBAction)addDifficultyBtn:(id)sender
@@ -115,7 +129,7 @@
     [locationManager startUpdatingLocation];
     CLLocationCoordinate2D coordinates = [[locationManager location] coordinate];
     [locationManager stopUpdatingLocation];
-    [self.mapView animateToLocation:CLLocationCoordinate2DMake(coordinates.latitude + 0.002, coordinates.longitude)];
+    [self.mapView animateToLocation:CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude)];
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = coordinates;
     marker.icon = [UIImage imageNamed:@"small_warning"];
@@ -137,10 +151,88 @@
 - (void)difficultySaved:(Difficulty *)difficulty
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-
+    self.sendingProcessIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.sendingProcessIndicator setLabelText:@"Difficulty Saved"];
+    self.sendingProcessIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark"]];
+    self.sendingProcessIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
+    self.sendingProcessIndicator.mode = MBProgressHUDModeCustomView;
+    [self.sendingProcessIndicator hide:YES afterDelay:2];
     difficulty.marker = self.mapView.selectedMarker;
     [self.difficultiesArray addObject:difficulty];
     [self.mapView setSelectedMarker:self.mapView.selectedMarker];
+}
+
+#pragma mark - Difficulties API
+
+- (void)sendDifficultiesPin:(NSArray *)difficulties
+{
+ /*   Difficulty *selectedDifficutly = nil;
+    for (int i = 0; i < [self.difficultiesArray count]; i++) {
+        Difficulty *difficulty = [self.difficultiesArray objectAtIndex:i];
+        if (difficulty.marker != self.mapView.selectedMarker) {
+            difficulty.marker.map = nil;
+            [self.difficultiesArray removeObject:difficulty];
+        }
+        else {
+            selectedDifficutly = difficulty;
+        }
+    }*/
+    
+    for (NSDictionary *difficulty in difficulties) {
+        
+        NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(idDifficulty == %d)", [[difficulty valueForKey:@"id"] intValue]]];
+        if ([results count] > 0) {
+            continue;
+        }
+
+       /* if (selectedDifficutly && selectedDifficutly.idDifficulty == [[difficulty valueForKey:@"id"] intValue]) {
+            continue;
+        }*/
+        Difficulty *difficultyToAdd = [[Difficulty alloc] init];
+        difficultyToAdd.description = [difficulty valueForKey:@"description"];
+        difficultyToAdd.latitude = [[difficulty valueForKey:@"latitude"] doubleValue];
+        difficultyToAdd.longitude = [[difficulty valueForKey:@"longitude"] doubleValue];
+        
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([[difficulty valueForKey:@"latitude"] doubleValue], [[difficulty valueForKey:@"longitude"] doubleValue]);
+        marker.icon = [UIImage imageNamed:@"small_warning"];
+        marker.map = self.mapView;
+        difficultyToAdd.marker = marker;
+        [self.difficultiesArray addObject:difficultyToAdd];
+        NSString *url = [NSString stringWithFormat:@"%@%@", @"http://54.183.73.49:3000", [difficulty valueForKey:@"picture"][@"url"]];
+        UIImage *cachedImage = [self.imageCache objectForKey:url];
+        if (cachedImage) {
+            difficultyToAdd.picture = cachedImage;
+        }
+        else {
+            difficultyToAdd.picture = [UIImage imageNamed:@"loading"];
+            [self.imageDownloadingQueue addOperationWithBlock:^{
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+                UIImage *image  = nil;
+                if (imageData)
+                    image = [UIImage imageWithData:imageData];
+                if (image)
+                {
+                    [self.imageCache setObject:image forKey:url];
+                    
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        if ([self.difficultiesArray count] > 0) {
+                            NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(marker == %@)", marker]];
+                            if ([results count] == 0) {
+                                return;
+                            }
+                            Difficulty *difficultyFromResults = [results objectAtIndex:0];
+                            difficultyFromResults.picture = image;
+                            if ([difficultyFromResults.marker isEqual:self.mapView.selectedMarker]) {
+                                [self.mapView setSelectedMarker:difficultyFromResults.marker];
+                            }
+                        }
+                    }];
+                }
+            }];
+
+        }
+    }
 }
 
 #pragma mark - UIAlertView Delegate
@@ -163,11 +255,17 @@
 
 #pragma mark - Google Map View Delegates methods
 
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position
+{
+    CGPoint point = mapView.center;
+    CLLocationCoordinate2D center = [mapView.projection coordinateForPoint:point];
+    [difficultiesAPI getDifficultiesPin:10 for:center];
+}
+
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
 {
     if ([self.difficultiesArray count] > 0) {
         NSArray *results = [self.difficultiesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(marker == %@)", marker]];
-        NSLog(@"DIFFICULTIES ARRAY = %d\nRESULTS ARRAY = %d", [self.difficultiesArray count], [results count]);
         if ([results count] == 0) {
             return nil;
         }
@@ -182,15 +280,19 @@
     return nil;
 }
 
-
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
     if (self.mapView.selectedMarker == marker) {
         return NO;
     }
-    [self.mapView animateToLocation:CLLocationCoordinate2DMake(marker.position.latitude + 0.002, marker.position.longitude)];
+    [self.mapView animateToLocation:CLLocationCoordinate2DMake(marker.position.latitude, marker.position.longitude)];
     self.mapView.selectedMarker = marker;
     return YES;
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    NSLog(@"COORDINATES = lat - %f  ; long - %f", coordinate.latitude, coordinate.longitude);
 }
 
 @end

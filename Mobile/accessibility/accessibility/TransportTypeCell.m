@@ -29,6 +29,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.type = [[UIImageView alloc] initWithFrame:CGRectMake(5, 40, 25, 25)];
         [self addSubview:self.type];
         

@@ -17,15 +17,15 @@
         self.iconType = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 45, 45)];
         [self addSubview:self.iconType];
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 3, 200, 15)];
-        self.nameLabel.textColor = [UIColor blackColor];
+        self.nameLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
         self.nameLabel.font =  [UIFont fontWithName:@"Helvetica-Bold" size:(14.0)];
         [self addSubview:self.nameLabel];
         self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 22, 200, 10)];
-        self.typeLabel.textColor = [UIColor blackColor];
+        self.typeLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
         self.typeLabel.font =  [UIFont fontWithName:@"Helvetica-Light" size:(12.0)];
         [self addSubview:self.typeLabel];
         self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 35, 250, 25)];
-        self.addressLabel.textColor = [UIColor blackColor];
+        self.addressLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
         self.addressLabel.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
         self.addressLabel.numberOfLines = 0;
         [self addSubview:self.addressLabel];

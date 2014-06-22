@@ -15,14 +15,15 @@
 -(void)errorForJourneyRequest:(NSError *)error;
 
 @optional
--(void)resultSearchForJourney:(NSMutableDictionary *)journey;
+-(void)resultSearchForJourney:(NSMutableArray *)journey;
 
 @end
 
 @interface AccessibilityItineraireAPI : NSObject
 
 @property (nonatomic, weak) id  delegate;
+@property (nonatomic, strong) NSDate *dateTime;
 
-- (void)searchJourney:(NSMutableDictionary *)from to:(NSMutableDictionary *)direction;
+- (void)searchJourney:(NSMutableDictionary *)from to:(NSMutableDictionary *)direction by:(NSString *)mode;
 
 @end
