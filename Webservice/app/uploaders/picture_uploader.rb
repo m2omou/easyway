@@ -7,6 +7,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
+  include CarrierWave::RMagick
   storage :file
   # storage :fog
 
