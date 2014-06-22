@@ -1,0 +1,4 @@
+echo "stop the server"
+kill -9 $(lsof -i:3000 -t)
+echo "start the server"
+rails s -d

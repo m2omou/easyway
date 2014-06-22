@@ -1,20 +1,23 @@
 module EasyAccess
-  class Journeys
+  require 'easyaccess/sections'
+  require 'easyaccess/stops'
+  require 'easyaccess/alternatives'
+  require 'easyaccess/utils'
 
-    def initialize(api)
+  class Journeys
+    def initialize(api, info)
       @api = api
+      @info = info
     end
 
     # search venues by latitude & longitude
-    def itinerary(info)
+    def itinerary()
       # To avoid certain lines, modes ...
-      @arrays = arraysWithoutIndex(info[:forbidden_uris])
-
+      @arrays = EasyAccess::Utils::arraysWithoutIndex(@info[:forbidden_uris])
       # Make an http GET request to foursquare API and parse the json response
-      @journeys = @api.get("journeys" + @arrays, {:from => info[:from],
-                                                      :to => info[:to],
-                                                      :datetime => info[:datetime],
-                                                      :type => info[:type]})
+      @journeys = @api.get("journeys" + @arrays,
+                           {:from => @info[:from], :to => @info[:to],
+                            :datetime => @info[:datetime], :type => @info[:type]})
       # Check if any errors
       if (!@journeys["error"].nil?)
         return @journeys["error"], -1
@@ -22,59 +25,66 @@ module EasyAccess
       return calculateItinerary(@journeys["journeys"]), 0
     end
 
-    # If the itinerary is not accessible, find another way
-    def findOtherItinerary()
+    def calculateItineraryDuration(itinerary)
+      # Initialize
+      itinerary[:duration] = 0
+      itinerary[:nb_transfers] = 0
 
-    end
-
-    # Get the unic STIF code of the line
-    def getTransportLineCode(code, destination)
-        @line = Line.where("name=? AND destination LIKE ? OR origin LIKE ?",
-                           code,"%#{destination}%", "%#{destination}%").first
-        return @line.nil? ? nil : @line.stif
-    end
-
-    def reformatStopName(name)
-      return name.gsub(" - ","-")
-    end
-
-    # Check each stop is accessible
-    def checkStopsAccessibility(stops, lineNumer)
-      stops.each do |stop|
-        @name = reformatStopName(stop["stop_point"]["name"])
-        @stop = Stop.where("name LIKE ? AND stif LIKE ?", "%#{@name}%", "%#{lineNumer}%").first
-        stop.nil? ? true : @stop.accessibility
-      end
-    end
-
-    def checkAccessibility(transport)
-      @info = transport["display_informations"]
-      if (!@info.nil?)
-        @lineNumber = getTransportLineCode(@info["code"], @info["direction"])
-        if (!transport["stop_date_times"].nil?)
-          #checkStopsAccessibility(transport["stop_date_times"], @lineNumber)
+      itinerary[:sections].each do |section|
+        # Add the duration of each section
+        itinerary[:duration] += section["duration"].to_i
+        # Count the number of transfer
+        if (section["type"] == "transfer")
+          itinerary[:nb_transfers] += 1
         end
       end
+      # Calculate the arrival time
+      itinerary[:arrival_date_time] = @itinerary[:departure_date_time].advance(:seconds => itinerary[:duration])
     end
 
     # Calculate an accessible itinerary
     def calculateItinerary(journeys)
-      journeys.each do |journey|
-        journey["sections"].each do |section|
-          checkAccessibility(section)
-        end
-      end
-      return journeys
-    end
+      @itinerary = Hash.new()
+      @itinerary[:sections] = Array.new()
+      @section = journeys.first
+      @index = 0
 
-    # Typhoeus insert [] with index when sending http array.
-    # CanalTP API, don't support arrays with index.
-    def arraysWithoutIndex(data)
-      @url = "?"
-      data.each do |item|
-        @url += "forbidden_uris[]=physical_mode:#{item}&"
+      if (!@section.nil?)
+        # Save the departure date
+        @itinerary[:departure_date_time] = @section["departure_date_time"].to_datetime
+        # Loop through all the sections except the waiting ones
+        @section["sections"].each_with_index do |section, i|
+
+          if (i > @index)
+
+            if (section["type"] != "waiting")
+              # Before adding this section, check the Accessibility where the person got off the bus, train...
+              if (EasyAccess::Sections::isSectionAccessible?(section) == true)
+                section["accessible"] = true
+                @itinerary[:sections].push(section)
+              else
+                # If not accessible then find another way
+                @alternative = EasyAccess::Alternatives.new(@api, @info)
+                @result, @index = @alternative.findAlternative(section, @section["sections"], i + 1)
+                if (!@result.nil?)
+                  @result.each do |stc|
+                    stc["accessible"] = true
+                    @itinerary[:sections].push(stc)
+                  end
+                else
+                  # If no way found, still show that section by showing a warning.
+                  section["accessible"] = false
+                  @itinerary[:sections].push(section)
+                end
+              end
+            end
+          end
+
+        end
+        # Now calculate the duration of the itinerary
+        calculateItineraryDuration(@itinerary)
       end
-      return @url
+      return @itinerary
     end
 
   end
