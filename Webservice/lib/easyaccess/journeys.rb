@@ -12,6 +12,8 @@ module EasyAccess
 
     # search venues by latitude & longitude
     def itinerary()
+      # Mode only walking or bus, Tramway...
+      itineraryMode()
       # To avoid certain lines, modes ...
       @arrays = EasyAccess::Utils::arraysWithoutIndex(@info[:forbidden_uris])
       # Make an http GET request to foursquare API and parse the json response
@@ -23,6 +25,12 @@ module EasyAccess
         return @journeys["error"], -1
       end
       return calculateItinerary(@journeys["journeys"]), 0
+    end
+
+    def itineraryMode()
+      if (@info[:mode] == "walking")
+        @info[:forbidden_uris] << "Tramway" << "Bus"
+      end
     end
 
     def calculateItineraryDuration(itinerary)
@@ -55,11 +63,10 @@ module EasyAccess
         # Loop through all the sections except the waiting ones
         @section["sections"].each_with_index do |section, i|
 
-          if (i > @index)
-
-            if (section["type"] != "waiting")
+          if (i >= @index && section["type"] != "waiting")
               # Before adding this section, check the Accessibility where the person got off the bus, train...
-              if (EasyAccess::Sections::isSectionAccessible?(section) == true)
+              if (EasyAccess::Sections::isSectionAccessible?(section) == true ||
+                  section["display_informations"]["physical_mode"] == "Tramway")
                 section["accessible"] = true
                 @itinerary[:sections].push(section)
               else
@@ -77,7 +84,6 @@ module EasyAccess
                   @itinerary[:sections].push(section)
                 end
               end
-            end
           end
 
         end

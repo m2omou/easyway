@@ -15,8 +15,9 @@ class JourneysController < ApplicationController
         @info[:to] = params[:to].to_s.gsub(",", ";")
         @info[:datetime] = params[:datetime]
 
+        # Optional
+        @info[:mode] = params[:mode]
 
-        # Tramway + Bus
         # To avoid certain lines, modes...
         @info[:forbidden_uris] = ["RapidTransit","Metro","CheckOut","CheckIn","default_physical_mode"]
 
