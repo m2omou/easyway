@@ -44,33 +44,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Home";
     self.typeAheadTableView.delegate = self;
     self.typeAheadTableView.dataSource = self;
-    self.imageDownloadingQueue = [[NSOperationQueue alloc] init];
-    self.imageDownloadingQueue.maxConcurrentOperationCount = 4; // many servers limit how many concurrent requests they'll accept from a device, so make sure to set this accordingly
-    
-    self.imageCache = [[NSCache alloc] init];
     googlePlacesAPICaller = [[GooglePlacesAPI alloc] init];
     googlePlacesAPICaller.delegate = self;
     self.jaccedeApi = [[JaccedeCallApi alloc] init];
     self.jaccedeApi.delegate = self;
+    self.imageCache = [[NSCache alloc] init];
     self.imageDownloadingQueue = [[NSOperationQueue alloc] init];
     self.imageDownloadingQueue.maxConcurrentOperationCount = 4;
-    
-    self.imageCache = [[NSCache alloc] init];
 }
 
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"easyway-logo"]];
+    image.contentMode = UIViewContentModeScaleAspectFit;
+    image.frame = CGRectMake(0, 0, 100, 30);
+    self.navigationItem.titleView = image;
     // Descriptif application
     self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(0, 0 + 10, self.view.frame.size.width, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
     self.searchPoiInstructions.text = @"Recherche de lieux et voir l'accessibilité";
-    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(14.0)];
-    self.searchPoiInstructions.textColor = [UIColor blackColor];
+    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(17.0)];
+    self.searchPoiInstructions.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
     [self.view addSubview:self.searchPoiInstructions];
     
     // Input Search
@@ -79,34 +77,43 @@
     self.searchBar.borderStyle = UITextBorderStyleLine;
     self.searchBar.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
+    self.searchBar.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
+    self.searchBar.layer.cornerRadius = 8.0f;
+    self.searchBar.layer.masksToBounds=YES;
+    self.searchBar.layer.borderWidth= 1.0f;
+    self.searchBar.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
     self.searchBar.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
     [self.searchBar setReturnKeyType:UIReturnKeyDone];
     [self.searchBar addTarget:self
                   action:@selector(textFieldDidChange:)
         forControlEvents:UIControlEventEditingChanged];
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 35)];
+    self.searchBar.leftView = paddingView;
+    self.searchBar.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:self.searchBar];
     
     self.jaccedePOISearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.jaccedePOISearch.frame = CGRectMake(10, 90, 250, 15);
+    self.jaccedePOISearch.frame = CGRectMake(10, 90, 250, 20);
     self.jaccedePOISearch.tag = 1;
     [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
     self.jaccedePOISearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.jaccedePOISearch setTitle:@" Points d'intérêts jaccede" forState:UIControlStateNormal];
-    [self.jaccedePOISearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    [self.jaccedePOISearch setTitleColor:[UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1] forState:UIControlStateNormal];
+    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(17.0)];
     [self.jaccedePOISearch addTarget:self action:@selector(jaccedePOISearchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.jaccedePOISearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.jaccedePOISearch];
     
     self.addressSearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.addressSearch.frame = CGRectMake(10, 110, 250, 15);
+    self.addressSearch.frame = CGRectMake(10, 120, 250, 20);
     self.addressSearch.tag = 0;
     [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     self.addressSearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.addressSearch setTitle:@" Adresses" forState:UIControlStateNormal];
-    [self.addressSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.addressSearch setTitleColor:[UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1] forState:UIControlStateNormal];
     [self.addressSearch addTarget:self action:@selector(addressSarchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
-    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(17.0)];
 
     self.addressSearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.addressSearch];
@@ -245,6 +252,7 @@
                     [self.imageCache setObject:image forKey:urlIconType];
                     
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        cell.iconType.image = nil;
                         POICell *updateCell = (POICell *)[tableView cellForRowAtIndexPath:indexPath];
                         if (updateCell)
                             updateCell.iconType.image = image;
@@ -274,7 +282,7 @@
             cell = [[UITableViewCell alloc]
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:CellIdentifier];
-            cell.textLabel.textColor = [UIColor blackColor];
+            cell.textLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
             cell.textLabel.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
             cell.textLabel.numberOfLines = 0;
         }

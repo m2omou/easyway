@@ -21,6 +21,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.accessibilityImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
         self.accessibilityImage.image = [UIImage imageNamed:@"walking"];
         [self addSubview:self.accessibilityImage];

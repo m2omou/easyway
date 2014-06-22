@@ -21,6 +21,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.transferImage = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 25, 25)];
         self.transferImage.image = [UIImage imageNamed:@"connection"];
         [self addSubview:self.transferImage];

@@ -79,10 +79,10 @@
                                   target:self
                                   action:@selector(cancelEdit:)];
     self.navigationItem.rightBarButtonItem = cancelBtn;
-    self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(5, 0 + 10, self.view.frame.size.width - 20, 20)];
+    self.searchPoiInstructions = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.view.frame.size.width - 20, 20)];
     self.searchPoiInstructions.textAlignment = NSTextAlignmentCenter;
     self.searchPoiInstructions.text = @"Effectuer une recherche pour une nouvelle adresse";
-    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.searchPoiInstructions.font =  [UIFont fontWithName:@"Helvetica" size:(17.0)];
     self.searchPoiInstructions.textColor = [UIColor blackColor];
     self.searchPoiInstructions.numberOfLines = 0;
     CGSize size = [self.searchPoiInstructions.text sizeWithFont:self.searchPoiInstructions.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
@@ -97,7 +97,7 @@
     [self.view addSubview:self.searchPoiInstructions];
     
     // Input Search
-    self.searchBar = [[UITextField alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width - 20, 35)];
+    self.searchBar = [[UITextField alloc] initWithFrame:CGRectMake(10, 70, self.view.frame.size.width - 20, 35)];
     self.searchBar.placeholder = @"Où ?";
     self.searchBar.borderStyle = UITextBorderStyleLine;
     self.searchBar.backgroundColor = [UIColor whiteColor];
@@ -110,24 +110,24 @@
     [self.view addSubview:self.searchBar];
     
     self.jaccedePOISearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.jaccedePOISearch.frame = CGRectMake(10, 100, 250, 15);
+    self.jaccedePOISearch.frame = CGRectMake(10, 110, 250, 20);
     self.jaccedePOISearch.tag = 1;
     [self.jaccedePOISearch setImage:[UIImage imageNamed:@"checked"] forState:UIControlStateNormal];
     self.jaccedePOISearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.jaccedePOISearch setTitle:@" Points d'intérêts jaccede" forState:UIControlStateNormal];
     [self.jaccedePOISearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.jaccedePOISearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(17.0)];
     [self.jaccedePOISearch addTarget:self action:@selector(jaccedePOISearchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.jaccedePOISearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.view addSubview:self.jaccedePOISearch];
     
     self.addressSearch = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.addressSearch.frame = CGRectMake(10, 120, 250, 15);
+    self.addressSearch.frame = CGRectMake(10, 140, 250, 20);
     self.addressSearch.tag = 0;
     [self.addressSearch setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
     self.addressSearch.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.addressSearch setTitle:@" Adresses" forState:UIControlStateNormal];
-    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+    self.addressSearch.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:(17.0)];
     [self.addressSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.addressSearch addTarget:self action:@selector(addressSarchButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
     self.addressSearch.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

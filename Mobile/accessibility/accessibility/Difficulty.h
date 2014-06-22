@@ -16,5 +16,6 @@
 @property (assign, nonatomic) CLLocationDegrees longitude;
 @property (assign, nonatomic) CLLocationDegrees latitude;
 @property (nonatomic, strong) GMSMarker *marker;
+@property (assign) int idDifficulty;
 
 @end

@@ -13,11 +13,20 @@
 
 @implementation AccessibilityItineraireAPI
 
-- (void)searchJourney:(NSMutableDictionary *)from to:(NSMutableDictionary *)direction
+- (void)searchJourney:(NSMutableDictionary *)from to:(NSMutableDictionary *)direction by:(NSString *)mode
 {
     NSString *fromString = [NSString stringWithFormat:@"%@,%@", [from valueForKey:@"longitude"], [from valueForKey:@"latitude"]];
     NSString *toString = [NSString stringWithFormat:@"%@,%@", [direction valueForKey:@"longitude"], [direction valueForKey:@"latitude"]];
-    NSString *url = [NSString stringWithFormat:@"%sfrom=%@&to=%@&datetime=20140620T0800", URL_SERVER, fromString, toString];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                         | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:self.dateTime];
+    [components setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
+
+    NSString *date = [NSString stringWithFormat:@"%d%02d%02dT%02d%02d", [components year], [components month], [components day], [components hour], [components minute]];
+    
+    NSLog(@"Date TIME = %@", date);
+    NSString *url = [NSString stringWithFormat:@"%sfrom=%@&to=%@&datetime=%@", URL_SERVER, fromString, toString, date];
     NSLog(@"URL POUR JOURNEY = %@", url);
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

@@ -8,11 +8,17 @@
 
 #import "AddDifficultyViewController.h"
 #import "UIImage+fixOrientation.h"
+#import "DifficultiesAPI.h"
+#import "MBProgressHUD.h"
 
-@interface AddDifficultyViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITextViewDelegate>
+@interface AddDifficultyViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITextViewDelegate, DifficultiesAPIDelegate>
+{
+    DifficultiesAPI *difficultyAPI;
+}
 
 @property (nonatomic, strong) UIImageView *pictureView;
 @property (nonatomic, strong) UITextView *descriptionField;
+@property (nonatomic, strong) MBProgressHUD *sendingProcessIndicator;
 
 @end
 
@@ -30,7 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    difficultyAPI = [[DifficultiesAPI alloc] init];
+    difficultyAPI.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -43,6 +50,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1];
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc]
                                   initWithTitle:@"Annuler"
                                   style:UIBarButtonItemStyleBordered
@@ -54,18 +62,23 @@
     self.pictureView.contentMode = UIViewContentModeScaleAspectFit;
     self.pictureView.layer.borderColor = [UIColor blackColor].CGColor;
     self.pictureView.layer.borderWidth = 1.0f;
+    self.pictureView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.pictureView];
     
     UIButton *addPicture = [UIButton buttonWithType:UIButtonTypeCustom];
     [addPicture setTitle:@"Rajouter une photo" forState:UIControlStateNormal];
     [addPicture setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    addPicture.frame = CGRectMake(30, 180, 260, 30);
+    addPicture.frame = CGRectMake(30, 180, 260, 40);
     addPicture.layer.borderWidth = 1.0f;
+    [addPicture setImage:[UIImage imageNamed:@"take_picture"] forState:UIControlStateNormal];
+    addPicture.titleEdgeInsets = UIEdgeInsetsMake(0.0,15.0,0.0,0.0);
+   // [addPicture setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
     addPicture.layer.borderColor = [UIColor blackColor].CGColor;
     [addPicture addTarget:self action:@selector(addPictureButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    addPicture.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:addPicture];
     
-    self.descriptionField = [[UITextView alloc] initWithFrame:CGRectMake(10, 220, self.view.frame.size.width - 20, 100)];
+    self.descriptionField = [[UITextView alloc] initWithFrame:CGRectMake(10, 230, self.view.frame.size.width - 20, 100)];
     self.descriptionField.layer.borderWidth = 1.0f;
     self.descriptionField.layer.borderColor = [UIColor blackColor].CGColor;
     self.descriptionField.delegate = self;
@@ -74,10 +87,11 @@
     UIButton *envoyerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [envoyerBtn setTitle:@"Envoyer" forState:UIControlStateNormal];
     [envoyerBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    envoyerBtn.frame = CGRectMake(30, 325, 260, 30);
+    envoyerBtn.frame = CGRectMake(30, 340, 260, 30);
     envoyerBtn.layer.borderWidth = 1.0f;
     envoyerBtn.layer.borderColor = [UIColor blackColor].CGColor;
     [envoyerBtn addTarget:self action:@selector(sendBtnPushed:) forControlEvents:UIControlEventTouchUpInside];
+    envoyerBtn.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:envoyerBtn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -184,7 +198,25 @@
     difficulty.picture = [UIImage imageWithCGImage:self.pictureView.image.CGImage];
     difficulty.longitude = self.position.longitude;
     difficulty.latitude = self.position.latitude;
-    [self.delegate difficultySaved:difficulty];
+    self.sendingProcessIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.sendingProcessIndicator.labelText = @"Envoie de la difficulté";
+    [difficultyAPI sendDifficulty:difficulty];
+}
+
+#pragma mark - Add difficulties API Delegate
+
+- (void)sendDifficultyAnswer:(Difficulty *)difficulty answer:(BOOL)isSucceed
+{
+    if (isSucceed == true) {
+        [self.delegate difficultySaved:difficulty];
+    }
+    else {
+        [self.sendingProcessIndicator setLabelText:@"Couldn't send the difficulty"];
+        self.sendingProcessIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
+        self.sendingProcessIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
+        self.sendingProcessIndicator.mode = MBProgressHUDModeCustomView;
+        [self.sendingProcessIndicator hide:YES afterDelay:2];
+    }
 }
 
 @end
