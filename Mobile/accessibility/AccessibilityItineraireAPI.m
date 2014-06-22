@@ -24,9 +24,10 @@
     [components setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
 
     NSString *date = [NSString stringWithFormat:@"%d%02d%02dT%02d%02d", [components year], [components month], [components day], [components hour], [components minute]];
-    
-    NSLog(@"Date TIME = %@", date);
     NSString *url = [NSString stringWithFormat:@"%sfrom=%@&to=%@&datetime=%@", URL_SERVER, fromString, toString, date];
+    if ([mode isEqualToString:@"walking"]) {
+        url = [url stringByAppendingString:@"&mode=walking"];
+    }
     NSLog(@"URL POUR JOURNEY = %@", url);
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

@@ -65,33 +65,40 @@
     self.journeyTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(5, 10, self.view.frame.size.width - 10, 115)];
     self.journeyTableView.tableHeaderView.backgroundColor = [UIColor whiteColor];
    
-    UILabel *nombreDeCorrespondanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 190, 15)];
-    nombreDeCorrespondanceLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
+    UILabel *nombreDeCorrespondanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 230, 15)];
+    nombreDeCorrespondanceLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(15.0)];
     nombreDeCorrespondanceLabel.text = @"Nombre de correspondances";
-    nombreDeCorrespondanceLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
+    
+    nombreDeCorrespondanceLabel.textColor = [UIColor colorWithRed:62.0f/255.0f green:164.0f/255.0f blue:243.0f/255.0f alpha:1];
     [self.journeyTableView.tableHeaderView addSubview:nombreDeCorrespondanceLabel];
     self.nombreDeCorrespondanceContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 200, 15)];
-    self.nombreDeCorrespondanceContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
+    self.nombreDeCorrespondanceContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(15.0)];
+    self.nombreDeCorrespondanceContentLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
     NSString *nbTransfer = [NSString stringWithFormat:@"%@", [self.journey valueForKey:@"nb_transfers"]];
     
     self.nombreDeCorrespondanceContentLabel.text = ([nbTransfer isEqualToString:@"0"] ? @"Aucune" : nbTransfer);
     [self.journeyTableView.tableHeaderView addSubview:self.nombreDeCorrespondanceContentLabel];
-    self.journeyTableView.tableHeaderView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.journeyTableView.tableHeaderView.layer.borderWidth = 1.0f;
     
     UILabel *durationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 120, 15)];
-    durationLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(13.0)];
+    durationLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(15.0)];
     durationLabel.text = @"Durée";
-    durationLabel.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
+    durationLabel.textColor = [UIColor colorWithRed:62.0f/255.0f green:164.0f/255.0f blue:243.0f/255.0f alpha:1];
     [self.journeyTableView.tableHeaderView addSubview:durationLabel];
     self.durationContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, 120, 15)];
-    self.durationContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(13.0)];
+    self.durationContentLabel.font = [UIFont fontWithName:@"Helvetica" size:(15.0)];
+    self.durationContentLabel.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
     NSString *durationString = [self.journey valueForKey:@"duration"];
     int duration = [durationString intValue] / 60;
     int hour = duration / 60;
     int min = duration % 60;
     self.durationContentLabel.text = [NSString stringWithFormat:@"%dh%02d", hour, min];
     [self.journeyTableView.tableHeaderView addSubview:self.durationContentLabel];
+    
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 114, self.view.frame.size.width, 1)];
+    separator.backgroundColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1];
+    [self.journeyTableView.tableHeaderView addSubview:separator];
+    self.journeyTableView.layer.borderWidth = 1.0f;
+    self.journeyTableView.layer.borderColor = [UIColor colorWithRed:206.0f/255.0f green:206.0f/255.0f blue:206.0f/255.0f alpha:1].CGColor;
     [self.view addSubview:self.journeyTableView];
 }
 
@@ -126,9 +133,9 @@
 {
     NSString *type = [[[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section] valueForKey:@"type"];
     if ([type isEqualToString:@"public_transport"]) {
-        return (115);
+        return (130);
     }
-    return 65;
+    return 70;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -35,6 +35,8 @@
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSMutableDictionary *responseDictionnary = (NSMutableDictionary *)responseObject;
         difficulty.idDifficulty = [[responseDictionnary valueForKey:@"id"] intValue];
+        difficulty.thumbUrl = [NSString stringWithString:[responseDictionnary valueForKey:@"picture"][@"thumb"][@"url"]];
+        difficulty.pictureUrl = [NSString stringWithString:[responseDictionnary valueForKey:@"picture"][@"url"]];
         [self.delegate sendDifficultyAnswer:difficulty answer:YES];
         NSLog(@"Success: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
