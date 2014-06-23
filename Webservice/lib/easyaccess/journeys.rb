@@ -46,8 +46,10 @@ module EasyAccess
           itinerary[:nb_transfers] += 1
         end
       end
+      @ratio = @info[:mode] == "walking" ? 2.3 : 1
+      puts "RATIO = #{@ratio}"
       # Calculate the arrival time
-      itinerary[:arrival_date_time] = @itinerary[:departure_date_time].advance(:seconds => itinerary[:duration])
+      itinerary[:arrival_date_time] = @itinerary[:departure_date_time].advance(:seconds => itinerary[:duration] * @ratio)
     end
 
     # Calculate an accessible itinerary
