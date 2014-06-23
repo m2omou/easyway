@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UILabel *fromLabelContent;
 @property (nonatomic, strong) UILabel *directionLabelContent;
 @property (nonatomic, strong) UILabel *descenteLabelContent;
+@property (nonatomic, strong) UILabel *accessibleOrNotLabel;
+@property (nonatomic, strong) UILabel *accessibleOrNotLabelContent;
 
 @end
 
@@ -75,9 +77,20 @@
         [self addSubview:self.descenteLabel];
         
         self.descenteLabelContent = [[UILabel alloc] initWithFrame:CGRectMake(70, 105, 230, 15)];
-        self.descenteLabelContent.font =  [UIFont fontWithName:@"Helvetica" size:(13.0)];
+        self.descenteLabelContent.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
         self.descenteLabelContent.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
         [self addSubview:self.descenteLabelContent];
+        
+        self.accessibleOrNotLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 125, 230, 15)];
+        self.accessibleOrNotLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:(15.0)];
+        self.accessibleOrNotLabel.text = @"Accessibilité";
+        self.accessibleOrNotLabel.textColor = [UIColor colorWithRed:250.0f/255.0f green:130.0f/255.0f blue:77.0f/255.0f alpha:1];
+        [self addSubview:self.accessibleOrNotLabel];
+
+        self.accessibleOrNotLabelContent = [[UILabel alloc] initWithFrame:CGRectMake(70, 145, 230, 15)];
+        self.accessibleOrNotLabelContent.font = [UIFont fontWithName:@"Helvetica" size:(14.0)];
+        self.accessibleOrNotLabelContent.textColor = [UIColor colorWithRed:50.0f/255.0f green:50.0f/255.0f blue:50.0f/255.0f alpha:1];
+        [self addSubview:self.accessibleOrNotLabelContent];
     }
     return self;
 }
@@ -106,6 +119,15 @@
     self.fromLabelContent.text = [stopPoints objectAtIndex:0][@"stop_point"][@"name"];
     self.directionLabelContent.text = [infos valueForKey:@"direction"];
     self.descenteLabelContent.text = [stopPoints lastObject][@"stop_point"][@"name"];
+    NSLog(@"JOURNEY = %@", journey);
+    NSLog(@"ACCESSIBLE = %@", [[[journey valueForKey:@"sections"] objectAtIndex:indexPath.section ] valueForKey:@"accessible"]);
+    self.accessibleOrNotLabelContent.text = ([[[[journey valueForKey:@"sections"] objectAtIndex:indexPath.section ] valueForKey:@"accessible"] intValue] == 1 ? @"Oui" : @"Non");
+    if ([[[[journey valueForKey:@"sections"] objectAtIndex:indexPath.section ] valueForKey:@"accessible"] intValue] == 1) {
+        self.accessibleOrNotLabelContent.textColor = [UIColor colorWithRed:34.0f/255.0f green:139.0f/255.0f blue:34.0f/255.0f alpha:1];
+    }
+    else {
+        self.accessibleOrNotLabelContent.textColor = [UIColor redColor];
+    }
 }
 
 - (void)awakeFromNib

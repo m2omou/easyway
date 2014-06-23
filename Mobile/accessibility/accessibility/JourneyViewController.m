@@ -133,7 +133,7 @@
 {
     NSString *type = [[[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section] valueForKey:@"type"];
     if ([type isEqualToString:@"public_transport"]) {
-        return (130);
+        return (170);
     }
     return 70;
 }
