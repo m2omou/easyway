@@ -182,7 +182,7 @@
         NSDate *date = [dateFormat dateFromString:[[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"departure_date_time"]];
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
         [components setTimeZone:[NSTimeZone localTimeZone]];
-        cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02d h %02d", [components hour], [components minute]];
+        cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02ld h %02ld", (long)[components hour], (long)[components minute]];
         cell.allerJusquaContentLabel.text = [[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"to"][@"name"];
         CGSize size = [cell.allerJusquaContentLabel.text sizeWithFont:cell.allerJusquaContentLabel.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         CGRect frame = cell.allerJusquaContentLabel.frame;
@@ -213,7 +213,7 @@
         NSDate *date = [dateFormat dateFromString:[[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"departure_date_time"]];
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
         [components setTimeZone:[NSTimeZone localTimeZone]];
-        cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02d h %02d", [components hour], [components minute]];
+        cell.timeActivityLabel.text = [NSString stringWithFormat:@"%02ld h %02ld", (long)[components hour], (long)[components minute]];
         cell.allerJusquaContentLabel.text = [[self.journey valueForKey:@"sections"] objectAtIndex:indexPath.section][@"to"][@"name"];
         CGSize size = [cell.allerJusquaContentLabel.text sizeWithFont:cell.allerJusquaContentLabel.font constrainedToSize:CGSizeMake(135, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         CGRect frame = cell.allerJusquaContentLabel.frame;

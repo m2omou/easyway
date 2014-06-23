@@ -256,29 +256,22 @@
         [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
         [self.from setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
         
-        NSLog(@"ON A RECU DETAIL POUR LE FROM");
-
         if ([[self.destination valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
-            NSLog(@"APRES RECEPTION DETAIL POUR LE FROM LE DEST EST == GEO DONC ON SET");
             CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
             [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
             [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
             accessibilityAPICaller.dateTime = self.datePicker.date;
             [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
-            //[self.destination setObject:[NSString stringWithFormat:@"%f", 48.83256] forKey:@"latitude"];
-            //[self.destination setObject:[NSString stringWithFormat:@"%f", 2.287685] forKey:@"longitude"];
         }
         else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
-            NSLog(@"APRES RECEPTION DETAIL POUR LE FROM LE DEST EST == NIL DONC ON REQUEST DETAIL POUR DEST");
             [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
         }
-       /* else {
+       else {
             accessibilityAPICaller.dateTime = self.datePicker.date;
             [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
-        }*/
+        }
     }
     else {
-        NSLog(@"ON A DEJA LE FROM DONC A RECU DETAIL POUR LE DEST");
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lat"] forKey:@"latitude"];
         [self.destination setValue:[googleDetail valueForKey:@"result"][@"geometry"][@"location"][@"lng"] forKey:@"longitude"];
         accessibilityAPICaller.dateTime = self.datePicker.date;
@@ -298,12 +291,13 @@
         [self.journeyCalculatorIndicator hide:YES afterDelay:2];
     }
     else {
-        if ([[journey valueForKey:@"result"] isEqual:[NSNull null]]) {
+        if ([[journey valueForKey:@"result"] valueForKey:@"sections"] == nil) {
             [self.journeyCalculatorIndicator setLabelText:@"Aucun itinéraire trouvé"];
             self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
             self.journeyCalculatorIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
             self.journeyCalculatorIndicator.mode = MBProgressHUDModeCustomView;
             [self.journeyCalculatorIndicator hide:YES afterDelay:2];
+            return;
         }
         [self.journeyCalculatorIndicator hide:YES];
         JourneyViewController *journeyView = [[JourneyViewController alloc]
@@ -317,7 +311,7 @@
 
 - (void)errorForJourneyRequest:(NSError *)error
 {
-    [self.journeyCalculatorIndicator setLabelText:@"Error from server"];
+    [self.journeyCalculatorIndicator setLabelText:@"Erreur du serveur"];
     self.journeyCalculatorIndicator.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x-mark"]];
     self.journeyCalculatorIndicator.customView.frame = CGRectMake(0, 0, 30, 30);
     self.journeyCalculatorIndicator.mode = MBProgressHUDModeCustomView;
@@ -329,19 +323,14 @@
 
 - (IBAction)itineraireRequestBtnTapped:(id)sender
 {
-    NSLog(@"BOUTON ITINERAIRE REQUEST TAPPED");
     self.journeyCalculatorIndicator = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.journeyCalculatorIndicator.labelText = @"Calcul de l'itinéraire";
     if ([[self.from valueForKey:@"isGeocalisation"] isEqualToString:@"true"]) {
         CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
         [self.from setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
         [self.from setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
-        NSLog(@"FROM == GEOCALISATION DONC ON CONTINUE");
-       // [self.from setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
-       // [self.from setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
     else if ([self.from valueForKeyPath:@"latitude"] == nil) {
-        NSLog(@"FROM == PAS GEOCALISATION DONC ON FAIT UNE REQUETE GOOGLE");
         [googleAPICaller searchGooglePlaceDetail:[self.from valueForKey:@"reference"]];
         return;
     }
@@ -350,19 +339,14 @@
         CLLocationCoordinate2D coordinate = [[locationManager location] coordinate];
         [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"latitude"];
         [self.destination setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"longitude"];
-        NSLog(@"DESTINATION == GEOCALISATION DONC ON CONTINUE");
-        //[self.destination setObject:[NSString stringWithFormat:@"%f", 48.838094] forKey:@"latitude"];
-        //[self.destination setObject:[NSString stringWithFormat:@"%f", 2.286793] forKey:@"longitude"];
     }
     else if ([self.destination valueForKeyPath:@"latitude"] == nil) {
-        NSLog(@"DESTINATION == PAS GEOCALISATION DONC ON FAIT UNE REQUETE GOOGLE");
         [googleAPICaller searchGooglePlaceDetail:[self.destination valueForKey:@"reference"]];
         return;
     }
     
     if ([self.destination valueForKeyPath:@"latitude"] != nil
         && [self.destination valueForKeyPath:@"latitude"] != nil) {
-        NSLog(@"ON A LE FROM ET DEST, ON FAIT LA REQUETE");
         accessibilityAPICaller.dateTime = self.datePicker.date;
         [accessibilityAPICaller searchJourney:self.from to:self.destination by:(self.walkingBtnContainer.tag == 1 ? @"walking" : @"transport")];
     }
