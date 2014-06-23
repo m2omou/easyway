@@ -16,7 +16,10 @@ module EasyAccess
     # make an http GET request to foursquare API and parse the json response
     def get(path, params={})
       params = merge_set_up_params(params)
-      @result = Typhoeus::Request.get(API_URL + path, :params => params)
+      @token = "b3688c52-9235-45ca-b01f-c5b2b83a4f4f"
+      @result = Typhoeus::Request.get(API_URL + path, :params => params,
+                                      :headers => {"Authorization" => "Basic#{@token}"})
+      puts @result.body
       # check if the url looks correct in the log
       puts @result.effective_url
       # parse the result to json

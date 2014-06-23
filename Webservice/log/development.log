@@ -9309,3 +9309,216 @@ Processing by JourneysController#index as JSON
   Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800", "mode"=>"walking"}
 ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.686517
 Completed 200 OK in 801ms (Views: 111.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287385,48.83156&to=2.376207,48.883628&datetime=20140618T0800&mode=walking" for 127.0.0.1 at 2014-06-22 12:53:34 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800", "mode"=>"walking"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.015371
+Completed 500 Internal Server Error in 1082ms
+
+NameError (undefined local variable or method `walking' for #<EasyAccess::Journeys:0x000001040760c0>):
+  lib/easyaccess/journeys.rb:49:in `calculateItineraryDuration'
+  lib/easyaccess/journeys.rb:92:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:27:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (44.7ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287385,48.83156&to=2.376207,48.883628&datetime=20140618T0800&mode=walking" for 127.0.0.1 at 2014-06-22 12:53:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800", "mode"=>"walking"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.5936170000000001
+Completed 200 OK in 697ms (Views: 87.7ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287385,48.83156&to=2.376207,48.883628&datetime=20140618T0800&mode=walking" for 127.0.0.1 at 2014-06-22 12:56:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800", "mode"=>"walking"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.109953
+Completed 200 OK in 1240ms (Views: 99.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287385,48.83156&to=2.376207,48.883628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-22 12:57:33 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800"}
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.322932
+  [1m[35mLine Load (2.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='89' AND destination LIKE '%PORTE DE FRANCE%' OR origin LIKE '%PORTE DE FRANCE%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (43.4ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%THEATRE DE LA PLAINE-GUILLAUMAT%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.5ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LUXEMBOURG%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.5ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='38' AND destination LIKE '%GARE DU NORD%' OR origin LIKE '%GARE DU NORD%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (1.3ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LUXEMBOURG%' AND stif LIKE '%1001000380001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.8ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%1001000380001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mLine Load (2.1ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='350' AND destination LIKE '%GARE DE L''EST%' OR origin LIKE '%GARE DE L''EST%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (41.5ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%1001003500001%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (22.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%1001003500001%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name=NULL AND destination LIKE '%%' OR origin LIKE '%%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.42190000000000005
+  [1m[35mLine Load (0.9ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='26' AND destination LIKE '%NATION - PLACE DES ANTILLES%' OR origin LIKE '%NATION - PLACE DES ANTILLES%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (0.7ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "lines".* FROM "lines" WHERE (name=NULL AND destination LIKE '%%' OR origin LIKE '%%') ORDER BY "lines"."id" ASC LIMIT 1
+Completed 200 OK in 2128ms (Views: 70.5ms | ActiveRecord: 119.0ms)
+
+
+Started GET "/journeys.json?from=2.287385,48.83156&to=2.376207,48.883628&datetime=20140618T0800&mode=walking" for 127.0.0.1 at 2014-06-22 12:57:51 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287385,48.83156", "to"=>"2.376207,48.883628", "datetime"=>"20140618T0800", "mode"=>"walking"}
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.5817840000000001
+Completed 200 OK in 703ms (Views: 117.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json" for 127.0.0.1 at 2014-06-23 13:18:10 -0700
+Processing by JourneysController#index as JSON
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:18:17 -0700
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: performed EASY url= response_code=401 return_code=ok total_time=1.535023
+Completed 500 Internal Server Error in 1537ms
+
+NoMethodError (undefined method `first' for nil:NilClass):
+  lib/easyaccess/journeys.rb:59:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:27:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.1ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:23:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=500 return_code=ok total_time=0.788146
+Completed 500 Internal Server Error in 794ms
+
+NoMethodError (undefined method `first' for nil:NilClass):
+  lib/easyaccess/journeys.rb:59:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:27:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.5ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:23:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=500 return_code=ok total_time=0.37534199999999995
+Completed 500 Internal Server Error in 381ms
+
+NoMethodError (undefined method `first' for nil:NilClass):
+  lib/easyaccess/journeys.rb:59:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:27:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.7ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:28:00 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `encode' for Base64:Module):
+  lib/easyaccess/base.rb:30:in `get'
+  lib/easyaccess/journeys.rb:20:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.2ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:28:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=2.975616
+  [1m[35mLine Load (1.1ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD (Paris)%' OR origin LIKE '%GARE DU NORD (Paris)%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (48.6ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-CROIX-NIVERT%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.7ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.9ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS (Paris)%' OR origin LIKE '%PORTE D''AUBERVILLIERS (Paris)%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (2.0ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name=NULL AND destination LIKE '%%' OR origin LIKE '%%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 3494ms (Views: 62.3ms | ActiveRecord: 54.6ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:28:54 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=500 return_code=ok total_time=0.377048
+Completed 500 Internal Server Error in 381ms
+
+NoMethodError (undefined method `first' for nil:NilClass):
+  lib/easyaccess/journeys.rb:59:in `calculateItinerary'
+  lib/easyaccess/journeys.rb:27:in `itinerary'
+  app/controllers/journeys_controller.rb:29:in `block in index'
+  app/controllers/journeys_controller.rb:8:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.0ms)
+DEPRECATION WARNING: You didn't set config.secret_key_base. Read the upgrade documentation to learn more about this new config option. (called from service at /usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/webrick/httpserver.rb:138)
+
+
+Started GET "/journeys.json?from=2.287685,48.83256&to=2.377207,48.889628&datetime=20140618T0800" for 127.0.0.1 at 2014-06-23 13:29:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by JourneysController#index as JSON
+  Parameters: {"from"=>"2.287685,48.83256", "to"=>"2.377207,48.889628", "datetime"=>"20140618T0800"}
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.522122
+  [1m[35mLine Load (1.4ms)[0m  SELECT "lines".* FROM "lines" WHERE (name='39' AND destination LIKE '%GARE DU NORD (Paris)%' OR origin LIKE '%GARE DU NORD (Paris)%') ORDER BY "lines"."id" ASC LIMIT 1
+  [1m[36mStop Load (50.0ms)[0m  [1mSELECT "stops".* FROM "stops" WHERE (name LIKE '%VAUGIRARD-CROIX-NIVERT%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.8ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%GARE DU NORD%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.9ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name='54' AND destination LIKE '%PORTE D''AUBERVILLIERS (Paris)%' OR origin LIKE '%PORTE D''AUBERVILLIERS (Paris)%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+  [1m[35mStop Load (0.6ms)[0m  SELECT "stops".* FROM "stops" WHERE (name LIKE '%LA FAYETTE-DUNKERQUE%' AND stif LIKE '%%') ORDER BY "stops"."id" ASC LIMIT 1
+  [1m[36mLine Load (0.3ms)[0m  [1mSELECT "lines".* FROM "lines" WHERE (name=NULL AND destination LIKE '%%' OR origin LIKE '%%') ORDER BY "lines"."id" ASC LIMIT 1[0m
+Completed 200 OK in 1841ms (Views: 60.8ms | ActiveRecord: 55.2ms)
